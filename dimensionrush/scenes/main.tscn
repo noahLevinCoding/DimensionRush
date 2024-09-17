@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkcp6m6cuc5fh"]
+
+[ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="1_rro5f"]
+[ext_resource type="Script" path="res://scripts/state_machine/game_states/game_state_titlescreen.gd" id="2_e1isi"]
+
+[node name="main" type="Node2D"]
+
+[node name="GameStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("1_rro5f")
+initial_state = NodePath("Titlescreen")
+
+[node name="Titlescreen" type="Node" parent="GameStateMachine"]
+script = ExtResource("2_e1isi")

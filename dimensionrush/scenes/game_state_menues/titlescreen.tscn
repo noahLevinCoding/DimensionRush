@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://drve2dny0aalb"]
+
+[node name="Titlescreen" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.345261, 0.697965, 0.823645, 1)
