@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PlayerControlsResource" load_steps=2 format=3 uid="uid://cm45otuwt1765"]
+
+[ext_resource type="Script" path="res://scripts/player_controls/player_controls_resource.gd" id="1_n0r1y"]
+
+[resource]
+script = ExtResource("1_n0r1y")
+type = 0
+id = 3
+left = "keyboard_1_left"
+right = "keyboard_1_right"
+up = "keyboard_1_up"
+down = "keyboard_1_down"

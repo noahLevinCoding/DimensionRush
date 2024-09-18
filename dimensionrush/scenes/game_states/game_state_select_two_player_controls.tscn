@@ -1,0 +1,94 @@
+[gd_scene load_steps=11 format=3 uid="uid://dyi2n3unvp0mn"]
+
+[ext_resource type="Script" path="res://scripts/state_machine/game_states/game_state_multiplayer_local_controls.gd" id="1_qborb"]
+[ext_resource type="Script" path="res://scripts/player_controls/player_controls_resource.gd" id="2_wh7t8"]
+[ext_resource type="Resource" uid="uid://ddbie5vom6exv" path="res://scripts/player_controls/controller_1_controls.tres" id="3_e4b4p"]
+[ext_resource type="Resource" uid="uid://rdne16eu8tau" path="res://scripts/player_controls/controller_2_controls.tres" id="4_ho5vc"]
+[ext_resource type="Resource" uid="uid://cm45otuwt1765" path="res://scripts/player_controls/keyboard_1_controls.tres" id="5_npikv"]
+[ext_resource type="Resource" uid="uid://badtrr2yo2okd" path="res://scripts/player_controls/keyboard_2_controls.tres" id="6_mmw55"]
+
+[sub_resource type="Theme" id="Theme_gaa32"]
+default_font_size = 80
+
+[sub_resource type="Theme" id="Theme_n2c3c"]
+default_font_size = 50
+
+[sub_resource type="Theme" id="Theme_nxchn"]
+default_font_size = 50
+
+[sub_resource type="Theme" id="Theme_c1nsu"]
+default_font_size = 50
+
+[node name="SelectTwoPlayerControls" type="Node2D" node_paths=PackedStringArray("player_controls_resource_id_label_1", "player_controls_resource_id_label_2", "next_button")]
+script = ExtResource("1_qborb")
+player_controls_resources = Array[ExtResource("2_wh7t8")]([ExtResource("3_e4b4p"), ExtResource("4_ho5vc"), ExtResource("5_npikv"), ExtResource("6_mmw55")])
+player_controls_resource_id_label_1 = NodePath("DeviceIdLabel1")
+player_controls_resource_id_label_2 = NodePath("DeviceIdLabel2")
+next_button = NodePath("NextButton")
+
+[node name="BackgroundColorRect" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.614012, 0.000345097, 0.6318, 1)
+
+[node name="HeadingLabel" type="Label" parent="."]
+offset_left = 641.0
+offset_top = 126.0
+offset_right = 1372.0
+offset_bottom = 236.0
+theme = SubResource("Theme_gaa32")
+text = "Select Input Devices"
+
+[node name="DeviceLabel1" type="Label" parent="."]
+offset_left = 774.0
+offset_top = 498.0
+offset_right = 1090.0
+offset_bottom = 567.0
+theme = SubResource("Theme_n2c3c")
+text = "Input Device:"
+
+[node name="DeviceIdLabel1" type="Label" parent="."]
+offset_left = 1101.0
+offset_top = 498.0
+offset_right = 1198.0
+offset_bottom = 567.0
+theme = SubResource("Theme_n2c3c")
+text = "0
+"
+
+[node name="DeviceLabel2" type="Label" parent="."]
+offset_left = 774.0
+offset_top = 587.0
+offset_right = 1090.0
+offset_bottom = 656.0
+theme = SubResource("Theme_n2c3c")
+text = "Input Device:"
+
+[node name="DeviceIdLabel2" type="Label" parent="."]
+offset_left = 1101.0
+offset_top = 590.0
+offset_right = 1198.0
+offset_bottom = 659.0
+theme = SubResource("Theme_n2c3c")
+text = "0
+"
+
+[node name="NextButton" type="Button" parent="."]
+offset_left = 923.0
+offset_top = 747.0
+offset_right = 1046.0
+offset_bottom = 824.0
+theme = SubResource("Theme_nxchn")
+disabled = true
+text = "Next"
+
+[node name="BackButton" type="Button" parent="."]
+offset_left = 76.0
+offset_top = 925.0
+offset_right = 199.0
+offset_bottom = 1002.0
+theme = SubResource("Theme_c1nsu")
+text = "Back"
+
+[connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="button_up" from="BackButton" to="." method="_on_back_button_up"]
