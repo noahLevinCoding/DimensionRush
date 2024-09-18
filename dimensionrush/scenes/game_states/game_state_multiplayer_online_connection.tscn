@@ -11,8 +11,10 @@ default_font_size = 50
 [sub_resource type="Theme" id="Theme_5hvhg"]
 default_font_size = 50
 
-[node name="MultiplayerOnlineConnection" type="Node2D"]
+[node name="MultiplayerOnlineConnection" type="Node2D" node_paths=PackedStringArray("host_ip_label", "host_ip_line_edit")]
 script = ExtResource("1_elv82")
+host_ip_label = NodePath("Host/HostIpLabel")
+host_ip_line_edit = NodePath("Client/ClientIpLineEdit")
 
 [node name="BackgroundColorRect" type="ColorRect" parent="."]
 offset_right = 1920.0

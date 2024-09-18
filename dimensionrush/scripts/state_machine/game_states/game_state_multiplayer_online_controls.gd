@@ -40,7 +40,11 @@ func reset():
 func _on_next_button_pressed():
 	if selected_player_controls_resource != null:
 		GameManager.first_player_controls_resource = selected_player_controls_resource
-		state_transition.emit(self, "Titlescreen")
+	
+		if 	 GameManager.player_mode == GameManager.PLAYER_MODES.SINGLEPLAYER:
+			state_transition.emit(self, "Titlescreen")
+		elif GameManager.player_mode == GameManager.PLAYER_MODES.MULTIPLAYER_ONLINE:
+			state_transition.emit(self, "MultiplayerOnlineConnection")
 
 
 func _on_back_button_up():

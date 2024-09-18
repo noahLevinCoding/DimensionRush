@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bkcp6m6cuc5fh"]
+[gd_scene load_steps=7 format=3 uid="uid://bkcp6m6cuc5fh"]
 
 [ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="1_rro5f"]
 [ext_resource type="PackedScene" uid="uid://drve2dny0aalb" path="res://scenes/game_states/game_state_titlescreen.tscn" id="2_8036h"]
 [ext_resource type="PackedScene" uid="uid://5i7y4qtqe0xo" path="res://scenes/game_states/game_state_player_mode.tscn" id="3_2epx2"]
 [ext_resource type="PackedScene" uid="uid://cu14ec3hwpjqt" path="res://scenes/game_states/game_state_select_one_player_controls.tscn" id="4_qjabk"]
 [ext_resource type="PackedScene" uid="uid://dyi2n3unvp0mn" path="res://scenes/game_states/game_state_select_two_player_controls.tscn" id="5_cxpx8"]
+[ext_resource type="PackedScene" uid="uid://lskje77wvt72" path="res://scenes/game_states/game_state_multiplayer_online_connection.tscn" id="6_2ui7l"]
 
 [node name="main" type="Node2D"]
 
@@ -22,4 +23,7 @@ visible = false
 visible = false
 
 [node name="SelectTwoPlayerControls" parent="GameStateMachine" instance=ExtResource("5_cxpx8")]
+visible = false
+
+[node name="MultiplayerOnlineConnection" parent="GameStateMachine" instance=ExtResource("6_2ui7l")]
 visible = false
