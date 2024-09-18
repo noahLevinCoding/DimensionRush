@@ -34,4 +34,4 @@ func _on_client_button_up():
 	multiplayer.multiplayer_peer = peer
 
 func _on_peer_connected(id = 1):
-	print("Peer connected with id: " + id)
+	print("Peer connected with id: " + str(id))
