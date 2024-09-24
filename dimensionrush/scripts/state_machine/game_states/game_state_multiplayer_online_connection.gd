@@ -46,5 +46,9 @@ func _on_back_button_up():
 	state_transition.emit(self, "SelectOnePlayerControls")
 
 func close_connection():
+	if multiplayer.peer_connected.is_connected(_on_peer_connected):
+		multiplayer.peer_connected.disconnect(_on_peer_connected)
+	
 	multiplayer.multiplayer_peer.close()
 	multiplayer.multiplayer_peer = null
+	
