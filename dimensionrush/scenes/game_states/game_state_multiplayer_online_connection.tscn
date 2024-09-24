@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://lskje77wvt72"]
+[gd_scene load_steps=6 format=3 uid="uid://lskje77wvt72"]
 
 [ext_resource type="Script" path="res://scripts/state_machine/game_states/game_state_multiplayer_online_connection.gd" id="1_elv82"]
 
@@ -9,6 +9,9 @@ default_font_size = 80
 default_font_size = 50
 
 [sub_resource type="Theme" id="Theme_5hvhg"]
+default_font_size = 50
+
+[sub_resource type="Theme" id="Theme_7ww65"]
 default_font_size = 50
 
 [node name="MultiplayerOnlineConnection" type="Node2D" node_paths=PackedStringArray("host_ip_label", "host_ip_line_edit")]
@@ -33,10 +36,10 @@ text = "Multiplayer Online Connection
 [node name="Host" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 48.0
-offset_top = 799.0
-offset_right = 88.0
-offset_bottom = 839.0
+offset_left = 712.0
+offset_top = 521.0
+offset_right = 752.0
+offset_bottom = 561.0
 theme = SubResource("Theme_sodlo")
 
 [node name="HostButton" type="Button" parent="Host"]
@@ -64,10 +67,10 @@ text = "/"
 [node name="Client" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 48.0
-offset_top = 905.0
-offset_right = 88.0
-offset_bottom = 945.0
+offset_left = 707.0
+offset_top = 624.0
+offset_right = 747.0
+offset_bottom = 664.0
 theme = SubResource("Theme_5hvhg")
 
 [node name="ClientButton" type="Button" parent="Client"]
@@ -92,5 +95,14 @@ offset_right = 593.0
 offset_bottom = 83.0
 placeholder_text = "Enter IP"
 
+[node name="BackButton" type="Button" parent="."]
+offset_left = 28.0
+offset_top = 970.0
+offset_right = 151.0
+offset_bottom = 1047.0
+theme = SubResource("Theme_7ww65")
+text = "Back"
+
 [connection signal="button_up" from="Host/HostButton" to="." method="_on_host_button_up"]
 [connection signal="button_up" from="Client/ClientButton" to="." method="_on_client_button_up"]
+[connection signal="button_up" from="BackButton" to="." method="_on_back_button_up"]

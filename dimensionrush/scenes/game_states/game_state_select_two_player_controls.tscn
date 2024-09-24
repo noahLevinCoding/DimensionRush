@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://dyi2n3unvp0mn"]
 
-[ext_resource type="Script" path="res://scripts/state_machine/game_states/game_state_multiplayer_local_controls.gd" id="1_qborb"]
+[ext_resource type="Script" path="res://scripts/state_machine/game_states/game_state_select_two_player_controls.gd" id="1_qborb"]
 [ext_resource type="Script" path="res://scripts/player_controls/player_controls_resource.gd" id="2_wh7t8"]
 [ext_resource type="Resource" uid="uid://ddbie5vom6exv" path="res://scripts/player_controls/controller_1_controls.tres" id="3_e4b4p"]
 [ext_resource type="Resource" uid="uid://rdne16eu8tau" path="res://scripts/player_controls/controller_2_controls.tres" id="4_ho5vc"]

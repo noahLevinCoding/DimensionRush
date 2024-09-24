@@ -20,6 +20,7 @@ func reset():
 
 
 func _on_host_button_up():
+	GameManager.multiplayer_mode = GameManager.MULTIPLAYER_MODES.SERVER
 	peer.create_server(135)
 	multiplayer.multiplayer_peer = peer
 	multiplayer.peer_connected.connect(_on_peer_connected)
@@ -30,8 +31,20 @@ func _on_host_button_up():
 func _on_client_button_up():
 	var host_ip = host_ip_line_edit.text 
 	
+	GameManager.multiplayer_mode = GameManager.MULTIPLAYER_MODES.CLIENT
 	peer.create_client(host_ip, 135)
 	multiplayer.multiplayer_peer = peer
 
 func _on_peer_connected(id = 1):
 	print("Peer connected with id: " + str(id))
+
+
+func _on_back_button_up():
+	close_connection()
+	
+	
+	state_transition.emit(self, "SelectOnePlayerControls")
+
+func close_connection():
+	multiplayer.multiplayer_peer.close()
+	multiplayer.multiplayer_peer = null
