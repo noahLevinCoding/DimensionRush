@@ -53,4 +53,6 @@ offset_bottom = 1016.0
 theme = SubResource("Theme_kgtal")
 text = "Back"
 
+[connection signal="button_up" from="TimeButton" to="." method="_on_time_button_up"]
+[connection signal="button_up" from="DistanceButton" to="." method="_on_distance_button_up"]
 [connection signal="button_up" from="BackButton" to="." method="_on_back_button_up"]
