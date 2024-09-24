@@ -14,6 +14,7 @@ func _ready():
 			states[child.name.to_lower()] = child
 			child.state_transition.connect(change_state)
 			child.back_transition.connect(change_state_back)
+			child.force_state_transition.connect(force_change_state)
 	
 	#Initialize state
 	if initial_state:
@@ -73,8 +74,7 @@ func force_change_state(new_state_name : StringName):
 		return
 		
 	if current_state:
-		var exitCallable = Callable(current_state, "Exit")
-		exitCallable.call_deferred()
+		current_state.exit()
 		
 	new_state.enter()
 	

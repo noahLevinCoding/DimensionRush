@@ -15,7 +15,7 @@ func enter():
 func exit():
 	visible = false
 
-func _unhandled_input(event: InputEvent):
+func _unhandled_input(_event: InputEvent):
 	for player_controls_resource in player_controls_resources:
 		if is_action_of_player_controls_resource_just_pressed(player_controls_resource):
 			selected_player_controls_resource = player_controls_resource

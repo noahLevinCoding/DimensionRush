@@ -19,7 +19,7 @@ func enter():
 func exit():
 	visible = false
 
-func _unhandled_input(event: InputEvent):
+func _unhandled_input(_event: InputEvent):
 	for player_controls_resource in player_controls_resources:
 		if is_action_of_player_controls_resource_just_pressed(player_controls_resource) and not is_player_controls_resource_already_in_use(player_controls_resource):
 			if is_first_players_choice:

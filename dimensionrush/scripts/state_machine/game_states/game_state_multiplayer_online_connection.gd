@@ -7,6 +7,7 @@ extends State
 var peer = ENetMultiplayerPeer.new()
 
 func enter():
+	close_connection()
 	resetUI()
 	visible = true
 	
@@ -26,6 +27,7 @@ func _on_host_button_up():
 	peer.create_server(135, 1)
 	multiplayer.multiplayer_peer = peer
 	multiplayer.peer_connected.connect(_on_peer_connected)
+	multiplayer.peer_disconnected.connect(_on_peer_disconnected)
 	
 	host_ip_label.text = IP.resolve_hostname(str(OS.get_environment("COMPUTERNAME")),1)
 
@@ -41,10 +43,20 @@ func _on_client_button_up():
 	peer.create_client(host_ip, 135)
 	multiplayer.multiplayer_peer = peer
 	multiplayer.peer_connected.connect(_on_peer_connected)
+	multiplayer.peer_disconnected.connect(_on_peer_disconnected)
 
 func _on_peer_connected(id = 1):
 	print("Peer connected with id: " + str(id))
 	state_transition.emit(self, "SelectGameMode")
+
+func _on_peer_disconnected(id = 1):
+	if GameManager.multiplayer_mode == GameManager.MULTIPLAYER_MODES.CLIENT:
+		print("Client:")
+	else:
+		print("Host:")
+	print("Peer disconnected with id : " + str(id))
+	force_state_transition.emit("MultiplayerOnlineConnection")
+	
 
 
 func _on_back_button_up():
@@ -54,8 +66,13 @@ func _on_back_button_up():
 func close_connection():
 	if multiplayer.peer_connected.is_connected(_on_peer_connected):
 		multiplayer.peer_connected.disconnect(_on_peer_connected)
+	if multiplayer.peer_disconnected.is_connected(_on_peer_disconnected):
+		multiplayer.peer_disconnected.disconnect(_on_peer_disconnected)
 	
 	if multiplayer.has_multiplayer_peer():
-		multiplayer.multiplayer_peer.close()
-		multiplayer.multiplayer_peer = null
+		call_deferred("close_connection_deferred")
 	
+
+func close_connection_deferred():
+	multiplayer.multiplayer_peer.close()
+	multiplayer.multiplayer_peer = null
