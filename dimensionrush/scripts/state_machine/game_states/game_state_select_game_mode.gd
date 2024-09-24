@@ -25,23 +25,23 @@ func _on_time_button_up():
 	GameManager.game_mode = GameManager.GAME_MODES.TIME
 	
 	if GameManager.player_mode == GameManager.PLAYER_MODES.MULTIPLAYER_ONLINE and GameManager.multiplayer_mode == GameManager.MULTIPLAYER_MODES.SERVER:
-		test_rpc.rpc()
-	
-	state_transition.emit(self, "InitGame")
-	
-
-
-func _on_distance_button_up():
-	GameManager.game_mode = GameManager.GAME_MODES.DISTANCE
-	
-	
+		rpc_on_time_button_up.rpc()
 	
 	state_transition.emit(self, "InitGame")
 	
 @rpc
-func test_rpc():
-	if GameManager.multiplayer_mode == GameManager.MULTIPLAYER_MODES.CLIENT:
-		print("Client:")
-	else:
-		print("Host:")
-	print("Test RPC")
+func rpc_on_time_button_up():
+	GameManager.game_mode = GameManager.GAME_MODES.TIME
+	
+	state_transition.emit(self, "InitGame")
+
+#@rpc
+func _on_distance_button_up():
+	GameManager.game_mode = GameManager.GAME_MODES.DISTANCE
+	
+	if GameManager.player_mode == GameManager.PLAYER_MODES.MULTIPLAYER_ONLINE and GameManager.multiplayer_mode == GameManager.MULTIPLAYER_MODES.SERVER:
+		#_on_distance_button_up.rpc()
+		pass
+		
+	state_transition.emit(self, "InitGame")
+	
