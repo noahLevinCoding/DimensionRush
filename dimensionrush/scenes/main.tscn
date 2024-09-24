@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://bkcp6m6cuc5fh"]
+[gd_scene load_steps=8 format=3 uid="uid://bkcp6m6cuc5fh"]
 
 [ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="1_rro5f"]
 [ext_resource type="PackedScene" uid="uid://drve2dny0aalb" path="res://scenes/game_states/game_state_titlescreen.tscn" id="2_8036h"]
-[ext_resource type="PackedScene" uid="uid://5i7y4qtqe0xo" path="res://scenes/game_states/game_state_player_mode.tscn" id="3_2epx2"]
+[ext_resource type="PackedScene" uid="uid://5i7y4qtqe0xo" path="res://scenes/game_states/game_state_select_player_mode.tscn" id="3_2epx2"]
 [ext_resource type="PackedScene" uid="uid://cu14ec3hwpjqt" path="res://scenes/game_states/game_state_select_one_player_controls.tscn" id="4_qjabk"]
 [ext_resource type="PackedScene" uid="uid://dyi2n3unvp0mn" path="res://scenes/game_states/game_state_select_two_player_controls.tscn" id="5_cxpx8"]
 [ext_resource type="PackedScene" uid="uid://lskje77wvt72" path="res://scenes/game_states/game_state_multiplayer_online_connection.tscn" id="6_2ui7l"]
+[ext_resource type="PackedScene" uid="uid://bnbiepdxbcoyf" path="res://scenes/game_states/game_state_select_game_mode.tscn" id="7_oxu7e"]
 
 [node name="main" type="Node2D"]
 
@@ -16,7 +17,7 @@ initial_state = NodePath("Titlescreen")
 [node name="Titlescreen" parent="GameStateMachine" instance=ExtResource("2_8036h")]
 visible = false
 
-[node name="PlayerMode" parent="GameStateMachine" instance=ExtResource("3_2epx2")]
+[node name="SelectPlayerMode" parent="GameStateMachine" instance=ExtResource("3_2epx2")]
 visible = false
 
 [node name="SelectOnePlayerControls" parent="GameStateMachine" instance=ExtResource("4_qjabk")]
@@ -26,4 +27,7 @@ visible = false
 visible = false
 
 [node name="MultiplayerOnlineConnection" parent="GameStateMachine" instance=ExtResource("6_2ui7l")]
+visible = false
+
+[node name="SelectGameMode" parent="GameStateMachine" instance=ExtResource("7_oxu7e")]
 visible = false

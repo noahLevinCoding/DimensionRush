@@ -59,8 +59,8 @@ func _on_next_button_pressed():
 	if selected_player_controls_resource_1 != null and selected_player_controls_resource_2 != null and selected_player_controls_resource_1 != selected_player_controls_resource_2:
 		GameManager.first_player_controls_resource 	= selected_player_controls_resource_1
 		GameManager.second_player_controls_resource = selected_player_controls_resource_2
-		state_transition.emit(self, "Titlescreen")
+		state_transition.emit(self, "SelectGameMode")
 
 
 func _on_back_button_up():
-	state_transition.emit(self, "PlayerMode")
+	state_transition.emit(self, "SelectPlayerMode")

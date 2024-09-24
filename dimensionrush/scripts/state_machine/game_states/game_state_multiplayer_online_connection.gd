@@ -7,21 +7,23 @@ extends State
 var peer = ENetMultiplayerPeer.new()
 
 func enter():
-	reset()
+	resetUI()
 	visible = true
 	
 func exit():
 	visible = false
 
-func reset():
-	#TODO clear connection
+func resetUI():
 	host_ip_label.text = "/"
 	host_ip_line_edit.text = ""
 
 
 func _on_host_button_up():
+	close_connection()
+	resetUI()
+	
 	GameManager.multiplayer_mode = GameManager.MULTIPLAYER_MODES.SERVER
-	peer.create_server(135)
+	peer.create_server(135, 1)
 	multiplayer.multiplayer_peer = peer
 	multiplayer.peer_connected.connect(_on_peer_connected)
 	
@@ -29,6 +31,9 @@ func _on_host_button_up():
 
 
 func _on_client_button_up():
+	close_connection()
+	resetUI()
+	
 	var host_ip = host_ip_line_edit.text 
 	
 	GameManager.multiplayer_mode = GameManager.MULTIPLAYER_MODES.CLIENT
@@ -41,8 +46,6 @@ func _on_peer_connected(id = 1):
 
 func _on_back_button_up():
 	close_connection()
-	
-	
 	state_transition.emit(self, "SelectOnePlayerControls")
 
 func close_connection():

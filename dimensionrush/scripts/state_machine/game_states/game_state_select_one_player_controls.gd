@@ -42,10 +42,10 @@ func _on_next_button_pressed():
 		GameManager.first_player_controls_resource = selected_player_controls_resource
 	
 		if 	 GameManager.player_mode == GameManager.PLAYER_MODES.SINGLEPLAYER:
-			state_transition.emit(self, "Titlescreen")
+			state_transition.emit(self, "SelectGameMode")
 		elif GameManager.player_mode == GameManager.PLAYER_MODES.MULTIPLAYER_ONLINE:
 			state_transition.emit(self, "MultiplayerOnlineConnection")
 
 
 func _on_back_button_up():
-	state_transition.emit(self, "PlayerMode")
+	state_transition.emit(self, "SelectPlayerMode")
