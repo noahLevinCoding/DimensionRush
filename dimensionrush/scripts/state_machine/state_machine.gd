@@ -76,10 +76,11 @@ func force_change_state(new_state_name : StringName):
 	if current_state:
 		current_state.exit()
 		
-	new_state.enter()
-	
+	last_state_name = current_state_name
+	current_state_name = new_state_name	
 	current_state = new_state
 	
+	new_state.enter()
 
 func _process(delta):
 	if current_state:

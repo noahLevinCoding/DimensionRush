@@ -19,3 +19,4 @@ func resetUI():
 
 func _on_back_button_up():
 	back_transition.emit(self)
+	print("test")
