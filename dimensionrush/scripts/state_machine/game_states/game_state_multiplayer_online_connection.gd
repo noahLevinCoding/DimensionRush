@@ -31,10 +31,11 @@ func _on_host_button_up():
 
 
 func _on_client_button_up():
+	var host_ip = host_ip_line_edit.text
+	
 	close_connection()
 	resetUI()
 	
-	var host_ip = host_ip_line_edit.text 
 	
 	GameManager.multiplayer_mode = GameManager.MULTIPLAYER_MODES.CLIENT
 	peer.create_client(host_ip, 135)
