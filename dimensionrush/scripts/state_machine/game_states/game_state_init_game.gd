@@ -25,7 +25,7 @@ func _on_start_button_up():
 	init_game_on_start_button_up.rpc()
 	state_transition.emit(self, "Playing")
 
-@rpc
+@rpc("any_peer")
 func init_game_on_back_button_up():
 	state_transition.emit(self, "SelectGameMode")
 
