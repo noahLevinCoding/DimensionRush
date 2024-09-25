@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bty1jksbcxbxj"]
+
+[ext_resource type="TileSet" uid="uid://wgis1jtxf8re" path="res://resources/tileset_1.tres" id="1_vxnfp"]
+
+[node name="Room" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+scale = Vector2(1.83281, 1.29062)
+
+[node name="TileMapPlatform" type="TileMapLayer" parent="."]
+tile_set = ExtResource("1_vxnfp")
