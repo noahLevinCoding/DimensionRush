@@ -4,12 +4,12 @@ extends State
 @export var start_button : Button
 
 func enter():
-	resetUI()
 	init_game_on_online_ready.rpc()
 	visible = true
 	
 	
 func exit():
+	resetUI()
 	visible = false
 
 

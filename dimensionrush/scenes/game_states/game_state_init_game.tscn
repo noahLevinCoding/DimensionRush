@@ -31,6 +31,7 @@ offset_top = 554.0
 offset_right = 1025.0
 offset_bottom = 631.0
 theme = SubResource("Theme_acc8u")
+disabled = true
 text = "Start"
 
 [node name="BackButton" type="Button" parent="."]
