@@ -13,11 +13,11 @@ func exit():
 	visible = false
 
 
-@rpc
+@rpc("any_peer")
 func init_game_on_online_ready():
 	start_button.disabled = false
 
-@rpc 
+@rpc("any_peer")
 func init_game_on_start_button_up():
 	state_transition.emit(self, "Playing")
 
@@ -25,8 +25,14 @@ func _on_start_button_up():
 	init_game_on_start_button_up.rpc()
 	state_transition.emit(self, "Playing")
 
+@rpc
+func init_game_on_back_button_up():
+	state_transition.emit(self, "SelectGameMode")
 
 func _on_back_button_up():
+	if GameManager.is_online_multiplayer():
+		init_game_on_back_button_up.rpc()
+	
 	state_transition.emit(self, "SelectGameMode")
 
 func resetUI():
