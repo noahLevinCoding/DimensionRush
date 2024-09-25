@@ -4,7 +4,11 @@ extends State
 @export var start_button : Button
 
 func enter():
-	init_game_on_online_ready.rpc()
+	if GameManager.is_online_multiplayer():
+		init_game_on_online_ready.rpc()
+	else:
+		start_button.disabled = false
+		
 	visible = true
 	
 	
@@ -22,7 +26,8 @@ func init_game_on_start_button_up():
 	state_transition.emit(self, "Playing")
 
 func _on_start_button_up():
-	init_game_on_start_button_up.rpc()
+	if GameManager.is_online_multiplayer():
+		init_game_on_start_button_up.rpc()
 	state_transition.emit(self, "Playing")
 
 @rpc("any_peer")

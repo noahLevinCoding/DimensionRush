@@ -3,6 +3,7 @@ extends State
 
 func enter():
 	visible = true
+	GameManager.reset()
 	
 func exit():
 	visible = false

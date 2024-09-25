@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://doa2j3gkdu6qe"]
+
+[ext_resource type="Script" path="res://scripts/state_machine/game_states/game_state_playing.gd" id="1_821du"]
+
+[sub_resource type="Theme" id="Theme_mrtoi"]
+default_font_size = 80
+
+[sub_resource type="Theme" id="Theme_acc8u"]
+default_font_size = 50
+
+[node name="Playing" type="Node2D"]
+script = ExtResource("1_821du")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.89645, 0.867102, 0.998354, 1)
+
+[node name="Heading" type="Label" parent="."]
+offset_left = 782.0
+offset_top = 182.0
+offset_right = 1159.0
+offset_bottom = 292.0
+theme = SubResource("Theme_mrtoi")
+text = "Playing"
+
+[node name="FinishButton" type="Button" parent="."]
+offset_left = 677.0
+offset_top = 531.0
+offset_right = 827.0
+offset_bottom = 608.0
+theme = SubResource("Theme_acc8u")
+text = "Finish"
+
+[node name="PauseButton" type="Button" parent="."]
+offset_left = 1083.0
+offset_top = 527.0
+offset_right = 1236.0
+offset_bottom = 604.0
+theme = SubResource("Theme_acc8u")
+text = "Pause"
+
+[connection signal="button_up" from="FinishButton" to="." method="_on_finish_button_up"]
+[connection signal="button_up" from="PauseButton" to="." method="_on_pause_button_up"]

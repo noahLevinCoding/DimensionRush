@@ -18,7 +18,13 @@ func resetUI():
 
 
 func _on_back_button_up():
-	back_transition.emit(self)
+	if GameManager.is_online_multiplayer():
+		state_transition.emit(self, "MultiplayerOnlineConnection")
+	elif GameManager.is_local_multiplayer():
+		state_transition.emit(self, "SelectTwoPlayerControls")
+	elif GameManager.is_singleplayer():
+		state_transition.emit(self, "SelectOnePlayerControls")
+	
 
 
 func _on_time_button_up():

@@ -6,6 +6,9 @@ extends State
 
 var peer = ENetMultiplayerPeer.new()
 
+func _ready():
+	SignalManager.close_connection.connect(close_connection)
+
 func enter():
 	close_connection()
 	resetUI()
@@ -70,9 +73,9 @@ func close_connection():
 		multiplayer.peer_disconnected.disconnect(_on_peer_disconnected)
 	
 	if multiplayer.has_multiplayer_peer():
-		call_deferred("close_connection_deferred")
+		multiplayer.multiplayer_peer.close()
+		multiplayer.multiplayer_peer = null
 	
 
-func close_connection_deferred():
-	multiplayer.multiplayer_peer.close()
-	multiplayer.multiplayer_peer = null
+
+	
