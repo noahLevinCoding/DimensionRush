@@ -34,13 +34,4 @@ theme = SubResource("Theme_acc8u")
 disabled = true
 text = "Start"
 
-[node name="BackButton" type="Button" parent="."]
-offset_left = 93.0
-offset_top = 903.0
-offset_right = 218.0
-offset_bottom = 980.0
-theme = SubResource("Theme_acc8u")
-text = "Back"
-
 [connection signal="button_up" from="StartButton" to="." method="_on_start_button_up"]
-[connection signal="button_up" from="BackButton" to="." method="_on_back_button_up"]

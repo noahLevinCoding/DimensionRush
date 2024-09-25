@@ -7,6 +7,7 @@ extends State
 func enter():
 	resetUI()
 	visible = true
+	GameManager.game_is_running = false
 	
 func exit():
 	visible = false

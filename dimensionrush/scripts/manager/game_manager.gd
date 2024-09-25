@@ -8,8 +8,12 @@ var player_mode 	 : PLAYER_MODES 		= PLAYER_MODES.NONE
 var multiplayer_mode : MULTIPLAYER_MODES 	= MULTIPLAYER_MODES.NONE
 var game_mode 		 : GAME_MODES 			= GAME_MODES.NONE
 
+var client_peer_id : int = 0
+
 var first_player_controls_resource 	: PlayerControlsResource = null
 var second_player_controls_resource : PlayerControlsResource = null
+
+var game_is_running : bool = false
 
 func reset():
 	SignalManager.close_connection.emit()
@@ -18,8 +22,12 @@ func reset():
 	multiplayer_mode 	= MULTIPLAYER_MODES.NONE
 	game_mode 			= GAME_MODES.NONE
 	
+	client_peer_id = 0
+	
 	first_player_controls_resource  = null
 	second_player_controls_resource = null
+	
+	game_is_running = false
 
 func is_online_multiplayer() -> bool:
 	return player_mode == PLAYER_MODES.MULTIPLAYER_ONLINE

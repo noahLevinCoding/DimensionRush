@@ -15,6 +15,7 @@ var is_first_players_choice : bool = true
 func enter():
 	reset()
 	visible = true
+	GameManager.game_is_running = false
 	
 func exit():
 	visible = false

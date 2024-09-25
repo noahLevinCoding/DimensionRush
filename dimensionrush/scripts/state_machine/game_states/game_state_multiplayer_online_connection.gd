@@ -13,6 +13,7 @@ func enter():
 	close_connection()
 	resetUI()
 	visible = true
+	GameManager.game_is_running = false
 	
 func exit():
 	visible = false
@@ -50,6 +51,9 @@ func _on_client_button_up():
 
 func _on_peer_connected(id = 1):
 	print("Peer connected with id: " + str(id))
+	if GameManager.is_server():
+		GameManager.client_peer_id = id
+	
 	state_transition.emit(self, "SelectGameMode")
 
 func _on_peer_disconnected(id = 1):
@@ -67,6 +71,8 @@ func _on_back_button_up():
 	state_transition.emit(self, "SelectOnePlayerControls")
 
 func close_connection():
+	GameManager.multiplayer_mode = GameManager.MULTIPLAYER_MODES.NONE
+	
 	if multiplayer.peer_connected.is_connected(_on_peer_connected):
 		multiplayer.peer_connected.disconnect(_on_peer_connected)
 	if multiplayer.peer_disconnected.is_connected(_on_peer_disconnected):

@@ -7,6 +7,7 @@ func enter():
 	
 func exit():
 	visible = false
+	GameManager.game_is_running = false
 
 func _on_restart_button_up():
 	if GameManager.is_online_multiplayer():

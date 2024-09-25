@@ -11,6 +11,7 @@ var selected_player_controls_resource : PlayerControlsResource = null
 func enter():
 	reset()
 	visible = true
+	GameManager.game_is_running = false
 	
 func exit():
 	visible = false
