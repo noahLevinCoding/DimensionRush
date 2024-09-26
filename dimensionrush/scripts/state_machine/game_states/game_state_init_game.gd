@@ -8,22 +8,95 @@ extends State
 
 @export var start_button : Button
 
+var player_scene_instance_1 : Player = null
+var player_scene_instance_2 : Player = null
+
+signal reset_player_authority_done 
+signal clear_nodes_done
+
+var reset_player_authority_done_flag := false
+var clear_nodes_done_flag := false
+
 func enter():
-	
-	spawnPlayer()
-	
 	GameManager.game_is_running = false
+	
 	if GameManager.is_online_multiplayer():
-		init_game_on_online_ready.rpc()
+		print("Enter online")
+		enter_online()
 	else:
-		start_button.disabled = false
+		enter_offline()
+
+	
 		
+func enter_offline():
+	clearNodes()
+	spawnPlayer()
+	start_button.disabled = false
 	visible = true
 	
+func enter_online():
+	if GameManager.is_client():
+		print("Client")
+	else:
+		print("Server")
+	print("Before resetMultiplayerAUthority")
+	resetMultiplayerAuthority()
+	reset_player_authority_done_rpc.rpc()
+	if !reset_player_authority_done_flag:
+		if GameManager.is_client():
+			print("Client")
+		else:
+			print("Server")
+		print("wait for play authority done")
+		await reset_player_authority_done
+	if GameManager.is_client():
+		print("Client")
+	else:
+		print("Server")
+	print("done waiting for play authority done")
+	if GameManager.is_client():
+		print("Client")
+	else:
+		print("Server")
+	print("Before clear nodes")
+	clearNodes()
+	
+	
+	print("before clear nodes ready rpc")
+	clear_nodes_done_rpc.rpc()
+	if !clear_nodes_done_flag:
+		await clear_nodes_done
+	spawnPlayer()
+	
+	init_game_on_online_ready.rpc()
+	visible = true
+	
+ 
+func resetMultiplayerAuthority():
+	SignalManager.reset_multiplayer_authority.emit()
+	
+@rpc("any_peer")
+func clear_nodes_done_rpc():
+	clear_nodes_done_flag = true
+	clear_nodes_done.emit()
+	
+	
+@rpc("any_peer")
+func reset_player_authority_done_rpc():
+	if GameManager.is_client():
+		print("Client")
+	else:
+		print("Server")
+	print("Rest player authroity rpc call")
+	reset_player_authority_done_flag = true
+	reset_player_authority_done.emit()
 	
 func exit():
 	resetUI()
 	visible = false
+	
+	reset_player_authority_done_flag = false
+	clear_nodes_done_flag = false
 
 
 @rpc("any_peer")
@@ -44,7 +117,21 @@ func resetUI():
 	if GameManager.is_online_multiplayer():
 		start_button.disabled = true
 
+@rpc("any_peer")
+func clearNodes():
+	if GameManager.is_online_multiplayer() and GameManager.is_server() or not GameManager.is_online_multiplayer():
+		for child in upper_subviewport.get_children():
+			upper_subviewport.remove_child(child)
+			child.queue_free()
+		
+		for child in lower_subviewport.get_children():
+			lower_subviewport.remove_child(child)
+			child.queue_free()
+			
+	#player_scene_instance_1 = null
+	#player_scene_instance_2 = null
 
+@rpc("any_peer")
 func spawnPlayer():
 	if GameManager.is_local_multiplayer():
 		spawnPlayerLocalMultiplayer()
@@ -54,8 +141,8 @@ func spawnPlayer():
 		spawnPlayerSingleplayer()
 
 func spawnPlayerLocalMultiplayer():
-	var player_scene_instance_1 = player_scene.instantiate()
-	var player_scene_instance_2 = player_scene.instantiate()
+	player_scene_instance_1 = player_scene.instantiate()
+	player_scene_instance_2 = player_scene.instantiate()
 	
 	upper_subviewport.add_child(player_scene_instance_1)
 	lower_subviewport.add_child(player_scene_instance_2)
@@ -67,19 +154,25 @@ func spawnPlayerLocalMultiplayer():
 	
 func spawnPlayerOnlineMultiplayer():
 	if GameManager.is_server():
-		var player_scene_instance_1 = player_scene.instantiate()
-		var player_scene_instance_2 = player_scene.instantiate()
+		player_scene_instance_1 = player_scene.instantiate()
+		player_scene_instance_2 = player_scene.instantiate()
 		
 		player_scene_instance_1.name = "1"
 		player_scene_instance_2.name = str(GameManager.client_peer_id)
 		
-		upper_subviewport.add_child(player_scene_instance_1)
-		lower_subviewport.add_child(player_scene_instance_2)
+		#upper_subviewport.add_child(player_scene_instance_1)
+		#lower_subviewport.add_child(player_scene_instance_2)
 		
+		call_deferred("spawnPlayerOnlineMultiplayerDeferred", upper_subviewport, player_scene_instance_1)
+		call_deferred("spawnPlayerOnlineMultiplayerDeferred", lower_subviewport, player_scene_instance_2)
+
+	
+func spawnPlayerOnlineMultiplayerDeferred(viewport, player_instance):
+	viewport.add_child(player_instance, true)
 	
 func spawnPlayerSingleplayer():
-	var player_scene_instance_1 = player_scene.instantiate()
-	var player_scene_instance_2 = player_scene.instantiate()
+	player_scene_instance_1 = player_scene.instantiate()
+	player_scene_instance_2 = player_scene.instantiate()
 	
 	upper_subviewport.add_child(player_scene_instance_1)
 	lower_subviewport.add_child(player_scene_instance_2)
