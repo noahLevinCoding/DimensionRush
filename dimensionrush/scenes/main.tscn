@@ -1,5 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://bkcp6m6cuc5fh"]
+[gd_scene load_steps=14 format=3 uid="uid://bkcp6m6cuc5fh"]
 
+[ext_resource type="Script" path="res://scripts/room_spawner/room_spawner.gd" id="1_g36f0"]
 [ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="1_rro5f"]
 [ext_resource type="PackedScene" uid="uid://drve2dny0aalb" path="res://scenes/game_states/game_state_titlescreen.tscn" id="2_8036h"]
 [ext_resource type="PackedScene" uid="uid://5i7y4qtqe0xo" path="res://scenes/game_states/game_state_select_player_mode.tscn" id="3_2epx2"]
@@ -29,6 +30,9 @@ size_flags_vertical = 3
 handle_input_locally = false
 size = Vector2i(1920, 540)
 render_target_update_mode = 4
+
+[node name="RoomSpawner" type="Node2D" parent="Game/ViewportBox/UpperSubViewportContainer/UpperSubViewport"]
+script = ExtResource("1_g36f0")
 
 [node name="LowerSubViewportContainer" type="SubViewportContainer" parent="Game/ViewportBox"]
 layout_mode = 2
