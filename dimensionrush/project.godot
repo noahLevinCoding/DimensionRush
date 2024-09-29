@@ -22,16 +22,17 @@ SignalManager="*res://scripts/manager/signal_manager.gd"
 
 [display]
 
-window/size/viewport_width=960
-window/size/viewport_height=540
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/stretch/mode="viewport"
-window/stretch/scale=0.5
 
 [file_customization]
 
 folder_colors={
-"res://scenes/": "red",
-"res://scripts/": "blue"
+"res://assets/": "red",
+"res://resources/": "orange",
+"res://scenes/": "yellow",
+"res://scripts/": "green"
 }
 
 [input]

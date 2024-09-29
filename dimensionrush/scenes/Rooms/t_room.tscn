@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bty1jksbcxbxj"]
+[gd_scene load_steps=3 format=3 uid="uid://bty1jksbcxbxj"]
 
-[ext_resource type="TileSet" uid="uid://wgis1jtxf8re" path="res://resources/tileset_1.tres" id="1_vxnfp"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5glju"]
+size = Vector2(20, 1080)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_havgt"]
+size = Vector2(20, 1080)
 
 [node name="Room" type="Node2D"]
 
@@ -8,4 +12,15 @@
 scale = Vector2(1.83281, 1.29062)
 
 [node name="TileMapPlatform" type="TileMapLayer" parent="."]
-tile_set = ExtResource("1_vxnfp")
+
+[node name="SpawnTrigger" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnTrigger"]
+position = Vector2(0, 540)
+shape = SubResource("RectangleShape2D_5glju")
+
+[node name="RoomDoorTrigger" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomDoorTrigger"]
+position = Vector2(240, 540)
+shape = SubResource("RectangleShape2D_havgt")
