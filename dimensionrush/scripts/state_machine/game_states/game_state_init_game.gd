@@ -121,12 +121,14 @@ func resetUI():
 func clearNodes():
 	if GameManager.is_online_multiplayer() and GameManager.is_server() or not GameManager.is_online_multiplayer():
 		for child in upper_subviewport.get_children():
-			upper_subviewport.remove_child(child)
-			child.queue_free()
+			if child is Player:
+				upper_subviewport.remove_child(child)
+				child.queue_free()
 		
 		for child in lower_subviewport.get_children():
-			lower_subviewport.remove_child(child)
-			child.queue_free()
+			if child is Player:
+				lower_subviewport.remove_child(child)
+				child.queue_free()
 			
 	#player_scene_instance_1 = null
 	#player_scene_instance_2 = null

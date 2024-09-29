@@ -1,4 +1,4 @@
-class_name Player
+#class_name Player
 extends CharacterBody2D
 
 @export var player_controls_resource : PlayerControlsResource

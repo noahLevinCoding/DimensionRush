@@ -1,13 +1,9 @@
+class_name Player
 extends CharacterBody2D
 
-class_name PlatformerController2D
 
-@export var README: String = "IMPORTANT: MAKE SURE TO ASSIGN 'left' 'right' 'jump' 'dash' 'up' 'down' in the project settings input map. Usage tips. 1. Hover over each toggle and variable to read what it does and to make sure nothing bugs. 2. Animations are very primitive. To make full use of your custom art, you may want to slightly change the code for the animations"
-#INFO READEME 
-#IMPORTANT: MAKE SURE TO ASSIGN 'left' 'right' 'jump' 'dash' 'up' 'down' in the project settings input map. THIS IS REQUIRED
-#Usage tips. 
-#1. Hover over each toggle and variable to read what it does and to make sure nothing bugs. 
-#2. Animations are very primitive. To make full use of your custom art, you may want to slightly change the code for the animations
+@export_category("Player Controls")
+@export var player_controls_resource : PlayerControlsResource = null
 
 @export_category("Necesary Child Nodes")
 @export var PlayerSprite: AnimatedSprite2D
@@ -179,6 +175,15 @@ var rollTap
 var downTap
 var twirlTap
 
+func _enter_tree():
+	player_controls_resource = GameManager.first_player_controls_resource
+	set_multiplayer_authority(name.to_int())
+	SignalManager.reset_multiplayer_authority.connect(reset_multiplayer_authority)
+
+func reset_multiplayer_authority():
+	set_multiplayer_authority(1);
+
+
 func _ready():
 	wasMovingR = true
 	anim = PlayerSprite
@@ -247,9 +252,23 @@ func _updateData():
 	elif dashType == 4:
 		eightWayDash = true
 	
+func _is_active():
+	if not GameManager.game_is_running:
+		return false
 	
-
+	if player_controls_resource == null:
+		return false
+		
+	if GameManager.is_online_multiplayer() and  not is_multiplayer_authority():
+		return false
+		
+	return true
+	
 func _process(_delta):
+	
+	if not _is_active():
+		return
+	
 	#INFO animations
 	#directions
 	if is_on_wall() and !is_on_floor() and latch and wallLatching and ((wallLatchingModifer and latchHold) or !wallLatchingModifer):
@@ -318,31 +337,31 @@ func _process(_delta):
 		if rollTap and canRoll and roll:
 			anim.speed_scale = 1
 			anim.play("roll")
-		
-		
-		
-
+	
 func _physics_process(delta):
+	if not _is_active():
+		return
+	
 	if !dset:
 		gdelta = delta
 		dset = true
 	#INFO Input Detectio. Define your inputs from the project settings here.
-	leftHold = Input.is_action_pressed("left")
-	rightHold = Input.is_action_pressed("right")
-	upHold = Input.is_action_pressed("up")
-	downHold = Input.is_action_pressed("down")
-	leftTap = Input.is_action_just_pressed("left")
-	rightTap = Input.is_action_just_pressed("right")
-	leftRelease = Input.is_action_just_released("left")
-	rightRelease = Input.is_action_just_released("right")
-	jumpTap = Input.is_action_just_pressed("jump")
-	jumpRelease = Input.is_action_just_released("jump")
-	runHold = Input.is_action_pressed("run")
-	latchHold = Input.is_action_pressed("latch")
-	dashTap = Input.is_action_just_pressed("dash")
-	rollTap = Input.is_action_just_pressed("roll")
-	downTap = Input.is_action_just_pressed("down")
-	twirlTap = Input.is_action_just_pressed("twirl")
+	leftHold = Input.is_action_pressed(player_controls_resource.left)
+	rightHold = Input.is_action_pressed(player_controls_resource.right)
+	upHold = Input.is_action_pressed(player_controls_resource.up)
+	downHold = Input.is_action_pressed(player_controls_resource.down)
+	leftTap = Input.is_action_just_pressed(player_controls_resource.left)
+	rightTap = Input.is_action_just_pressed(player_controls_resource.right)
+	leftRelease = Input.is_action_just_released(player_controls_resource.left)
+	rightRelease = Input.is_action_just_released(player_controls_resource.right)
+	jumpTap = Input.is_action_just_pressed(player_controls_resource.jump)
+	jumpRelease = Input.is_action_just_released(player_controls_resource.jump)
+	runHold = Input.is_action_pressed(player_controls_resource.run)
+	latchHold = Input.is_action_pressed(player_controls_resource.latch)
+	dashTap = Input.is_action_just_pressed(player_controls_resource.dash)
+	rollTap = Input.is_action_just_pressed(player_controls_resource.roll)
+	downTap = Input.is_action_just_pressed(player_controls_resource.down)
+	twirlTap = Input.is_action_just_pressed(player_controls_resource.twirl)
 	
 	
 	#INFO Left and Right Movement
