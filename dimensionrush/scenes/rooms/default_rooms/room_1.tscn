@@ -1,15 +1,12 @@
-[gd_scene load_steps=4 format=4 uid="uid://bsf37eutcqfjf"]
+[gd_scene load_steps=3 format=4 uid="uid://bsf37eutcqfjf"]
 
 [ext_resource type="PackedScene" uid="uid://bty1jksbcxbxj" path="res://scenes/rooms/t_room.tscn" id="1_8xxrl"]
 [ext_resource type="TileSet" uid="uid://wgis1jtxf8re" path="res://resources/tileset_1.tres" id="1_yqqsm"]
-[ext_resource type="Texture2D" uid="uid://dwohxtj3rjhux" path="res://assets/PixelPrototypePlayer/Sprites/Idle/Idle01.png" id="2_d1lto"]
 
 [node name="Room" instance=ExtResource("1_8xxrl")]
 
 [node name="Background" parent="." index="0"]
-visible = false
 position = Vector2(265, 1002)
-texture = ExtResource("2_d1lto")
 
 [node name="TileMapPlatform" parent="." index="1"]
 position = Vector2(0, -1)

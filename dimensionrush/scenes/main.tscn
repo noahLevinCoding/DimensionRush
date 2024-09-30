@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://bkcp6m6cuc5fh"]
+[gd_scene load_steps=15 format=3 uid="uid://bkcp6m6cuc5fh"]
 
 [ext_resource type="PackedScene" uid="uid://ur0pn87ybe2w" path="res://scenes/test_environment.tscn" id="1_3p74o"]
 [ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="1_rro5f"]
 [ext_resource type="PackedScene" uid="uid://drve2dny0aalb" path="res://scenes/game_states/game_state_titlescreen.tscn" id="2_8036h"]
+[ext_resource type="Script" path="res://scripts/room_spawner/room_spawner.gd" id="2_x2u2u"]
 [ext_resource type="PackedScene" uid="uid://5i7y4qtqe0xo" path="res://scenes/game_states/game_state_select_player_mode.tscn" id="3_2epx2"]
 [ext_resource type="PackedScene" uid="uid://cu14ec3hwpjqt" path="res://scenes/game_states/game_state_select_one_player_controls.tscn" id="4_qjabk"]
 [ext_resource type="PackedScene" uid="uid://dyi2n3unvp0mn" path="res://scenes/game_states/game_state_select_two_player_controls.tscn" id="5_cxpx8"]
@@ -33,6 +34,9 @@ render_target_update_mode = 4
 
 [node name="TestEnvironment" parent="Game/ViewportBox/UpperSubViewportContainer/UpperSubViewport" instance=ExtResource("1_3p74o")]
 
+[node name="RoomSpawner" type="Node2D" parent="Game/ViewportBox/UpperSubViewportContainer/UpperSubViewport"]
+script = ExtResource("2_x2u2u")
+
 [node name="LowerSubViewportContainer" type="SubViewportContainer" parent="Game/ViewportBox"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -43,6 +47,9 @@ size = Vector2i(1920, 540)
 render_target_update_mode = 4
 
 [node name="TestEnvironment" parent="Game/ViewportBox/LowerSubViewportContainer/LowerSubViewport" instance=ExtResource("1_3p74o")]
+
+[node name="RoomSpawner" type="Node2D" parent="Game/ViewportBox/LowerSubViewportContainer/LowerSubViewport"]
+script = ExtResource("2_x2u2u")
 
 [node name="GameStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_rro5f")
