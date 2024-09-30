@@ -1,10 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://bkcp6m6cuc5fh"]
 
-<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://ur0pn87ybe2w" path="res://scenes/test_environment.tscn" id="1_3p74o"]
-=======
-[ext_resource type="Script" path="res://scripts/room_spawner/room_spawner.gd" id="1_g36f0"]
->>>>>>> 37ed8c169692bf3c2fcd6e8e7f4afd5824fdb026
 [ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="1_rro5f"]
 [ext_resource type="PackedScene" uid="uid://drve2dny0aalb" path="res://scenes/game_states/game_state_titlescreen.tscn" id="2_8036h"]
 [ext_resource type="PackedScene" uid="uid://5i7y4qtqe0xo" path="res://scenes/game_states/game_state_select_player_mode.tscn" id="3_2epx2"]
@@ -35,12 +31,7 @@ handle_input_locally = false
 size = Vector2i(1920, 540)
 render_target_update_mode = 4
 
-<<<<<<< HEAD
 [node name="TestEnvironment" parent="Game/ViewportBox/UpperSubViewportContainer/UpperSubViewport" instance=ExtResource("1_3p74o")]
-=======
-[node name="RoomSpawner" type="Node2D" parent="Game/ViewportBox/UpperSubViewportContainer/UpperSubViewport"]
-script = ExtResource("1_g36f0")
->>>>>>> 37ed8c169692bf3c2fcd6e8e7f4afd5824fdb026
 
 [node name="LowerSubViewportContainer" type="SubViewportContainer" parent="Game/ViewportBox"]
 layout_mode = 2
