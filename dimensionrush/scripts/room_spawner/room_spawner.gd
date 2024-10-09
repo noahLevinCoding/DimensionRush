@@ -16,7 +16,8 @@ func _ready() -> void:
 func _enter_tree() -> void:
 	room_scenes = load_scenes_from_folder("res://scenes/rooms/default_rooms/")
 	
-	
+func _process(_delta: float) -> void:
+		pass
 
 func instantiate_rooms() -> void:
 	#add current room
@@ -35,15 +36,43 @@ func instantiate_rooms() -> void:
 	next_room = next_room_scene.instantiate()
 	next_room.position.x = current_room.width
 	add_child(next_room)
+	next_room.spawn_trigger_entered.connect(_on_spawn_trigger_entered)
 	
 	
-
 
 #instanciate room, add child, connect sinals
-func spawn_room(room : Room) -> void:
-	pass
+func _on_spawn_trigger_entered() -> void:
+	despawn_room(last_room)
+	last_room = current_room
+	current_room = next_room
+	if next_room.spawn_trigger_entered.is_connected(_on_spawn_trigger_entered):
+		next_room.spawn_trigger_entered.disconnect(_on_spawn_trigger_entered)
+	next_room = null
+	call_deferred("spawn_room")
 	
-
+	
+func spawn_room() -> void:
+	var next_room_pos_x = current_room.position.x + current_room.width
+	if GameManager.game_mode == GameManager.GAME_MODES.DISTANCE and next_room_pos_x > GameManager.level_distance:
+		spawn_finish_room(next_room_pos_x)
+		return
+		
+	var next_room_scene = room_scenes[rng.randi() % room_scenes.size()]
+	next_room = next_room_scene.instantiate()
+	next_room.position.x = next_room_pos_x
+	add_child(next_room)
+	next_room.spawn_trigger_entered.connect(_on_spawn_trigger_entered)
+	
+	
+func despawn_room(room : Room) -> void:
+	room.queue_free()
+	
+func spawn_finish_room(position_x: float) -> void:
+	var next_room_scene = room_scenes[-1]
+	next_room = next_room_scene.instantiate()
+	next_room.position.x = position_x
+	add_child(next_room)
+	
 
 func load_scenes_from_folder(folder_path: String) -> Array:
 	var dir = DirAccess.open(folder_path)
