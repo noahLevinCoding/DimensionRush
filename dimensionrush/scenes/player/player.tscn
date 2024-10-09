@@ -146,7 +146,7 @@ properties/5/spawn = true
 properties/5/replication_mode = 1
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("PlayerSprite", "PlayerCollider")]
-position = Vector2(0, 100)
+position = Vector2(0, 200)
 scale = Vector2(2, 2)
 script = ExtResource("1_6y4hb")
 PlayerSprite = NodePath("AnimatedSprite2D")

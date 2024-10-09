@@ -16,7 +16,9 @@ var second_player_controls_resource : PlayerControlsResource = null
 var game_is_running : bool = false
 
 var game_seed = 12345
-var level_distance = 10000
+var level_distance : float = 10000
+var level_time : float = 10.0
+var remaining_level_time : float = 0.0
 
 func reset():
 	SignalManager.close_connection.emit()

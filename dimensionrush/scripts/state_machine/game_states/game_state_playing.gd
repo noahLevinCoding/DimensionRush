@@ -7,6 +7,15 @@ func enter():
 	
 func exit():
 	visible = false
+	
+func update(delta):
+	if GameManager.game_mode == GameManager.GAME_MODES.TIME:
+		update_game_mode_time(delta)
+		
+func update_game_mode_time(delta):
+	GameManager.remaining_level_time -= delta
+	if GameManager.remaining_level_time <= 0.0:
+		_on_finish_button_up()
 
 func _on_finish_button_up():
 	if GameManager.is_online_multiplayer():

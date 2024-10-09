@@ -18,12 +18,16 @@
 
 [node name="Game" type="Node" parent="."]
 
-[node name="ViewportBox" type="VBoxContainer" parent="Game"]
+[node name="ViewportBox" type="Control" parent="Game"]
+layout_mode = 3
+anchors_preset = 0
 offset_right = 1920.0
-offset_bottom = 1080.0
+offset_bottom = 1084.0
 
 [node name="UpperSubViewportContainer" type="SubViewportContainer" parent="Game/ViewportBox"]
 layout_mode = 2
+offset_right = 1920.0
+offset_bottom = 540.0
 size_flags_vertical = 3
 
 [node name="UpperSubViewport" type="SubViewport" parent="Game/ViewportBox/UpperSubViewportContainer"]
@@ -36,6 +40,9 @@ script = ExtResource("2_x2u2u")
 
 [node name="LowerSubViewportContainer" type="SubViewportContainer" parent="Game/ViewportBox"]
 layout_mode = 2
+offset_top = 540.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 size_flags_vertical = 3
 
 [node name="LowerSubViewport" type="SubViewport" parent="Game/ViewportBox/LowerSubViewportContainer"]

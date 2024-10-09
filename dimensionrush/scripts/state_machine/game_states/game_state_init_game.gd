@@ -20,13 +20,27 @@ var clear_nodes_done_flag := false
 func enter():
 	GameManager.game_is_running = false
 	
+	if GameManager.game_mode == GameManager.GAME_MODES.TIME:
+		init_game_mode_time()
+	elif GameManager.game_mode == GameManager.GAME_MODES.DISTANCE:
+		init_game_mode_distance()
+	
+	GameManager.game_seed = randi()
+	
 	if GameManager.is_online_multiplayer():
 		print("Enter online")
 		enter_online()
 	else:
 		enter_offline()
 
+func init_game_mode_time():
+	#set total time
+	GameManager.remaining_level_time = GameManager.level_time
 	
+	
+func init_game_mode_distance():
+	#set total distance
+	pass
 		
 func enter_offline():
 	clearNodes()
@@ -158,7 +172,7 @@ func spawnPlayerOnlineMultiplayer():
 	if GameManager.is_server():
 		player_scene_instance_1 = player_scene.instantiate()
 		player_scene_instance_2 = player_scene.instantiate()
-		
+			
 		player_scene_instance_1.name = "1"
 		player_scene_instance_2.name = str(GameManager.client_peer_id)
 		
