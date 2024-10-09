@@ -37,6 +37,7 @@ render_target_update_mode = 4
 
 [node name="RoomSpawner" type="Node2D" parent="Game/ViewportBox/UpperSubViewportContainer/UpperSubViewport"]
 script = ExtResource("2_x2u2u")
+is_upper = true
 
 [node name="LowerSubViewportContainer" type="SubViewportContainer" parent="Game/ViewportBox"]
 layout_mode = 2

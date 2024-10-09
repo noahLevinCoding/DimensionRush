@@ -2,12 +2,15 @@ class_name RoomSpawner
 extends Node2D
 
 var room_scenes : Array[PackedScene] = []
+var start_room_scene : PackedScene = preload("res://scenes/rooms/start_room.tscn")
+var end_room_scene : PackedScene = preload("res://scenes/rooms/end_room.tscn")
 var last_room : Room = null
 var current_room : Room = null
 var next_room : Room = null
 
 var rng = RandomNumberGenerator.new()
 
+@export var is_upper : bool
 
 func _ready() -> void:
 	rng.seed = GameManager.game_seed
@@ -20,9 +23,8 @@ func _process(_delta: float) -> void:
 		pass
 
 func instantiate_rooms() -> void:
-	#add current room
-	var current_room_scene = room_scenes[rng.randi() % room_scenes.size()]
-	current_room = current_room_scene.instantiate()
+	#add start room as current room
+	current_room = start_room_scene.instantiate()
 	add_child(current_room)
 	
 	#add last room
@@ -68,11 +70,13 @@ func despawn_room(room : Room) -> void:
 	room.queue_free()
 	
 func spawn_finish_room(position_x: float) -> void:
-	var next_room_scene = room_scenes[-1]
-	next_room = next_room_scene.instantiate()
+	next_room = end_room_scene.instantiate()
 	next_room.position.x = position_x
 	add_child(next_room)
+	next_room.spawn_trigger_entered.connect(_on_end_room_entered)
 	
+func _on_end_room_entered() -> void:
+	SignalManager.player_has_reached_end.emit(is_upper)
 
 func load_scenes_from_folder(folder_path: String) -> Array:
 	var dir = DirAccess.open(folder_path)

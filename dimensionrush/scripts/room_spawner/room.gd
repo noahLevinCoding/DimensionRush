@@ -16,5 +16,5 @@ func _on_spawn_trigger_body_entered(body: Node2D) -> void:
 		spawn_trigger_entered.emit()
 	
 func close_door():
-	#door_coll_shape.disabled = false
+	door_coll_shape.disabled = false
 	spawn_coll_shape.disabled = true
