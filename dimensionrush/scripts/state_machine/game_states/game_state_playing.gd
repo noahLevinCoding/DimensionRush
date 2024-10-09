@@ -1,6 +1,12 @@
 class_name GameStatePlaying
 extends State
 
+func _enter_tree():
+	SignalManager.player_has_reached_end.connect(_on_player_has_reached_end)
+
+func _on_player_has_reached_end(is_upper : bool):
+	_on_finish_button_up()
+
 func enter():
 	visible = true
 	GameManager.game_is_running = true
