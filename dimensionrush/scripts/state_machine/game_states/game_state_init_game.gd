@@ -25,7 +25,7 @@ func enter():
 	elif GameManager.game_mode == GameManager.GAME_MODES.DISTANCE:
 		init_game_mode_distance()
 	
-	GameManager.game_seed = randi()
+	#GameManager.game_seed = randi()
 	
 	if GameManager.is_online_multiplayer():
 		print("Enter online")

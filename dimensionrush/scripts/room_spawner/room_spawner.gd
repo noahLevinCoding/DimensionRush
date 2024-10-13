@@ -36,8 +36,11 @@ func reset() -> void:
 
 func init() -> void:
 	rng.seed = GameManager.game_seed
+	rng.state = 23
 	print(is_upper)
-	#rng.state = 0
+	print(rng.seed)
+	print(rng.state)
+	
 	instantiate_rooms()
 
 func _enter_tree() -> void:
@@ -51,14 +54,22 @@ func instantiate_rooms() -> void:
 	current_room = start_room_scene.instantiate()
 	add_child(current_room)
 	
+	var last_room_index = rng.randi() % room_scenes.size()
+	print("last room: " + str(last_room_index))
+
+	
+	
 	#add last room
-	var last_room_scene = room_scenes[rng.randi() % room_scenes.size()]
+	var last_room_scene = room_scenes[last_room_index]
 	last_room = last_room_scene.instantiate()
 	last_room.position.x = -current_room.width
 	add_child(last_room)
 	
 	#add next room
-	var next_room_scene = room_scenes[rng.randi() % room_scenes.size()]
+	var next_room_index = rng.randi() % room_scenes.size()
+	print("next room: " + str(next_room_index))
+
+	var next_room_scene = room_scenes[next_room_index]
 	next_room = next_room_scene.instantiate()
 	next_room.position.x = current_room.width
 	add_child(next_room)
@@ -83,7 +94,10 @@ func spawn_room() -> void:
 		spawn_finish_room(next_room_pos_x)
 		return
 		
-	var next_room_scene = room_scenes[rng.randi() % room_scenes.size()]
+	var next_room_index = rng.randi() % room_scenes.size()
+	print("next room: " + str(next_room_index))
+
+	var next_room_scene = room_scenes[next_room_index]
 	next_room = next_room_scene.instantiate()
 	next_room.position.x = next_room_pos_x
 	add_child(next_room)
