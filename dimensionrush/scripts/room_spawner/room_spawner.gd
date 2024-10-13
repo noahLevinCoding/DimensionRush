@@ -12,8 +12,32 @@ var rng = RandomNumberGenerator.new()
 
 @export var is_upper : bool
 
-func _ready() -> void:
+func reset() -> void:
+	if last_room != null:
+		last_room.queue_free()
+		last_room = null
+	
+	if current_room != null:
+		current_room.queue_free()
+		current_room = null
+	
+	if next_room != null:
+		if next_room.spawn_trigger_entered.is_connected(_on_spawn_trigger_entered):
+			next_room.spawn_trigger_entered.disconnect(_on_spawn_trigger_entered)
+			
+		if next_room.spawn_trigger_entered.is_connected(_on_end_room_entered):
+			next_room.spawn_trigger_entered.disconnect(_on_end_room_entered)
+			
+		next_room.queue_free()
+		next_room = null
+	
+	init()
+
+
+func init() -> void:
 	rng.seed = GameManager.game_seed
+	print(is_upper)
+	#rng.state = 0
 	instantiate_rooms()
 
 func _enter_tree() -> void:

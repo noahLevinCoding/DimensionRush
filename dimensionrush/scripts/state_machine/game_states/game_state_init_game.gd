@@ -138,14 +138,25 @@ func clearNodes():
 			if child is Player:
 				upper_subviewport.remove_child(child)
 				child.queue_free()
+				
+			
 		
 		for child in lower_subviewport.get_children():
 			if child is Player:
 				lower_subviewport.remove_child(child)
 				child.queue_free()
+				
+		
+	for child in upper_subviewport.get_children():
+		if child is RoomSpawner:
+				child.reset()
+				
+	for child in lower_subviewport.get_children():
+		if child is RoomSpawner:
+				child.reset()
 			
-	#player_scene_instance_1 = null
-	#player_scene_instance_2 = null
+	player_scene_instance_1 = null
+	player_scene_instance_2 = null
 
 @rpc("any_peer")
 func spawnPlayer():

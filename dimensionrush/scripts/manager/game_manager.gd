@@ -16,7 +16,7 @@ var second_player_controls_resource : PlayerControlsResource = null
 var game_is_running : bool = false
 
 var game_seed = 12345
-var level_distance : float = 500
+var level_distance : float = 5000
 var level_time : float = 10.0
 var remaining_level_time : float = 0.0
 
