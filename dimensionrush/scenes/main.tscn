@@ -95,9 +95,9 @@ visible = false
 [node name="Network" type="Node" parent="."]
 
 [node name="MultiplayerSpawnerUpperSubviewport" type="MultiplayerSpawner" parent="Network"]
-_spawnable_scenes = PackedStringArray("res://scenes/player/player.tscn")
+_spawnable_scenes = PackedStringArray("res://scenes/player/player.tscn", "res://scenes/items/item_box.tscn")
 spawn_path = NodePath("../../Game/ViewportBox/UpperSubViewportContainer/UpperSubViewport")
 
 [node name="MultiplayerSpawnerLowerSubviewport" type="MultiplayerSpawner" parent="Network"]
-_spawnable_scenes = PackedStringArray("res://scenes/player/player.tscn")
+_spawnable_scenes = PackedStringArray("res://scenes/player/player.tscn", "res://scenes/items/item_box.tscn")
 spawn_path = NodePath("../../Game/ViewportBox/LowerSubViewportContainer/LowerSubViewport")
