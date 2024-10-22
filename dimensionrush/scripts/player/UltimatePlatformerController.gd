@@ -2,12 +2,14 @@ class_name Player
 extends CharacterBody2D
 
 
+
 @export_category("Player Controls")
 @export var player_controls_resource : PlayerControlsResource = null
 
 @export_category("Necesary Child Nodes")
 @export var PlayerSprite: AnimatedSprite2D
 @export var PlayerCollider: CollisionShape2D
+@export var inventory : Inventory
 
 #INFO HORIZONTAL MOVEMENT 
 @export_category("L/R Movement")
@@ -265,6 +267,9 @@ func _is_active():
 	return true
 	
 func _process(_delta):
+	print(name)
+	print(inventory.item_type)
+	
 	
 	if not _is_active():
 		return

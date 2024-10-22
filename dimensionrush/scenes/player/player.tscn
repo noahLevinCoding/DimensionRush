@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://bq7510d8vrixw"]
+[gd_scene load_steps=22 format=3 uid="uid://bq7510d8vrixw"]
 
 [ext_resource type="Script" path="res://scripts/player/UltimatePlatformerController.gd" id="1_6y4hb"]
 [ext_resource type="Texture2D" uid="uid://bylpkissbbhfj" path="res://assets/PixelPrototypePlayer/Sprites/PlayerSheet.png" id="2_cn88e"]
+[ext_resource type="PackedScene" uid="uid://gqh3vbxwi676" path="res://scenes/player/inventory.tscn" id="3_iyr5i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v31ud"]
 atlas = ExtResource("2_cn88e")
@@ -145,12 +146,13 @@ properties/5/path = NodePath("CollisionShape2D:scale")
 properties/5/spawn = true
 properties/5/replication_mode = 1
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("PlayerSprite", "PlayerCollider")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("PlayerSprite", "PlayerCollider", "inventory")]
 position = Vector2(0, 200)
 scale = Vector2(2, 2)
 script = ExtResource("1_6y4hb")
 PlayerSprite = NodePath("AnimatedSprite2D")
 PlayerCollider = NodePath("CollisionShape2D")
+inventory = NodePath("Inventory")
 maxSpeed = 1000.0
 jumpHeight = 4.0
 run = true
@@ -171,3 +173,5 @@ replication_config = SubResource("SceneReplicationConfig_pn6gs")
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_top = 0
 limit_bottom = 540
+
+[node name="Inventory" parent="." instance=ExtResource("3_iyr5i")]
