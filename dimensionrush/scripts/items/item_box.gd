@@ -36,5 +36,5 @@ func _on_body_entered(body: Node2D) -> void:
 			if body.inventory.add_item(item.type):
 				self.queue_free()
 		else:
-			if body.inventory.has_item:
+			if not body.inventory.has_item:
 				self.queue_free()
