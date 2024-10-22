@@ -32,5 +32,6 @@ func randomize_item():
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
-		if body.inventory.add_item(item.type):
-			self.queue_free()
+		if not GameManager.is_online_multiplayer() or is_multiplayer_authority():
+			if body.inventory.add_item(item.type):
+				self.queue_free()

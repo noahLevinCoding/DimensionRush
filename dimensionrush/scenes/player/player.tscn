@@ -145,6 +145,12 @@ properties/4/replication_mode = 1
 properties/5/path = NodePath("CollisionShape2D:scale")
 properties/5/spawn = true
 properties/5/replication_mode = 1
+properties/6/path = NodePath("Inventory:item_type")
+properties/6/spawn = true
+properties/6/replication_mode = 1
+properties/7/path = NodePath("Inventory:has_item")
+properties/7/spawn = true
+properties/7/replication_mode = 1
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("PlayerSprite", "PlayerCollider", "inventory")]
 position = Vector2(0, 200)

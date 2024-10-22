@@ -268,7 +268,7 @@ func _is_active():
 	
 func _process(_delta):
 	print(name)
-	print(inventory.item_type)
+	print(inventory.has_item)
 	
 	
 	if not _is_active():
