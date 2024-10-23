@@ -36,6 +36,7 @@ func _on_body_entered(body: Node2D) -> void:
 		if not GameManager.is_online_multiplayer() or body.is_multiplayer_authority():
 			if body.inventory.add_item(item.type):
 				self.queue_free()
-		#else:
-		#	if not body.inventory.has_item:
-		#		self.queue_free()
+		else:
+			if not body.inventory.has_item_no_sync:
+				body.inventory.has_item_no_sync = true
+				self.queue_free()

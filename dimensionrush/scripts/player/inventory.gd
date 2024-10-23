@@ -1,8 +1,15 @@
 class_name Inventory
 extends Node
 
-@export var item_type : Item.ITEM_TYPE 
-@export var has_item : bool = false
+var item_type : Item.ITEM_TYPE 
+var has_item : bool = false :
+	set(value):
+		has_item = value
+		if has_item == false:
+			has_item_no_sync = false
+var has_item_no_sync : bool = false
+
+
 
 func add_item(item_type):
 	if has_item:

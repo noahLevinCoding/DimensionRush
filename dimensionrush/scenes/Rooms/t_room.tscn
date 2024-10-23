@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bty1jksbcxbxj"]
 
-[ext_resource type="Script" path="res://scripts/room_spawner/room.gd" id="1_i1amk"]
+[ext_resource type="Script" path="res://scripts/rooms/room.gd" id="1_i1amk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5glju"]
 size = Vector2(20, 540)

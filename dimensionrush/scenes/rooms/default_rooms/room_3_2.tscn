@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=4 uid="uid://d276y1ntqjep2"]
 
 [ext_resource type="PackedScene" uid="uid://bty1jksbcxbxj" path="res://scenes/rooms/t_room.tscn" id="1_pgfa2"]
-[ext_resource type="TileSet" uid="uid://c7ugve0jckp6w" path="res://resources/tileset_3.tres" id="2_2i3in"]
+[ext_resource type="TileSet" uid="uid://c7ugve0jckp6w" path="res://resources/tilesets/tileset_3.tres" id="2_2i3in"]
 
 [node name="Room" instance=ExtResource("1_pgfa2")]
 
