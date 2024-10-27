@@ -11,10 +11,13 @@ default_font_size = 50
 [sub_resource type="Theme" id="Theme_kgtal"]
 default_font_size = 50
 
-[node name="SelectGameMode" type="Node2D" node_paths=PackedStringArray("time_button", "distance_button")]
+[node name="SelectGameMode" type="Node2D" node_paths=PackedStringArray("time_button", "distance_button", "main_node", "time_node", "distance_node")]
 script = ExtResource("1_sqvv8")
 time_button = NodePath("main/TimeButton")
 distance_button = NodePath("main/DistanceButton")
+main_node = NodePath("main")
+time_node = NodePath("time")
+distance_node = NodePath("distance")
 
 [node name="main" type="Control" parent="."]
 layout_mode = 3
@@ -23,11 +26,13 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="BackgroundColorRect" type="ColorRect" parent="main"]
+layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0.177502, 0.222476, 1, 1)
 
 [node name="HeadingLabel" type="Label" parent="main"]
+layout_mode = 0
 offset_left = 641.0
 offset_top = 126.0
 offset_right = 1372.0
@@ -36,6 +41,7 @@ theme = SubResource("Theme_dhk4m")
 text = "Select Game Mode"
 
 [node name="TimeButton" type="Button" parent="main"]
+layout_mode = 0
 offset_left = 834.0
 offset_top = 468.0
 offset_right = 1137.0
@@ -44,6 +50,7 @@ theme = SubResource("Theme_ev1c2")
 text = "Time"
 
 [node name="DistanceButton" type="Button" parent="main"]
+layout_mode = 0
 offset_left = 845.0
 offset_top = 611.0
 offset_right = 1148.0
@@ -52,6 +59,7 @@ theme = SubResource("Theme_ev1c2")
 text = "Distance"
 
 [node name="BackButton" type="Button" parent="main"]
+layout_mode = 0
 offset_left = 116.0
 offset_top = 939.0
 offset_right = 239.0
@@ -67,6 +75,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="BackgroundColorRect" type="ColorRect" parent="time"]
+layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(3.85046e-07, 0.419147, 0.611709, 1)
@@ -88,6 +97,7 @@ theme = SubResource("Theme_dhk4m")
 text = "Select Time"
 
 [node name="Option1" type="Button" parent="time"]
+layout_mode = 0
 offset_left = 415.0
 offset_top = 511.0
 offset_right = 718.0
@@ -96,6 +106,7 @@ theme = SubResource("Theme_ev1c2")
 text = "10s"
 
 [node name="Option2" type="Button" parent="time"]
+layout_mode = 0
 offset_left = 855.0
 offset_top = 506.0
 offset_right = 1158.0
@@ -104,6 +115,7 @@ theme = SubResource("Theme_ev1c2")
 text = "20s"
 
 [node name="Option3" type="Button" parent="time"]
+layout_mode = 0
 offset_left = 1307.0
 offset_top = 511.0
 offset_right = 1610.0
@@ -112,6 +124,7 @@ theme = SubResource("Theme_ev1c2")
 text = "30s"
 
 [node name="BackButton" type="Button" parent="time"]
+layout_mode = 0
 offset_left = 116.0
 offset_top = 939.0
 offset_right = 239.0
@@ -120,18 +133,19 @@ theme = SubResource("Theme_kgtal")
 text = "Back"
 
 [node name="distance" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="BackgroundColorRect" type="ColorRect" parent="distance"]
+layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0.389954, 0.171829, 0.919365, 1)
 
 [node name="HeadingLabel" type="Label" parent="distance"]
+layout_mode = 0
 offset_left = 641.0
 offset_top = 126.0
 offset_right = 1372.0
@@ -140,30 +154,34 @@ theme = SubResource("Theme_dhk4m")
 text = "Select distance"
 
 [node name="Option1" type="Button" parent="distance"]
+layout_mode = 0
 offset_left = 402.0
 offset_top = 515.0
 offset_right = 705.0
 offset_bottom = 592.0
 theme = SubResource("Theme_ev1c2")
-text = "1"
+text = "2"
 
 [node name="Option2" type="Button" parent="distance"]
+layout_mode = 0
 offset_left = 831.0
 offset_top = 516.0
 offset_right = 1134.0
 offset_bottom = 593.0
 theme = SubResource("Theme_ev1c2")
-text = "2"
+text = "4"
 
 [node name="Option3" type="Button" parent="distance"]
+layout_mode = 0
 offset_left = 1242.0
 offset_top = 516.0
 offset_right = 1545.0
 offset_bottom = 593.0
 theme = SubResource("Theme_ev1c2")
-text = "3"
+text = "8"
 
 [node name="BackButton" type="Button" parent="distance"]
+layout_mode = 0
 offset_left = 116.0
 offset_top = 939.0
 offset_right = 239.0
@@ -174,3 +192,11 @@ text = "Back"
 [connection signal="button_up" from="main/TimeButton" to="." method="_on_time_button_up"]
 [connection signal="button_up" from="main/DistanceButton" to="." method="_on_distance_button_up"]
 [connection signal="button_up" from="main/BackButton" to="." method="_on_back_button_up"]
+[connection signal="button_up" from="time/Option1" to="." method="_on_time_option_1_button_up"]
+[connection signal="button_up" from="time/Option2" to="." method="_on_time_option_2_button_up"]
+[connection signal="button_up" from="time/Option3" to="." method="_on_time_option_3_button_up"]
+[connection signal="button_up" from="time/BackButton" to="." method="_on_time_or_distance_back_button_up"]
+[connection signal="button_up" from="distance/Option1" to="." method="_on_distance_option_1_button_up"]
+[connection signal="button_up" from="distance/Option2" to="." method="_on_distance_option_2_button_up"]
+[connection signal="button_up" from="distance/Option3" to="." method="_on_distance_option_3_button_up"]
+[connection signal="button_up" from="distance/BackButton" to="." method="_on_time_or_distance_back_button_up"]

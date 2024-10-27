@@ -133,7 +133,7 @@ func resetUI():
 
 @rpc("any_peer")
 func clearNodes():
-	if GameManager.is_online_multiplayer() and GameManager.is_server() or not GameManager.is_online_multiplayer():
+	if GameManager.is_server() or not GameManager.is_online_multiplayer():
 		for child in upper_subviewport.get_children():
 			if child is Player:
 				upper_subviewport.remove_child(child)

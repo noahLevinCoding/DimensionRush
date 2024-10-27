@@ -7,12 +7,12 @@ extends Node2D
 @export var end_room 	 : PackedScene 
 @export var regions : Array[RegionResource] 
 
-#TODO: Variable regions per game
-const regions_per_game : int = 1
+var regions_per_game : int = 0
 var region_per_game : int = 0
 
-#TODO: Variable rooms per region
-const rooms_per_region : int = 3
+var rooms_per_region_max : int = 6
+var rooms_per_region_min : int = 2
+var rooms_per_region : int = 0
 var room_per_region : int = 0
 
 var region_index : int = -1
@@ -50,10 +50,9 @@ func reset() -> void:
 
 func init() -> void:
 	rng.seed = GameManager.game_seed
-	rng.state = 23
-	print(is_upper)
-	print(rng.seed)
-	print(rng.state)
+	rng.state = 500
+	
+	regions_per_game = GameManager.level_distance
 	
 	instantiate_rooms()
 
@@ -65,6 +64,8 @@ func instantiate_rooms() -> void:
 	add_child(current_room)
 	
 	region_index = rng.randi() % regions.size()
+	rooms_per_region = rng.randi_range(rooms_per_region_min, rooms_per_region_max)
+	print("rooms per region: " + str(rooms_per_region))
 	room_per_region = 1
 	region_per_game = 1
 	
@@ -107,6 +108,8 @@ func spawn_end_room_in_region():
 		
 func spawn_start_room_in_new_region():
 	region_index = rng.randi() % regions.size()
+	rooms_per_region = rng.randi_range(rooms_per_region_min, rooms_per_region_max)
+	print("rooms per region: " + str(rooms_per_region))
 	
 	region_per_game += 1
 	if region_per_game > regions_per_game:

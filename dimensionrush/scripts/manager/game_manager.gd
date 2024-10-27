@@ -44,6 +44,8 @@ func is_singleplayer() -> bool:
 	return player_mode == PLAYER_MODES.SINGLEPLAYER
 	
 func is_server() -> bool:
+	if player_mode != PLAYER_MODES.MULTIPLAYER_ONLINE:
+		return false
 	return multiplayer_mode == MULTIPLAYER_MODES.SERVER
 	
 func is_client() -> bool:
