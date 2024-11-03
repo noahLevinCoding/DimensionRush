@@ -50,6 +50,7 @@ size = Vector2i(1920, 540)
 render_target_update_mode = 4
 
 [node name="RoomSpawner" parent="Game/ViewportBox/LowerSubViewportContainer/LowerSubViewport" instance=ExtResource("1_sb64c")]
+scale = Vector2(-1, 1)
 is_upper = false
 
 [node name="GameStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
