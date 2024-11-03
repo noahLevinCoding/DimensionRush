@@ -160,7 +160,7 @@ PlayerSprite = NodePath("AnimatedSprite2D")
 PlayerCollider = NodePath("CollisionShape2D")
 inventory = NodePath("Inventory")
 maxSpeed = 1000.0
-jumpHeight = 4.0
+jumpHeight = 10.0
 run = true
 idle = true
 
