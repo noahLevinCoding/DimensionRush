@@ -169,7 +169,10 @@ func spawnPlayer():
 
 func spawnPlayerLocalMultiplayer():
 	player_scene_instance_1 = player_scene.instantiate()
+	player_scene_instance_1.is_upper = true
+	
 	player_scene_instance_2 = player_scene.instantiate()
+	player_scene_instance_2.is_upper = false
 	
 	upper_subviewport.add_child(player_scene_instance_1)
 	lower_subviewport.add_child(player_scene_instance_2)
@@ -182,7 +185,10 @@ func spawnPlayerLocalMultiplayer():
 func spawnPlayerOnlineMultiplayer():
 	if GameManager.is_server():
 		player_scene_instance_1 = player_scene.instantiate()
+		player_scene_instance_1.is_upper = true
+	
 		player_scene_instance_2 = player_scene.instantiate()
+		player_scene_instance_2.is_upper = false
 			
 		player_scene_instance_1.name = "1"
 		player_scene_instance_2.name = str(GameManager.client_peer_id)
@@ -199,7 +205,10 @@ func spawnPlayerOnlineMultiplayerDeferred(viewport, player_instance):
 	
 func spawnPlayerSingleplayer():
 	player_scene_instance_1 = player_scene.instantiate()
+	player_scene_instance_1.is_upper = true
+	
 	player_scene_instance_2 = player_scene.instantiate()
+	player_scene_instance_2.is_upper = false
 	
 	upper_subviewport.add_child(player_scene_instance_1)
 	lower_subviewport.add_child(player_scene_instance_2)

@@ -1,7 +1,7 @@
 class_name Player
 extends CharacterBody2D
 
-
+@export var is_upper : bool
 
 @export_category("Player Controls")
 @export var player_controls_resource : PlayerControlsResource = null

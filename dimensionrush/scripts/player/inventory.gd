@@ -7,6 +7,8 @@ var has_item : bool = false :
 		has_item = value
 		if has_item == false:
 			has_item_no_sync = false
+		
+		SignalManager.inventory_changed.emit(self.owner.is_upper, has_item)
 var has_item_no_sync : bool = false
 
 
@@ -19,6 +21,9 @@ func add_item(item_type):
 	has_item = true
 
 	return true
+
+func _enter_tree() -> void:
+	reset()
 
 func reset():
 	has_item = false
