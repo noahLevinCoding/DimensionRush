@@ -142,8 +142,8 @@ func spawn_start_room_in_new_region():
 	if already_spawned_regions.size() > already_spawned_regions_size:
 		already_spawned_regions.pop_front()
 		
-		#TODO
-	already_spawned_rooms_size = regions[region_index].size() / 2  
+	#TODO
+	already_spawned_rooms_size = regions[region_index].rooms.size() / 2  
 	already_spawned_rooms = []
 		
 	print("Region index: " + str(region_index))
