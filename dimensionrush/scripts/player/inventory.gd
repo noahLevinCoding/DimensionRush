@@ -14,7 +14,9 @@ var has_item_no_sync : bool = false :
 		has_item_no_sync = value
 		#SignalManager.inventory_changed.emit(self.owner.is_upper, has_item)
 
-
+func _process(delta: float) -> void:
+	print("Is upper: " + str(self.owner.is_upper))
+	print("Has item: " + str(has_item))
 
 func add_item(item_type):
 	if has_item:
