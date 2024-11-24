@@ -271,6 +271,9 @@ func _process(_delta):
 	if not _is_active():
 		return
 	
+	if Input.is_action_just_pressed(player_controls_resource.item):
+		inventory.use_item()
+	
 	#INFO animations
 	#directions
 	if is_on_wall() and !is_on_floor() and latch and wallLatching and ((wallLatchingModifer and latchHold) or !wallLatchingModifer):

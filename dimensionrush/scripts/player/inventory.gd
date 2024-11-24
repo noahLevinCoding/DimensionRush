@@ -9,14 +9,7 @@ var has_item : bool = false :
 			has_item_no_sync = false
 		
 		SignalManager.inventory_changed.emit(self.owner.is_upper, has_item)
-var has_item_no_sync : bool = false :
-	set(value):
-		has_item_no_sync = value
-		#SignalManager.inventory_changed.emit(self.owner.is_upper, has_item)
-
-func _process(delta: float) -> void:
-	print("Is upper: " + str(self.owner.is_upper))
-	print("Has item: " + str(has_item))
+var has_item_no_sync : bool = false 
 
 func add_item(item_type):
 	if has_item:
@@ -26,6 +19,12 @@ func add_item(item_type):
 	has_item = true
 
 	return true
+
+func use_item():
+	if not has_item:
+		return
+		
+	has_item = false
 
 func _enter_tree() -> void:
 	reset()

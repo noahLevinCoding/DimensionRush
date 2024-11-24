@@ -4,6 +4,8 @@ extends Resource
 @export_enum("Keyboard", "Controller") var type 
 @export var id : int
 
+@export var item : String
+
 @export var left : String
 @export var right : String
 @export var up : String
