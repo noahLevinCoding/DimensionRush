@@ -12,7 +12,9 @@ func set_item(has_item : bool):
 	foreground.visible = has_item
 	
 func _on_inventory_changed(is_upper : bool, has_item : bool):
-	print("ABC")
+	print("On inventory changed")
+	print("Is upper: " + str(is_upper))
+	print("Has item: " + str(has_item))
 	if is_upper == self.is_upper:
-		print("Test")
+		print("Condition true")
 		set_item(has_item)

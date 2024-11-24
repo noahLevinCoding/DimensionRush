@@ -12,7 +12,7 @@ var has_item : bool = false :
 var has_item_no_sync : bool = false :
 	set(value):
 		has_item_no_sync = value
-		SignalManager.inventory_changed.emit(self.owner.is_upper, has_item)
+		#SignalManager.inventory_changed.emit(self.owner.is_upper, has_item)
 
 
 
