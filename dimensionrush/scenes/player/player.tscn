@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://bq7510d8vrixw"]
+[gd_scene load_steps=23 format=3 uid="uid://bq7510d8vrixw"]
 
 [ext_resource type="Script" path="res://scripts/player/UltimatePlatformerController.gd" id="1_6y4hb"]
 [ext_resource type="Texture2D" uid="uid://bylpkissbbhfj" path="res://assets/PixelPrototypePlayer/Sprites/PlayerSheet.png" id="2_cn88e"]
 [ext_resource type="PackedScene" uid="uid://gqh3vbxwi676" path="res://scenes/player/inventory.tscn" id="3_iyr5i"]
+[ext_resource type="Script" path="res://scripts/effects/effect_handler.gd" id="4_cj2a5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v31ud"]
 atlas = ExtResource("2_cn88e")
@@ -162,7 +163,7 @@ script = ExtResource("1_6y4hb")
 PlayerSprite = NodePath("AnimatedSprite2D")
 PlayerCollider = NodePath("CollisionShape2D")
 inventory = NodePath("Inventory")
-maxSpeed = 1000.0
+max_speed = 1000.0
 jumpHeight = 10.0
 run = true
 idle = true
@@ -184,3 +185,6 @@ limit_top = 0
 limit_bottom = 540
 
 [node name="Inventory" parent="." instance=ExtResource("3_iyr5i")]
+
+[node name="EffectHandler" type="Node" parent="."]
+script = ExtResource("4_cj2a5")

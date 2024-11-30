@@ -7,3 +7,4 @@ signal reset_multiplayer_authority
 signal player_has_reached_end(is_upper: bool)
 
 signal inventory_changed(is_upper : bool, has_item : bool)
+signal add_effect(source_is_upper : bool, destination_is_upper : bool, item_type : Item.ITEM_TYPE)

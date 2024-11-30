@@ -25,6 +25,12 @@ func use_item():
 		return
 		
 	has_item = false
+	
+	match item_type:
+		Item.ITEM_TYPE.SPEED_BOOST:
+			SignalManager.add_effect.emit(self.owner.is_upper, self.owner.is_upper, item_type)
+			
+	
 
 func _enter_tree() -> void:
 	reset()
