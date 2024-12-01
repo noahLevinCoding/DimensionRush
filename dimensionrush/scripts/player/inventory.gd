@@ -26,9 +26,13 @@ func use_item():
 		
 	has_item = false
 	
+	
 	match item_type:
 		Item.ITEM_TYPE.SPEED_BOOST:
 			SignalManager.add_effect.emit(self.owner.is_upper, self.owner.is_upper, item_type)
+		Item.ITEM_TYPE.INVERT_CONTROLS:
+			SignalManager.add_effect.emit(self.owner.is_upper, not self.owner.is_upper, item_type)
+			
 			
 	
 

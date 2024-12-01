@@ -23,7 +23,6 @@ func process_effect(delta : float):
 		
 	return false
 	
-	
 func end_effect():
 	player.max_speed_multiplier = 1.0
 	player._updateData()

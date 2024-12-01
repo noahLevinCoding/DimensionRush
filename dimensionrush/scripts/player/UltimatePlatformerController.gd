@@ -177,9 +177,14 @@ var rollTap
 var downTap
 var twirlTap
 
+#Effect modifier
 
+#speed boost effect
 var max_speed_multiplier = 1.0
 var maxSpeed = max_speed * max_speed_multiplier
+
+#invert controls effect
+var invert_controls = false
 
 func _enter_tree():
 	player_controls_resource = GameManager.first_player_controls_resource
@@ -357,12 +362,12 @@ func _physics_process(delta):
 		gdelta = delta
 		dset = true
 	#INFO Input Detectio. Define your inputs from the project settings here.
-	leftHold = Input.is_action_pressed(player_controls_resource.left)
-	rightHold = Input.is_action_pressed(player_controls_resource.right)
+	leftHold = Input.is_action_pressed(player_controls_resource.left) if not invert_controls else Input.is_action_pressed(player_controls_resource.right)
+	rightHold = Input.is_action_pressed(player_controls_resource.right) if not invert_controls else Input.is_action_pressed(player_controls_resource.left)
 	upHold = Input.is_action_pressed(player_controls_resource.up)
 	downHold = Input.is_action_pressed(player_controls_resource.down)
-	leftTap = Input.is_action_just_pressed(player_controls_resource.left)
-	rightTap = Input.is_action_just_pressed(player_controls_resource.right)
+	leftTap = Input.is_action_just_pressed(player_controls_resource.left) if not invert_controls else Input.is_action_just_pressed(player_controls_resource.right)
+	rightTap = Input.is_action_just_pressed(player_controls_resource.right) if not invert_controls else Input.is_action_just_pressed(player_controls_resource.left)
 	leftRelease = Input.is_action_just_released(player_controls_resource.left)
 	rightRelease = Input.is_action_just_released(player_controls_resource.right)
 	jumpTap = Input.is_action_just_pressed(player_controls_resource.jump)
