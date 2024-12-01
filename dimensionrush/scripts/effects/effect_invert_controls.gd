@@ -7,6 +7,7 @@ var remaining_effect_time = effect_time
 
 func init_effect(player : Node):
 	self.player = player
+	print("4")
 	player.invert_controls = true
 	
 func process_effect(delta : float):
