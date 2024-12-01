@@ -1,4 +1,4 @@
-class_name EffectInvertControls
+class_name EffectStun
 extends Effect
 
 var effect_time = 5
@@ -7,10 +7,10 @@ var remaining_effect_time = effect_time
 
 func init_effect(player : Node):
 	self.player = player
-	player.invert_controls = true
+	player.is_stunned = true
 	
 func process_effect(delta : float):
-	player.invert_controls = true
+	player.is_stunned = true
 	
 	remaining_effect_time -= delta
 	if remaining_effect_time <= 0:
@@ -19,4 +19,4 @@ func process_effect(delta : float):
 	return false
 	
 func end_effect():
-	player.invert_controls = false
+	player.is_stunned = false

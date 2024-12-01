@@ -186,6 +186,9 @@ var maxSpeed = max_speed * max_speed_multiplier
 #invert controls effect
 var invert_controls = false
 
+#stun effect
+var is_stunned = false
+
 func _enter_tree():
 	player_controls_resource = GameManager.first_player_controls_resource
 	set_multiplayer_authority(name.to_int())
@@ -362,22 +365,43 @@ func _physics_process(delta):
 		gdelta = delta
 		dset = true
 	#INFO Input Detectio. Define your inputs from the project settings here.
-	leftHold = Input.is_action_pressed(player_controls_resource.left) if not invert_controls else Input.is_action_pressed(player_controls_resource.right)
-	rightHold = Input.is_action_pressed(player_controls_resource.right) if not invert_controls else Input.is_action_pressed(player_controls_resource.left)
-	upHold = Input.is_action_pressed(player_controls_resource.up)
-	downHold = Input.is_action_pressed(player_controls_resource.down)
-	leftTap = Input.is_action_just_pressed(player_controls_resource.left) if not invert_controls else Input.is_action_just_pressed(player_controls_resource.right)
-	rightTap = Input.is_action_just_pressed(player_controls_resource.right) if not invert_controls else Input.is_action_just_pressed(player_controls_resource.left)
-	leftRelease = Input.is_action_just_released(player_controls_resource.left)
-	rightRelease = Input.is_action_just_released(player_controls_resource.right)
-	jumpTap = Input.is_action_just_pressed(player_controls_resource.jump)
-	jumpRelease = Input.is_action_just_released(player_controls_resource.jump)
-	runHold = Input.is_action_pressed(player_controls_resource.run)
-	latchHold = Input.is_action_pressed(player_controls_resource.latch)
-	dashTap = Input.is_action_just_pressed(player_controls_resource.dash)
-	rollTap = Input.is_action_just_pressed(player_controls_resource.roll)
-	downTap = Input.is_action_just_pressed(player_controls_resource.down)
-	twirlTap = Input.is_action_just_pressed(player_controls_resource.twirl)
+	
+	if is_stunned:
+		leftHold 	= 0
+		rightHold 	= 0
+		upHold 		= 0
+		downHold 	= 0
+		leftTap 	= 0
+		rightTap 	= 0
+		leftRelease = 0
+		rightRelease = 0
+		jumpTap = 0
+		jumpRelease = 0
+		runHold = 0
+		latchHold = 0
+		dashTap = 0
+		rollTap = 0
+		downTap = 0
+		twirlTap = 0
+	else:
+		leftHold = Input.is_action_pressed(player_controls_resource.left) if not invert_controls else Input.is_action_pressed(player_controls_resource.right)
+		rightHold = Input.is_action_pressed(player_controls_resource.right) if not invert_controls else Input.is_action_pressed(player_controls_resource.left)
+		upHold = Input.is_action_pressed(player_controls_resource.up)
+		downHold = Input.is_action_pressed(player_controls_resource.down)
+		leftTap = Input.is_action_just_pressed(player_controls_resource.left) if not invert_controls else Input.is_action_just_pressed(player_controls_resource.right)
+		rightTap = Input.is_action_just_pressed(player_controls_resource.right) if not invert_controls else Input.is_action_just_pressed(player_controls_resource.left)
+		leftRelease = Input.is_action_just_released(player_controls_resource.left)
+		rightRelease = Input.is_action_just_released(player_controls_resource.right)
+		jumpTap = Input.is_action_just_pressed(player_controls_resource.jump)
+		jumpRelease = Input.is_action_just_released(player_controls_resource.jump)
+		runHold = Input.is_action_pressed(player_controls_resource.run)
+		latchHold = Input.is_action_pressed(player_controls_resource.latch)
+		dashTap = Input.is_action_just_pressed(player_controls_resource.dash)
+		rollTap = Input.is_action_just_pressed(player_controls_resource.roll)
+		downTap = Input.is_action_just_pressed(player_controls_resource.down)
+		twirlTap = Input.is_action_just_pressed(player_controls_resource.twirl)
+		
+	
 	
 	
 	#INFO Left and Right Movement

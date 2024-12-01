@@ -9,9 +9,7 @@ func _enter_tree() -> void:
 func add_effect(source_is_upper : bool, destination_is_upper : bool, item_type : Item.ITEM_TYPE, is_synced : bool) -> void:
 	if destination_is_upper != self.owner.is_upper:
 		if GameManager.is_online_multiplayer() and not is_synced:
-			print("1")
 			add_effect_rpc.rpc(source_is_upper, destination_is_upper, item_type)
-			print("2")
 			
 		return
 		
@@ -37,8 +35,8 @@ func add_effect(source_is_upper : bool, destination_is_upper : bool, item_type :
 	print(effects)
 		
 @rpc("any_peer")
-func add_effect_rpc(source_is_upper : bool, destination_is_upper : bool, item_type : Item.ITEM_TYPE):
-	SignalManager.add_effect.emit(self.owner.is_upper, self.owner.is_upper, item_type, true)
+func add_effect_rpc(source_is_upper : bool, destination_is_upper : bool, item_type : Item.ITEM_TYPE):	
+	SignalManager.add_effect.emit(source_is_upper, destination_is_upper, item_type, true)
 
 func _process(delta: float) -> void:
 	for effect in effects:
