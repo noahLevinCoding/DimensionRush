@@ -13,6 +13,9 @@ func enter():
 	visible = true
 	GameManager.game_is_running = false
 	
+	if GameManager.debug_mode:
+		_on_distance_option_3_button_up()
+	
 func exit():
 	visible = false
 

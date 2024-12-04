@@ -17,6 +17,12 @@ func enter():
 	visible = true
 	GameManager.game_is_running = false
 	
+	if GameManager.debug_mode:
+		selected_player_controls_resource_1 = player_controls_resources[2]
+		selected_player_controls_resource_2 = player_controls_resources[3]
+		_on_next_button_pressed()
+		
+	
 func exit():
 	visible = false
 

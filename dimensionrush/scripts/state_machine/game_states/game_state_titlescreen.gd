@@ -5,6 +5,13 @@ func enter():
 	visible = true
 	GameManager.reset()
 	
+
+	var args = OS.get_cmdline_args()
+	if "debug" in args:
+		GameManager.debug_mode = true
+		_on_play_button_up()
+	
+	
 func exit():
 	visible = false
 

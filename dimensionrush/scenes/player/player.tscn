@@ -156,13 +156,16 @@ properties/8/path = NodePath(".:is_upper")
 properties/8/spawn = true
 properties/8/replication_mode = 1
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("PlayerSprite", "PlayerCollider", "inventory")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("PlayerSprite", "PlayerCollider", "camera", "inventory", "effect_handler", "effect_container")]
 position = Vector2(0, 200)
 scale = Vector2(2, 2)
 script = ExtResource("1_6y4hb")
 PlayerSprite = NodePath("AnimatedSprite2D")
 PlayerCollider = NodePath("CollisionShape2D")
+camera = NodePath("Camera2D")
 inventory = NodePath("Inventory")
+effect_handler = NodePath("EffectHandler")
+effect_container = NodePath("EffectContainer")
 max_speed = 1000.0
 jumpHeight = 10.0
 run = true
@@ -188,3 +191,5 @@ limit_bottom = 540
 
 [node name="EffectHandler" type="Node" parent="."]
 script = ExtResource("4_cj2a5")
+
+[node name="EffectContainer" type="Node2D" parent="."]

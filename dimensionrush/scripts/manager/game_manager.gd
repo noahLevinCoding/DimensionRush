@@ -20,6 +20,8 @@ var level_distance : float = 50000
 var level_time : float = 10.0
 var remaining_level_time : float = 0.0
 
+var debug_mode = false;
+
 func reset():
 	SignalManager.close_connection.emit()
 	

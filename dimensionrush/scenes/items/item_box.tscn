@@ -6,7 +6,7 @@
 
 [sub_resource type="Resource" id="Resource_kpdxq"]
 script = ExtResource("2_elcbo")
-type = 1
+type = 0
 odds = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tn6ey"]
@@ -20,6 +20,7 @@ items = Array[ExtResource("2_elcbo")]([SubResource("Resource_kpdxq")])
 texture = ExtResource("3_wwm3u")
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 1)

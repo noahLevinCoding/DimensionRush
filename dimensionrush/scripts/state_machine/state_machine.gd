@@ -18,15 +18,19 @@ func _ready():
 	
 	#Initialize state
 	if initial_state:
-		initial_state.enter()
 		current_state = initial_state
 		current_state_name = current_state.get_name()
+		initial_state.enter()
 		
 	
 
 func change_state(source_state : State, new_state_name : StringName):
 	
+	print("a")
+	print(source_state)
+	print(current_state)
 	if source_state != current_state:
+		
 		print("Invalid change_state trying from: " + source_state.name + " but currently in: " + current_state.name)
 		return
 	

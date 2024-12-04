@@ -32,6 +32,10 @@ func use_item():
 			SignalManager.add_effect.emit(self.owner.is_upper, self.owner.is_upper, item_type, false)
 		Item.ITEM_TYPE.INVERT_CONTROLS:
 			SignalManager.add_effect.emit(self.owner.is_upper, not self.owner.is_upper, item_type, false)
+		Item.ITEM_TYPE.STUN:
+			SignalManager.add_effect.emit(self.owner.is_upper, not self.owner.is_upper, item_type, false) 
+		Item.ITEM_TYPE.BLIND:
+			SignalManager.add_effect.emit(self.owner.is_upper, not self.owner.is_upper, item_type, false) 
 			
 			
 	

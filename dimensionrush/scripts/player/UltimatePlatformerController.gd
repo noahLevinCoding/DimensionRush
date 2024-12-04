@@ -9,7 +9,10 @@ extends CharacterBody2D
 @export_category("Necesary Child Nodes")
 @export var PlayerSprite: AnimatedSprite2D
 @export var PlayerCollider: CollisionShape2D
+@export var camera : Camera2D
 @export var inventory : Inventory
+@export var effect_handler : EffectHandler
+@export var effect_container : Node2D
 
 #INFO HORIZONTAL MOVEMENT 
 @export_category("L/R Movement")
@@ -284,6 +287,8 @@ func _process(_delta):
 	
 	if not _is_active():
 		return
+		
+	effect_handler.process(_delta)
 	
 	if Input.is_action_just_pressed(player_controls_resource.item):
 		inventory.use_item()

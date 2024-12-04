@@ -27,13 +27,19 @@ window/size/viewport_height=540
 window/stretch/mode="viewport"
 window/stretch/scale=0.5
 
+[editor]
+
+run/main_run_args="debug"
+
 [file_customization]
 
 folder_colors={
 "res://assets/": "red",
+"res://builds/": "pink",
 "res://resources/": "orange",
 "res://scenes/": "yellow",
-"res://scripts/": "green"
+"res://scripts/": "green",
+"res://shader/": "purple"
 }
 
 [input]
