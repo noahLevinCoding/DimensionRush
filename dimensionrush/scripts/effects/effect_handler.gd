@@ -24,6 +24,10 @@ func add_effect(source_is_upper : bool, destination_is_upper : bool, item_type :
 			effect = EffectBlind.new()
 		Item.ITEM_TYPE.INVERT_CONTROLS:
 			effect =  EffectInvertControls.new()
+		Item.ITEM_TYPE.STEAL_ACTIVE:
+			effect = EffectStealActive.new()
+		Item.ITEM_TYPE.STEAL_PASSIVE:
+			effect = EffectStealPassive.new()
 			
 	if effect != null:
 		effects.append(effect)

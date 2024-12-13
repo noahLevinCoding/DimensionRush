@@ -1,9 +1,11 @@
 shader_type canvas_item;
 
+uniform vec2 player_position;
+
 void fragment() {
 
 	float light_radius = 100.0;
-    vec2 screen_center =  vec2(960, 400);
+    vec2 screen_center = player_position;
 
     float dist = distance(screen_center, FRAGCOORD.xy);
 

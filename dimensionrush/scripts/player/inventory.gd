@@ -29,13 +29,17 @@ func use_item():
 	
 	match item_type:
 		Item.ITEM_TYPE.SPEED_BOOST:
-			SignalManager.add_effect.emit(self.owner.is_upper, self.owner.is_upper, item_type, false)
+			SignalManager.add_effect.emit(self.owner.is_upper, self.owner.is_upper, Item.ITEM_TYPE.SPEED_BOOST, false)
 		Item.ITEM_TYPE.INVERT_CONTROLS:
-			SignalManager.add_effect.emit(self.owner.is_upper, not self.owner.is_upper, item_type, false)
+			SignalManager.add_effect.emit(self.owner.is_upper, not self.owner.is_upper, Item.ITEM_TYPE.INVERT_CONTROLS, false)
 		Item.ITEM_TYPE.STUN:
-			SignalManager.add_effect.emit(self.owner.is_upper, not self.owner.is_upper, item_type, false) 
+			SignalManager.add_effect.emit(self.owner.is_upper, not self.owner.is_upper, Item.ITEM_TYPE.STUN, false) 
 		Item.ITEM_TYPE.BLIND:
-			SignalManager.add_effect.emit(self.owner.is_upper, not self.owner.is_upper, item_type, false) 
+			SignalManager.add_effect.emit(self.owner.is_upper, not self.owner.is_upper, Item.ITEM_TYPE.BLIND, false) 
+		Item.ITEM_TYPE.STEAL_ACTIVE:
+			SignalManager.add_effect.emit(self.owner.is_upper, self.owner.is_upper, Item.ITEM_TYPE.STEAL_ACTIVE, false)
+			SignalManager.add_effect.emit(self.owner.is_upper, not self.owner.is_upper, Item.ITEM_TYPE.STEAL_PASSIVE, false)
+
 			
 			
 	

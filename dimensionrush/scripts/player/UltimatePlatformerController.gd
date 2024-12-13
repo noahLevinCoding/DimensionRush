@@ -196,10 +196,16 @@ func _enter_tree():
 	player_controls_resource = GameManager.first_player_controls_resource
 	set_multiplayer_authority(name.to_int())
 	SignalManager.reset_multiplayer_authority.connect(reset_multiplayer_authority)
+	SignalManager.ping_other_player.connect(ping_other_player)
 
 func reset_multiplayer_authority():
 	set_multiplayer_authority(1);
 
+func ping_other_player(player: Player):#
+	print("REQUEST")
+	if self != player:
+		print("RESPONSE")
+		SignalManager.ping_other_player_response.emit(self)
 
 func _ready():
 	wasMovingR = true
