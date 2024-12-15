@@ -22,6 +22,8 @@ func close_door():
 
 
 func _on_camera_limit_trigger_body_entered(body: Node2D) -> void:
+	print("Room entered")
+	print(body.is_upper)
 	if body is Player:
 		if body.is_upper:
 			body.camera.limit_left = door_coll_shape.global_position.x - body.camera.offset.x

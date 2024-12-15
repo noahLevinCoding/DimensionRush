@@ -58,6 +58,7 @@ is_upper = false
 [node name="GameUI" type="Node" parent="."]
 
 [node name="PlayingUI" type="CanvasLayer" parent="GameUI"]
+visible = false
 script = ExtResource("2_wuw4b")
 
 [node name="InventoryUI" type="Control" parent="GameUI/PlayingUI"]

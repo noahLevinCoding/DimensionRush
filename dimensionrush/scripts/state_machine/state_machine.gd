@@ -26,8 +26,6 @@ func _ready():
 
 func change_state(source_state : State, new_state_name : StringName):
 	
-	print(source_state)
-	print(current_state)
 	if source_state != current_state:
 		
 		print("Invalid change_state trying from: " + source_state.name + " but currently in: " + current_state.name)

@@ -25,6 +25,9 @@ func exit():
 func resetUI():
 	time_button.disabled 	 = GameManager.player_mode == GameManager.PLAYER_MODES.MULTIPLAYER_ONLINE and GameManager.multiplayer_mode == GameManager.MULTIPLAYER_MODES.CLIENT
 	distance_button.disabled = GameManager.player_mode == GameManager.PLAYER_MODES.MULTIPLAYER_ONLINE and GameManager.multiplayer_mode == GameManager.MULTIPLAYER_MODES.CLIENT
+	seed_line_edit.editable  = not (GameManager.player_mode == GameManager.PLAYER_MODES.MULTIPLAYER_ONLINE and GameManager.multiplayer_mode == GameManager.MULTIPLAYER_MODES.CLIENT)
+
+	seed_line_edit.text = ""
 
 	main_node.visible = true
 	time_node.visible = false
@@ -54,6 +57,8 @@ func select_game_mode_on_time_button_up(time, seed):
 	
 	GameManager.game_seed = seed
 	
+	print("rpc: " + str(seed))
+	
 	state_transition.emit(self, "InitGame")
 
 
@@ -70,6 +75,8 @@ func select_game_mode_on_distance_button_up(distance, seed):
 	GameManager.level_distance = distance
 	
 	GameManager.game_seed = seed
+	
+	print("rpc: " + str(seed))
 	
 	state_transition.emit(self, "InitGame")
 
@@ -95,9 +102,11 @@ func select_time(time):
 	else:
 		print("Invalid int")
 		GameManager.game_seed = randi()
+		
+	print("no rpc: " + str(GameManager.game_seed))
 	
 	if GameManager.is_server():
-		select_game_mode_on_time_button_up.rpc(time)
+		select_game_mode_on_time_button_up.rpc(time, GameManager.game_seed)
 	
 	state_transition.emit(self, "InitGame")
 
@@ -129,8 +138,10 @@ func select_distance(distance):
 	else:
 		print("Invalid int")
 		GameManager.game_seed = randi()
+		
+	print("no rpc: " + str(GameManager.game_seed))
 	
 	if GameManager.is_server():
-		select_game_mode_on_distance_button_up.rpc(distance)
+		select_game_mode_on_distance_button_up.rpc(distance, GameManager.game_seed)
 	
 	state_transition.emit(self, "InitGame")
