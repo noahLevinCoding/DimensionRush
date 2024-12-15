@@ -11,6 +11,8 @@ func init_effect(player : Node):
 func ping_other_player_response(other_player: Player):
 	if other_player.inventory.has_item:
 		self.player.inventory.add_item(other_player.inventory.item_type)
+		
+	done = true
 	
 func process_effect(delta : float):
 	return done

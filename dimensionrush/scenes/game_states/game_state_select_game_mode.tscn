@@ -11,13 +11,14 @@ default_font_size = 50
 [sub_resource type="Theme" id="Theme_kgtal"]
 default_font_size = 50
 
-[node name="SelectGameMode" type="Node2D" node_paths=PackedStringArray("time_button", "distance_button", "main_node", "time_node", "distance_node")]
+[node name="SelectGameMode" type="Node2D" node_paths=PackedStringArray("time_button", "distance_button", "main_node", "time_node", "distance_node", "seed_line_edit")]
 script = ExtResource("1_sqvv8")
 time_button = NodePath("main/TimeButton")
 distance_button = NodePath("main/DistanceButton")
 main_node = NodePath("main")
 time_node = NodePath("time")
 distance_node = NodePath("distance")
+seed_line_edit = NodePath("main/SeedLineEdit")
 
 [node name="main" type="Control" parent="."]
 layout_mode = 3
@@ -66,6 +67,22 @@ offset_right = 239.0
 offset_bottom = 1016.0
 theme = SubResource("Theme_kgtal")
 text = "Back"
+
+[node name="SeedLabel" type="Label" parent="main"]
+offset_left = 1343.0
+offset_top = 971.0
+offset_right = 1465.0
+offset_bottom = 1040.0
+theme_override_font_sizes/font_size = 47
+text = "Seed:"
+
+[node name="SeedLineEdit" type="LineEdit" parent="main"]
+offset_left = 1485.0
+offset_top = 971.0
+offset_right = 1885.0
+offset_bottom = 1048.0
+theme_override_font_sizes/font_size = 47
+placeholder_text = "Enter Seed"
 
 [node name="time" type="Control" parent="."]
 visible = false
@@ -133,6 +150,7 @@ theme = SubResource("Theme_kgtal")
 text = "Back"
 
 [node name="distance" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0

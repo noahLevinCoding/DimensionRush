@@ -31,6 +31,13 @@ position = Vector2(240, 270)
 [node name="SpawnCollisionShape2D" type="CollisionShape2D" parent="SpawnTrigger"]
 shape = SubResource("RectangleShape2D_havgt")
 
+[node name="CameraLimitTrigger" type="Area2D" parent="."]
+position = Vector2(400, 270)
+
+[node name="CameraLimitCollisionShape2D" type="CollisionShape2D" parent="CameraLimitTrigger"]
+shape = SubResource("RectangleShape2D_havgt")
+
 [node name="ItemContainer" type="Node2D" parent="."]
 
 [connection signal="body_entered" from="SpawnTrigger" to="." method="_on_spawn_trigger_body_entered"]
+[connection signal="body_entered" from="CameraLimitTrigger" to="." method="_on_camera_limit_trigger_body_entered"]

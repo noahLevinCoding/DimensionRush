@@ -184,6 +184,7 @@ shape = SubResource("CapsuleShape2D_0ot7l")
 replication_config = SubResource("SceneReplicationConfig_pn6gs")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(600, 0)
 limit_top = 0
 limit_bottom = 540
 position_smoothing_enabled = true

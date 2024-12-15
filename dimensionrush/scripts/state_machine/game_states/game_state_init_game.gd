@@ -25,7 +25,6 @@ func enter():
 	elif GameManager.game_mode == GameManager.GAME_MODES.DISTANCE:
 		init_game_mode_distance()
 	
-	#GameManager.game_seed = randi()
 	
 	if GameManager.is_online_multiplayer():
 		print("Enter online")
@@ -180,6 +179,8 @@ func spawnPlayerLocalMultiplayer():
 	player_scene_instance_1.player_controls_resource = GameManager.first_player_controls_resource
 	player_scene_instance_2.player_controls_resource = GameManager.second_player_controls_resource
 
+	player_scene_instance_2.PlayerSprite.scale.x = -1
+	player_scene_instance_2.camera.offset.x *= -1
 
 	
 func spawnPlayerOnlineMultiplayer():
@@ -192,6 +193,10 @@ func spawnPlayerOnlineMultiplayer():
 			
 		player_scene_instance_1.name = "1"
 		player_scene_instance_2.name = str(GameManager.client_peer_id)
+		
+		player_scene_instance_2.PlayerSprite.scale.x = -1
+		player_scene_instance_2.camera.offset.x *= -1
+
 		
 		#upper_subviewport.add_child(player_scene_instance_1)
 		#lower_subviewport.add_child(player_scene_instance_2)
@@ -210,8 +215,14 @@ func spawnPlayerSingleplayer():
 	player_scene_instance_2 = player_scene.instantiate()
 	player_scene_instance_2.is_upper = false
 	
+	player_scene_instance_2.PlayerSprite.scale.x = -1
+	player_scene_instance_2.camera.offset.x *= -1
+	
 	upper_subviewport.add_child(player_scene_instance_1)
 	lower_subviewport.add_child(player_scene_instance_2)
 	
+	
 	player_scene_instance_1.player_controls_resource = GameManager.first_player_controls_resource
 	player_scene_instance_2.player_controls_resource = GameManager.second_player_controls_resource
+
+	

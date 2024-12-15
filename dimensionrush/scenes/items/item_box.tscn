@@ -6,7 +6,7 @@
 
 [sub_resource type="Resource" id="Resource_h7nwl"]
 script = ExtResource("2_elcbo")
-type = 4
+type = 3
 odds = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tn6ey"]

@@ -26,7 +26,6 @@ func _ready():
 
 func change_state(source_state : State, new_state_name : StringName):
 	
-	print("a")
 	print(source_state)
 	print(current_state)
 	if source_state != current_state:
@@ -48,6 +47,8 @@ func change_state(source_state : State, new_state_name : StringName):
 	
 	new_state.enter()
 	
+	SignalManager.changed_game_state.emit()
+	
 func change_state_back(source_state : State):
 	if source_state != current_state:
 		print("Invalid change_state trying from: " + source_state.name + " but currently in: " + current_state.name)
@@ -65,6 +66,8 @@ func change_state_back(source_state : State):
 	current_state = new_state
 	
 	new_state.enter()
+	
+	SignalManager.changed_game_state.emit()
 
 func force_change_state(new_state_name : StringName):
 	var new_state = states.get(new_state_name.to_lower())
@@ -85,6 +88,8 @@ func force_change_state(new_state_name : StringName):
 	current_state = new_state
 	
 	new_state.enter()
+	
+	SignalManager.changed_game_state.emit()
 
 func _process(delta):
 	if current_state:

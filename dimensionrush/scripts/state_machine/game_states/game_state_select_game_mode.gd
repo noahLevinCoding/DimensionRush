@@ -8,6 +8,8 @@ extends State
 @export var time_node : Control
 @export var distance_node : Control
 
+@export var seed_line_edit : LineEdit
+
 func enter():
 	resetUI()
 	visible = true
@@ -46,9 +48,11 @@ func _on_time_button_up():
 	distance_node.visible = false
 		
 @rpc
-func select_game_mode_on_time_button_up(time):
+func select_game_mode_on_time_button_up(time, seed):
 	GameManager.game_mode = GameManager.GAME_MODES.TIME
 	GameManager.level_time = time
+	
+	GameManager.game_seed = seed
 	
 	state_transition.emit(self, "InitGame")
 
@@ -61,9 +65,11 @@ func _on_distance_button_up():
 
 	
 @rpc
-func select_game_mode_on_distance_button_up(distance):
+func select_game_mode_on_distance_button_up(distance, seed):
 	GameManager.game_mode = GameManager.GAME_MODES.DISTANCE
 	GameManager.level_distance = distance
+	
+	GameManager.game_seed = seed
 	
 	state_transition.emit(self, "InitGame")
 
@@ -82,6 +88,13 @@ func _on_time_option_3_button_up() -> void:
 func select_time(time):
 	GameManager.game_mode = GameManager.GAME_MODES.TIME
 	GameManager.level_time = time
+	
+	if(seed_line_edit.text.is_valid_int()):
+		print("Valid int")
+		GameManager.game_seed = int(seed_line_edit.text)
+	else:
+		print("Invalid int")
+		GameManager.game_seed = randi()
 	
 	if GameManager.is_server():
 		select_game_mode_on_time_button_up.rpc(time)
@@ -109,6 +122,13 @@ func _on_distance_option_3_button_up() -> void:
 func select_distance(distance):
 	GameManager.game_mode = GameManager.GAME_MODES.DISTANCE
 	GameManager.level_distance = distance
+	
+	if(seed_line_edit.text.is_valid_int()):
+		print("Valid int")
+		GameManager.game_seed = int(seed_line_edit.text)
+	else:
+		print("Invalid int")
+		GameManager.game_seed = randi()
 	
 	if GameManager.is_server():
 		select_game_mode_on_distance_button_up.rpc(distance)

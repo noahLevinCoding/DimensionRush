@@ -13,8 +13,17 @@ signal spawn_trigger_entered
 func _on_spawn_trigger_body_entered(body: Node2D) -> void:
 	if body is Player:
 		call_deferred("close_door")
+		
 		spawn_trigger_entered.emit()
 	
 func close_door():
 	door_coll_shape.disabled = false
 	spawn_coll_shape.disabled = true
+
+
+func _on_camera_limit_trigger_body_entered(body: Node2D) -> void:
+	if body is Player:
+		if body.is_upper:
+			body.camera.limit_left = door_coll_shape.global_position.x - body.camera.offset.x
+		else:
+			body.camera.limit_right = door_coll_shape.global_position.x - body.camera.offset.x

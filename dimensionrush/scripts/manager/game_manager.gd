@@ -15,7 +15,7 @@ var second_player_controls_resource : PlayerControlsResource = null
 
 var game_is_running : bool = false
 
-var game_seed = hash("Godot")
+var game_seed = hash("DimensionRush")
 var level_distance : float = 50000
 var level_time : float = 10.0
 var remaining_level_time : float = 0.0
