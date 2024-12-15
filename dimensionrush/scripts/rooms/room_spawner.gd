@@ -55,8 +55,8 @@ func reset() -> void:
 
 
 func init() -> void:
+	rng = RandomNumberGenerator.new()
 	rng.seed = GameManager.game_seed
-	rng.state = 500
 	
 	regions_per_game = GameManager.level_distance
 	already_spawned_regions = []
@@ -68,6 +68,10 @@ func init() -> void:
 
 
 func instantiate_rooms() -> void:
+	
+	for i in range(20):
+		print(rng.randi() % regions.size())
+	
 	#add start room as current room
 	current_room = start_room.instantiate()
 	current_room.position.x = -960

@@ -164,6 +164,9 @@ properties/10/replication_mode = 1
 properties/11/path = NodePath("Camera2D:position_smoothing_enabled")
 properties/11/spawn = true
 properties/11/replication_mode = 1
+properties/12/path = NodePath("Camera2D:offset")
+properties/12/spawn = true
+properties/12/replication_mode = 1
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("PlayerSprite", "PlayerCollider", "camera", "inventory", "effect_handler", "effect_container")]
 position = Vector2(0, 200)
