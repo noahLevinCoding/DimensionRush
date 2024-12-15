@@ -155,6 +155,15 @@ properties/7/replication_mode = 1
 properties/8/path = NodePath(".:is_upper")
 properties/8/spawn = true
 properties/8/replication_mode = 1
+properties/9/path = NodePath("Camera2D:limit_left")
+properties/9/spawn = true
+properties/9/replication_mode = 1
+properties/10/path = NodePath("Camera2D:limit_right")
+properties/10/spawn = true
+properties/10/replication_mode = 1
+properties/11/path = NodePath("Camera2D:position_smoothing_enabled")
+properties/11/spawn = true
+properties/11/replication_mode = 1
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("PlayerSprite", "PlayerCollider", "camera", "inventory", "effect_handler", "effect_container")]
 position = Vector2(0, 200)
