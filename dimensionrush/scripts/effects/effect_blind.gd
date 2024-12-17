@@ -26,7 +26,6 @@ func init_effect(player : Node):
 	player_pos.x = 960
 	player_pos.y += 10
 	
-	print(self.player.global_position)
 	color_rect.material.set_shader_parameter("player_position", player_pos)
 	
 	

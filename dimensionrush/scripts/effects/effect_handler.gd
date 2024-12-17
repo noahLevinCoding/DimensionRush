@@ -33,8 +33,6 @@ func add_effect(source_is_upper : bool, destination_is_upper : bool, item_type :
 		effects.append(effect)
 		effect.init_effect(self.owner)
 		
-	print(self.owner.is_upper)
-	print(effects)
 		
 @rpc("any_peer")
 func add_effect_rpc(source_is_upper : bool, destination_is_upper : bool, item_type : Item.ITEM_TYPE):	

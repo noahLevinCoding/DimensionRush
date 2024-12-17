@@ -27,13 +27,10 @@ func _ready():
 func change_state(source_state : State, new_state_name : StringName):
 	
 	if source_state != current_state:
-		
-		print("Invalid change_state trying from: " + source_state.name + " but currently in: " + current_state.name)
 		return
 	
 	var new_state = states.get(new_state_name.to_lower())
 	if !new_state:
-		print("New state is empty")
 		return
 	
 	if current_state:
@@ -49,7 +46,6 @@ func change_state(source_state : State, new_state_name : StringName):
 	
 func change_state_back(source_state : State):
 	if source_state != current_state:
-		print("Invalid change_state trying from: " + source_state.name + " but currently in: " + current_state.name)
 		return
 	
 	if current_state:
@@ -57,7 +53,6 @@ func change_state_back(source_state : State):
 	
 	var new_state = states.get(last_state_name.to_lower())
 	if !new_state:
-		print("New state is empty")
 		return
 	
 	current_state_name = last_state_name	
@@ -71,11 +66,9 @@ func force_change_state(new_state_name : StringName):
 	var new_state = states.get(new_state_name.to_lower())
 	
 	if !new_state:
-		print(new_state + " does not exist in the dictionary of states")
 		return
 		
 	if current_state == new_state:
-		print("State is same, aborting")
 		return
 		
 	if current_state:

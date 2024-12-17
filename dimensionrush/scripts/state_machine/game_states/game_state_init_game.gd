@@ -27,7 +27,6 @@ func enter():
 	
 	
 	if GameManager.is_online_multiplayer():
-		print("Enter online")
 		enter_online()
 	else:
 		enter_offline()
@@ -48,34 +47,11 @@ func enter_offline():
 	visible = true
 	
 func enter_online():
-	if GameManager.is_client():
-		print("Client")
-	else:
-		print("Server")
-	print("Before resetMultiplayerAUthority")
 	resetMultiplayerAuthority()
 	reset_player_authority_done_rpc.rpc()
 	if !reset_player_authority_done_flag:
-		if GameManager.is_client():
-			print("Client")
-		else:
-			print("Server")
-		print("wait for play authority done")
 		await reset_player_authority_done
-	if GameManager.is_client():
-		print("Client")
-	else:
-		print("Server")
-	print("done waiting for play authority done")
-	if GameManager.is_client():
-		print("Client")
-	else:
-		print("Server")
-	print("Before clear nodes")
 	clearNodes()
-	
-	
-	print("before clear nodes ready rpc")
 	clear_nodes_done_rpc.rpc()
 	if !clear_nodes_done_flag:
 		await clear_nodes_done
@@ -96,11 +72,6 @@ func clear_nodes_done_rpc():
 	
 @rpc("any_peer")
 func reset_player_authority_done_rpc():
-	if GameManager.is_client():
-		print("Client")
-	else:
-		print("Server")
-	print("Rest player authroity rpc call")
 	reset_player_authority_done_flag = true
 	reset_player_authority_done.emit()
 	

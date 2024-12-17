@@ -6,3 +6,5 @@ extends Resource
 @export var start_room 	: PackedScene
 @export var end_room 	: PackedScene
 @export var rooms 		: Array[PackedScene]
+
+@export var player_movement_resource : PlayerMovementResource

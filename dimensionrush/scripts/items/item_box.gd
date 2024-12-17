@@ -25,7 +25,6 @@ func randomize_item():
 	for i in range(cumulative_odds.size()):
 		if random_value <= cumulative_odds[i]:
 			self.item = items[i]
-			print(i)
 			return
 	
 

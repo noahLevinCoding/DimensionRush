@@ -5,6 +5,11 @@ extends CharacterBody2D
 
 @export_category("Player Controls")
 @export var player_controls_resource : PlayerControlsResource = null
+var player_movement_resource : PlayerMovementResource = null :
+	set(value):
+		player_movement_resource = value
+		print(is_upper)
+		print(value.name)
 
 @export_category("Necesary Child Nodes")
 @export var PlayerSprite: AnimatedSprite2D
@@ -206,9 +211,7 @@ func reset_multiplayer_authority():
 	set_multiplayer_authority(1);
 
 func ping_other_player(player: Player):#
-	print("REQUEST")
 	if self != player:
-		print("RESPONSE")
 		SignalManager.ping_other_player_response.emit(self)
 
 func _ready():
@@ -736,4 +739,4 @@ func _endGroundPound():
 	gravityActive = true
 
 func _placeHolder():
-	print("")
+	pass

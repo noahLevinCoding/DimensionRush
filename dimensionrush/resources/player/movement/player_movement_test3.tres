@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="PlayerMovementResource" load_steps=2 format=3 uid="uid://c3hlaa3qkks5d"]
+
+[ext_resource type="Script" path="res://resources/player/movement/player_movement_resource.gd" id="1_lvgyw"]
+
+[resource]
+script = ExtResource("1_lvgyw")
+name = "Test3"

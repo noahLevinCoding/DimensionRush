@@ -50,18 +50,12 @@ func _on_client_button_up():
 	multiplayer.peer_disconnected.connect(_on_peer_disconnected)
 
 func _on_peer_connected(id = 1):
-	print("Peer connected with id: " + str(id))
 	if GameManager.is_server():
 		GameManager.client_peer_id = id
 	
 	state_transition.emit(self, "SelectGameMode")
 
 func _on_peer_disconnected(id = 1):
-	if GameManager.multiplayer_mode == GameManager.MULTIPLAYER_MODES.CLIENT:
-		print("Client:")
-	else:
-		print("Host:")
-	print("Peer disconnected with id : " + str(id))
 	force_state_transition.emit("MultiplayerOnlineConnection")
 	
 

@@ -69,9 +69,6 @@ func init() -> void:
 
 func instantiate_rooms() -> void:
 	
-	for i in range(20):
-		print(rng.randi() % regions.size())
-	
 	#add start room as current room
 	current_room = start_room.instantiate()
 	current_room.position.x = -960
@@ -93,7 +90,6 @@ func instantiate_rooms() -> void:
 	room_per_region = 1
 	region_per_game = 1
 	
-	print("Region index: " + str(region_index))
 	var next_room_scene = regions[region_index].start_room
 	next_room = next_room_scene.instantiate()
 	next_room.position.x = current_room.width + current_room.position.x
@@ -103,10 +99,13 @@ func instantiate_rooms() -> void:
 	
 
 #instanciate room, add child, connect sinals
-func _on_spawn_trigger_entered() -> void:
+func _on_spawn_trigger_entered(player: Player) -> void:
 	despawn_room(last_room)
 	last_room = current_room
 	current_room = next_room
+	
+	player.player_movement_resource = regions[region_index].player_movement_resource
+	
 	if next_room.spawn_trigger_entered.is_connected(_on_spawn_trigger_entered):
 		next_room.spawn_trigger_entered.disconnect(_on_spawn_trigger_entered)
 	next_room = null
@@ -149,10 +148,7 @@ func spawn_start_room_in_new_region():
 	#TODO
 	already_spawned_rooms_size = regions[region_index].rooms.size() / 2  
 	already_spawned_rooms = []
-		
-	print("Region index: " + str(region_index))
-
-		
+			
 	rooms_per_region = rng.randi_range(rooms_per_region_min, rooms_per_region_max)
 	
 	region_per_game += 1

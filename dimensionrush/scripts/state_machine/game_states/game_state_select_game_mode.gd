@@ -56,9 +56,7 @@ func select_game_mode_on_time_button_up(time, seed):
 	GameManager.level_time = time
 	
 	GameManager.game_seed = seed
-	
-	print("rpc: " + str(seed))
-	
+		
 	state_transition.emit(self, "InitGame")
 
 
@@ -75,8 +73,6 @@ func select_game_mode_on_distance_button_up(distance, seed):
 	GameManager.level_distance = distance
 	
 	GameManager.game_seed = seed
-	
-	print("rpc: " + str(seed))
 	
 	state_transition.emit(self, "InitGame")
 
@@ -97,13 +93,10 @@ func select_time(time):
 	GameManager.level_time = time
 	
 	if(seed_line_edit.text.is_valid_int()):
-		print("Valid int")
 		GameManager.game_seed = int(seed_line_edit.text)
 	else:
-		print("Invalid int")
 		GameManager.game_seed = randi()
 		
-	print("no rpc: " + str(GameManager.game_seed))
 	
 	if GameManager.is_server():
 		select_game_mode_on_time_button_up.rpc(time, GameManager.game_seed)
@@ -133,13 +126,9 @@ func select_distance(distance):
 	GameManager.level_distance = distance
 	
 	if(seed_line_edit.text.is_valid_int()):
-		print("Valid int")
 		GameManager.game_seed = int(seed_line_edit.text)
 	else:
-		print("Invalid int")
 		GameManager.game_seed = randi()
-		
-	print("no rpc: " + str(GameManager.game_seed))
 	
 	if GameManager.is_server():
 		select_game_mode_on_distance_button_up.rpc(distance, GameManager.game_seed)

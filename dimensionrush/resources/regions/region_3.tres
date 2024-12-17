@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="RegionResource" load_steps=4 format=3 uid="uid://cv7du2q70pf4k"]
+[gd_resource type="Resource" script_class="RegionResource" load_steps=5 format=3 uid="uid://cv7du2q70pf4k"]
 
 [ext_resource type="Script" path="res://scripts/rooms/region_resource.gd" id="1_5utbh"]
 [ext_resource type="PackedScene" uid="uid://d276y1ntqjep2" path="res://scenes/rooms/default_rooms/room_3_2.tscn" id="1_dl2hu"]
+[ext_resource type="Resource" uid="uid://c3hlaa3qkks5d" path="res://resources/player/movement/player_movement_test3.tres" id="2_8tkwd"]
 [ext_resource type="PackedScene" uid="uid://bqsjc550obk77" path="res://scenes/rooms/default_rooms/room_3_1.tscn" id="3_qyn04"]
 
 [resource]
@@ -10,3 +11,4 @@ name = "Region3"
 start_room = ExtResource("3_qyn04")
 end_room = ExtResource("1_dl2hu")
 rooms = Array[PackedScene]([ExtResource("1_dl2hu")])
+player_movement_resource = ExtResource("2_8tkwd")
