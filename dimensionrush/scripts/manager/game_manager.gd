@@ -6,7 +6,10 @@ enum GAME_MODES {NONE, TIME, DISTANCE}
 
 var player_mode 	 : PLAYER_MODES 		= PLAYER_MODES.NONE
 var multiplayer_mode : MULTIPLAYER_MODES 	= MULTIPLAYER_MODES.NONE
-var game_mode 		 : GAME_MODES 			= GAME_MODES.NONE
+var game_mode 		 : GAME_MODES 			= GAME_MODES.NONE : 
+	set(value):
+		game_mode = value
+		SignalManager.changed_game_mode.emit()
 
 var client_peer_id : int = 0
 
