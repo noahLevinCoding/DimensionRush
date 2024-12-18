@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource("1_kuma3")
-name = "Test1"
+max_speed = 50.0

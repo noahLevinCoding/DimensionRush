@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource("1_31ws8")
-name = "Test2"
+max_speed = 300.0

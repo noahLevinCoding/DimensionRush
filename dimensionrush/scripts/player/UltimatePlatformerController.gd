@@ -8,8 +8,11 @@ extends CharacterBody2D
 var player_movement_resource : PlayerMovementResource = null :
 	set(value):
 		player_movement_resource = value
-		print(is_upper)
-		print(value.name)
+		
+		if value != null:
+			max_speed = player_movement_resource.max_speed
+			
+			_updateData()
 
 @export_category("Necesary Child Nodes")
 @export var PlayerSprite: AnimatedSprite2D
