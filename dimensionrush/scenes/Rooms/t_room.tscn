@@ -1,16 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://bty1jksbcxbxj"]
+[gd_scene load_steps=6 format=3 uid="uid://bty1jksbcxbxj"]
 
 [ext_resource type="Script" path="res://scripts/rooms/room.gd" id="1_i1amk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5glju"]
 size = Vector2(20, 540)
 
+[sub_resource type="Gradient" id="Gradient_v82ai"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5edrh"]
+gradient = SubResource("Gradient_v82ai")
+width = 20
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_havgt"]
 size = Vector2(20, 540)
 
-[node name="Room" type="Node2D" node_paths=PackedStringArray("spawn_trigger", "door_coll_shape", "spawn_coll_shape")]
+[node name="Room" type="Node2D" node_paths=PackedStringArray("spawn_trigger", "door_sprite", "door_coll_shape", "spawn_coll_shape")]
 script = ExtResource("1_i1amk")
 spawn_trigger = NodePath("SpawnTrigger")
+door_sprite = NodePath("Door/DoorSprite")
 door_coll_shape = NodePath("Door/DoorCollisionShape2D")
 spawn_coll_shape = NodePath("SpawnTrigger/SpawnCollisionShape2D")
 
@@ -25,8 +32,15 @@ position = Vector2(0, 270)
 shape = SubResource("RectangleShape2D_5glju")
 disabled = true
 
+[node name="DoorSprite" type="Sprite2D" parent="Door"]
+visible = false
+z_index = -1
+position = Vector2(0, -1.14441e-05)
+scale = Vector2(1, 540)
+texture = SubResource("GradientTexture1D_5edrh")
+
 [node name="SpawnTrigger" type="Area2D" parent="."]
-position = Vector2(240, 270)
+position = Vector2(150, 270)
 
 [node name="SpawnCollisionShape2D" type="CollisionShape2D" parent="SpawnTrigger"]
 shape = SubResource("RectangleShape2D_havgt")

@@ -2,6 +2,7 @@ class_name Room
 extends Node2D
 
 @export var spawn_trigger : Area2D
+@export var door_sprite : Sprite2D
 @export var door_coll_shape: CollisionShape2D
 @export var spawn_coll_shape: CollisionShape2D
 
@@ -19,6 +20,8 @@ func _on_spawn_trigger_body_entered(body: Node2D) -> void:
 func close_door():
 	door_coll_shape.disabled = false
 	spawn_coll_shape.disabled = true
+	
+	door_sprite.visible = true
 
 
 func _on_camera_limit_trigger_body_entered(body: Node2D) -> void:
