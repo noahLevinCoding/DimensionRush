@@ -1,0 +1,207 @@
+[gd_scene load_steps=18 format=3 uid="uid://bkcp6m6cuc5fh"]
+
+[ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="1_rro5f"]
+[ext_resource type="PackedScene" uid="uid://bdd2a752ovak" path="res://scenes/rooms/room_spawner.tscn" id="1_sb64c"]
+[ext_resource type="PackedScene" uid="uid://drve2dny0aalb" path="res://scenes/game_states/game_state_titlescreen.tscn" id="2_8036h"]
+[ext_resource type="Script" path="res://scripts/ui/inventory_ui.gd" id="2_puyum"]
+[ext_resource type="Script" path="res://scripts/ui/playing_ui.gd" id="2_wuw4b"]
+[ext_resource type="PackedScene" uid="uid://5i7y4qtqe0xo" path="res://scenes/game_states/game_state_select_player_mode.tscn" id="3_2epx2"]
+[ext_resource type="PackedScene" uid="uid://cu14ec3hwpjqt" path="res://scenes/game_states/game_state_select_one_player_controls.tscn" id="4_qjabk"]
+[ext_resource type="Script" path="res://scripts/ui/time_ui.gd" id="4_vgc6u"]
+[ext_resource type="PackedScene" uid="uid://dyi2n3unvp0mn" path="res://scenes/game_states/game_state_select_two_player_controls.tscn" id="5_cxpx8"]
+[ext_resource type="Script" path="res://scripts/ui/distance_ui.gd" id="5_tg1lt"]
+[ext_resource type="PackedScene" uid="uid://lskje77wvt72" path="res://scenes/game_states/game_state_multiplayer_online_connection.tscn" id="6_2ui7l"]
+[ext_resource type="PackedScene" uid="uid://egty2a5uag5n" path="res://scenes/game_states/game_state_init_game.tscn" id="7_52gvj"]
+[ext_resource type="PackedScene" uid="uid://bnbiepdxbcoyf" path="res://scenes/game_states/game_state_select_game_mode.tscn" id="7_oxu7e"]
+[ext_resource type="PackedScene" uid="uid://doa2j3gkdu6qe" path="res://scenes/game_states/game_state_playing.tscn" id="9_c2l1w"]
+[ext_resource type="PackedScene" uid="uid://bq7510d8vrixw" path="res://scenes/player/player.tscn" id="9_g6w65"]
+[ext_resource type="PackedScene" uid="uid://cn6a6e4m5ahi5" path="res://scenes/game_states/game_state_pause.tscn" id="10_bbp8v"]
+[ext_resource type="PackedScene" uid="uid://bfyty2mamr5uu" path="res://scenes/game_states/game_state_game_over.tscn" id="11_d1js4"]
+
+[node name="main" type="Node2D"]
+
+[node name="Game" type="Node" parent="."]
+
+[node name="ViewportBox" type="Control" parent="Game"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1084.0
+
+[node name="UpperSubViewportContainer" type="SubViewportContainer" parent="Game/ViewportBox"]
+layout_mode = 2
+offset_right = 1920.0
+offset_bottom = 540.0
+size_flags_vertical = 3
+
+[node name="UpperSubViewport" type="SubViewport" parent="Game/ViewportBox/UpperSubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1920, 540)
+render_target_update_mode = 4
+
+[node name="RoomSpawner" parent="Game/ViewportBox/UpperSubViewportContainer/UpperSubViewport" instance=ExtResource("1_sb64c")]
+
+[node name="LowerSubViewportContainer" type="SubViewportContainer" parent="Game/ViewportBox"]
+layout_mode = 2
+offset_top = 540.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+size_flags_vertical = 3
+
+[node name="LowerSubViewport" type="SubViewport" parent="Game/ViewportBox/LowerSubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1920, 540)
+render_target_update_mode = 4
+
+[node name="RoomSpawner" parent="Game/ViewportBox/LowerSubViewportContainer/LowerSubViewport" instance=ExtResource("1_sb64c")]
+scale = Vector2(-1, 1)
+is_upper = false
+
+[node name="GameUI" type="Node" parent="."]
+
+[node name="PlayingUI" type="CanvasLayer" parent="GameUI"]
+visible = false
+script = ExtResource("2_wuw4b")
+
+[node name="InventoryUI" type="Control" parent="GameUI/PlayingUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="UpperInventoryUI" type="Control" parent="GameUI/PlayingUI/InventoryUI" node_paths=PackedStringArray("background", "foreground")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("2_puyum")
+is_upper = true
+background = NodePath("ColorRect")
+foreground = NodePath("ColorRect/TextureRect")
+
+[node name="ColorRect" type="ColorRect" parent="GameUI/PlayingUI/InventoryUI/UpperInventoryUI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="GameUI/PlayingUI/InventoryUI/UpperInventoryUI/ColorRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LowerInventoryUI" type="Control" parent="GameUI/PlayingUI/InventoryUI" node_paths=PackedStringArray("background", "foreground")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("2_puyum")
+background = NodePath("ColorRect")
+foreground = NodePath("ColorRect/TextureRect2")
+
+[node name="ColorRect" type="ColorRect" parent="GameUI/PlayingUI/InventoryUI/LowerInventoryUI"]
+layout_mode = 0
+offset_left = 1880.0
+offset_top = 540.0
+offset_right = 1920.0
+offset_bottom = 580.0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="TextureRect2" type="TextureRect" parent="GameUI/PlayingUI/InventoryUI/LowerInventoryUI/ColorRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GoalUI" type="Control" parent="GameUI/PlayingUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TimeUI" type="Control" parent="GameUI/PlayingUI/GoalUI" node_paths=PackedStringArray("timer_label")]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_vgc6u")
+timer_label = NodePath("ColorRect/TimerLabel")
+
+[node name="ColorRect" type="ColorRect" parent="GameUI/PlayingUI/GoalUI/TimeUI"]
+layout_mode = 0
+offset_top = 520.0
+offset_right = 1920.0
+offset_bottom = 560.0
+color = Color(1, 0.0784314, 1, 1)
+
+[node name="TimerLabel" type="Label" parent="GameUI/PlayingUI/GoalUI/TimeUI/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.5
+offset_top = -11.5
+offset_right = 20.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+
+[node name="DistanceUI" type="Control" parent="GameUI/PlayingUI/GoalUI"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("5_tg1lt")
+
+[node name="ColorRect" type="ColorRect" parent="GameUI/PlayingUI/GoalUI/DistanceUI"]
+layout_mode = 0
+offset_top = 520.0
+offset_right = 1920.0
+offset_bottom = 560.0
+color = Color(0, 1, 1, 1)
+
+[node name="GameStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("1_rro5f")
+initial_state = NodePath("Titlescreen")
+
+[node name="Titlescreen" parent="GameStateMachine" instance=ExtResource("2_8036h")]
+visible = false
+
+[node name="SelectPlayerMode" parent="GameStateMachine" instance=ExtResource("3_2epx2")]
+visible = false
+
+[node name="SelectOnePlayerControls" parent="GameStateMachine" instance=ExtResource("4_qjabk")]
+visible = false
+
+[node name="SelectTwoPlayerControls" parent="GameStateMachine" instance=ExtResource("5_cxpx8")]
+visible = false
+
+[node name="MultiplayerOnlineConnection" parent="GameStateMachine" instance=ExtResource("6_2ui7l")]
+visible = false
+
+[node name="SelectGameMode" parent="GameStateMachine" instance=ExtResource("7_oxu7e")]
+visible = false
+
+[node name="InitGame" parent="GameStateMachine" node_paths=PackedStringArray("game_node", "upper_subviewport", "lower_subviewport") instance=ExtResource("7_52gvj")]
+visible = false
+game_node = NodePath("../../Game")
+upper_subviewport = NodePath("../../Game/ViewportBox/UpperSubViewportContainer/UpperSubViewport")
+lower_subviewport = NodePath("../../Game/ViewportBox/LowerSubViewportContainer/LowerSubViewport")
+player_scene = ExtResource("9_g6w65")
+
+[node name="Playing" parent="GameStateMachine" instance=ExtResource("9_c2l1w")]
+visible = false
+
+[node name="Pause" parent="GameStateMachine" instance=ExtResource("10_bbp8v")]
+visible = false
+
+[node name="GameOver" parent="GameStateMachine" instance=ExtResource("11_d1js4")]
+visible = false
+
+[node name="Network" type="Node" parent="."]
+
+[node name="MultiplayerSpawnerUpperSubviewport" type="MultiplayerSpawner" parent="Network"]
+_spawnable_scenes = PackedStringArray("res://scenes/player/player.tscn", "res://scenes/items/item_box.tscn")
+spawn_path = NodePath("../../Game/ViewportBox/UpperSubViewportContainer/UpperSubViewport")
+
+[node name="MultiplayerSpawnerLowerSubviewport" type="MultiplayerSpawner" parent="Network"]
+_spawnable_scenes = PackedStringArray("res://scenes/player/player.tscn", "res://scenes/items/item_box.tscn")
+spawn_path = NodePath("../../Game/ViewportBox/LowerSubViewportContainer/LowerSubViewport")

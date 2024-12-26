@@ -27,7 +27,7 @@ var last_room : Room = null
 var current_room : Room = null
 var next_room : Room = null
 
-var rng = RandomNumberGenerator.new()
+var rng 		= RandomNumberGenerator.new()
 
 
 
@@ -64,8 +64,52 @@ func init() -> void:
 	if already_spawned_regions_size >= regions.size():
 		already_spawned_regions_size = regions.size() - 1
 	
+	if GameManager.game_mode == GameManager.GAME_MODES.DISTANCE:
+		calc_game_distance()
+	
 	instantiate_rooms()
 
+func calc_game_distance():
+	var rng_predict = RandomNumberGenerator.new()
+	rng_predict.seed = GameManager.game_seed
+	
+	var already_spawned_regions_predict = [] 
+	var current_room_predict : Node2D = start_room.instantiate()
+	current_room_predict.calc_width()
+	current_room_predict.position.x = -960
+	#add_child(current_room_predict)
+	
+	var region_index_predict = rng_predict.randi() % regions.size()
+	print("Region index: ")
+	print(region_index_predict)
+	
+	while regions[region_index_predict] in already_spawned_regions_predict:
+		region_index_predict = (region_index_predict + 1) % regions.size()
+		print("Region index: ")
+		print(region_index_predict)
+		
+	already_spawned_regions_predict.push_back(regions[region_index_predict])
+	if already_spawned_regions_predict.size() > already_spawned_regions_size:
+		already_spawned_regions_predict.pop_front()
+		print("Pop front")
+	
+	var already_spawned_rooms_size_predict = regions[region_index_predict].rooms.size() / 2 
+	var already_spawned_rooms_predict = []
+	
+	var rooms_per_region_predict = rng_predict.randi_range(rooms_per_region_min, rooms_per_region_max)
+	print("Rooms per region predict")
+	print(rooms_per_region_predict)
+	var room_per_region_predict = 1
+	var region_per_game_predict = 1
+	
+	var next_room_scene_predict = regions[region_index_predict].start_room
+	var next_room_predict = next_room_scene_predict.instantiate()
+	next_room_predict.calc_width()
+	next_room_predict.position.x = current_room_predict.width + current_room_predict.position.x
+	
+	var distance = next_room_predict.position.x + next_room_predict.width
+	print(distance)
+	
 
 func instantiate_rooms() -> void:
 	

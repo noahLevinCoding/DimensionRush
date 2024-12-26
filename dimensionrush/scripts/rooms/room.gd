@@ -10,6 +10,8 @@ signal spawn_trigger_entered(player: Player)
 
 @onready var width : float = $TileMapPlatform.get_used_rect().size.x * $TileMapPlatform.rendering_quadrant_size * $TileMapPlatform.scale.x
 
+func calc_width():
+	width = $TileMapPlatform.get_used_rect().size.x * $TileMapPlatform.rendering_quadrant_size * $TileMapPlatform.scale.x
 
 func _on_spawn_trigger_body_entered(body: Node2D) -> void:
 	if body is Player:
