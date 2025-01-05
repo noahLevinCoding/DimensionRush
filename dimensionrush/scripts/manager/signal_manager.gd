@@ -12,5 +12,7 @@ signal add_effect(source_is_upper : bool, destination_is_upper : bool, item_type
 signal ping_other_player(player: Player)
 signal ping_other_player_response(other_player: Player)
 
+signal on_player_ready(player: Player)
+
 signal changed_game_state
 signal changed_game_mode

@@ -209,6 +209,8 @@ func _enter_tree():
 	set_multiplayer_authority(name.to_int())
 	SignalManager.reset_multiplayer_authority.connect(reset_multiplayer_authority)
 	SignalManager.ping_other_player.connect(ping_other_player)
+	
+	SignalManager.on_player_ready.emit(self)
 
 func reset_multiplayer_authority():
 	set_multiplayer_authority(1);

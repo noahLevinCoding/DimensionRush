@@ -70,7 +70,7 @@ func _on_distance_button_up():
 @rpc
 func select_game_mode_on_distance_button_up(distance, seed):
 	GameManager.game_mode = GameManager.GAME_MODES.DISTANCE
-	GameManager.level_distance = distance
+	GameManager.number_of_regions = distance
 	
 	GameManager.game_seed = seed
 	
@@ -123,7 +123,7 @@ func _on_distance_option_3_button_up() -> void:
 
 func select_distance(distance):
 	GameManager.game_mode = GameManager.GAME_MODES.DISTANCE
-	GameManager.level_distance = distance
+	GameManager.number_of_regions = distance
 	
 	if(seed_line_edit.text.is_valid_int()):
 		GameManager.game_seed = int(seed_line_edit.text)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bkcp6m6cuc5fh"]
+[gd_scene load_steps=20 format=3 uid="uid://bkcp6m6cuc5fh"]
 
 [ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="1_rro5f"]
 [ext_resource type="PackedScene" uid="uid://bdd2a752ovak" path="res://scenes/rooms/room_spawner.tscn" id="1_sb64c"]
@@ -17,6 +17,12 @@
 [ext_resource type="PackedScene" uid="uid://bq7510d8vrixw" path="res://scenes/player/player.tscn" id="9_g6w65"]
 [ext_resource type="PackedScene" uid="uid://cn6a6e4m5ahi5" path="res://scenes/game_states/game_state_pause.tscn" id="10_bbp8v"]
 [ext_resource type="PackedScene" uid="uid://bfyty2mamr5uu" path="res://scenes/game_states/game_state_game_over.tscn" id="11_d1js4"]
+
+[sub_resource type="Theme" id="Theme_vksom"]
+default_font_size = 30
+
+[sub_resource type="Theme" id="Theme_ys6qm"]
+default_font_size = 30
 
 [node name="main" type="Node2D"]
 
@@ -144,12 +150,13 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 40
 
-[node name="DistanceUI" type="Control" parent="GameUI/PlayingUI/GoalUI"]
-visible = false
+[node name="DistanceUI" type="Control" parent="GameUI/PlayingUI/GoalUI" node_paths=PackedStringArray("upper_progress_label", "lower_progress_label")]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("5_tg1lt")
+upper_progress_label = NodePath("ColorRect/UppererProgressLabel")
+lower_progress_label = NodePath("ColorRect/LowerProgressLabel")
 
 [node name="ColorRect" type="ColorRect" parent="GameUI/PlayingUI/GoalUI/DistanceUI"]
 layout_mode = 0
@@ -157,6 +164,24 @@ offset_top = 520.0
 offset_right = 1920.0
 offset_bottom = 560.0
 color = Color(0, 1, 1, 1)
+
+[node name="UppererProgressLabel" type="Label" parent="GameUI/PlayingUI/GoalUI/DistanceUI/ColorRect"]
+layout_mode = 0
+offset_left = 362.0
+offset_top = -5.0
+offset_right = 439.0
+offset_bottom = 37.0
+theme = SubResource("Theme_vksom")
+text = "0%"
+
+[node name="LowerProgressLabel" type="Label" parent="GameUI/PlayingUI/GoalUI/DistanceUI/ColorRect"]
+layout_mode = 0
+offset_left = 1257.0
+offset_top = -3.0
+offset_right = 1300.0
+offset_bottom = 39.0
+theme = SubResource("Theme_ys6qm")
+text = "0%"
 
 [node name="GameStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_rro5f")

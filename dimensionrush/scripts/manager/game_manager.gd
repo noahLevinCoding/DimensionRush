@@ -19,11 +19,12 @@ var second_player_controls_resource : PlayerControlsResource = null
 var game_is_running : bool = false
 
 var game_seed = hash("DimensionRush")
-var level_distance : float = 50000
+var number_of_regions : int = 3
+var level_distance : float = 1.0
 var level_time : float = 10.0
 var remaining_level_time : float = 0.0
 
-var debug_mode = false;
+var debug_mode = false
 
 func reset():
 	SignalManager.close_connection.emit()
