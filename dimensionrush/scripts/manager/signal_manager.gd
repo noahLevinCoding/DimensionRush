@@ -16,3 +16,4 @@ signal on_player_ready(player: Player)
 
 signal changed_game_state
 signal changed_game_mode
+signal changed_game_seed

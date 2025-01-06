@@ -51,11 +51,12 @@ func _on_time_button_up():
 	distance_node.visible = false
 		
 @rpc
-func select_game_mode_on_time_button_up(time, seed):
+func select_game_mode_on_time_button_up(time, seed, auto_seed):
 	GameManager.game_mode = GameManager.GAME_MODES.TIME
 	GameManager.level_time = time
 	
 	GameManager.game_seed = seed
+	GameManager.auto_game_seed - auto_seed
 		
 	state_transition.emit(self, "InitGame")
 
@@ -68,11 +69,12 @@ func _on_distance_button_up():
 
 	
 @rpc
-func select_game_mode_on_distance_button_up(distance, seed):
+func select_game_mode_on_distance_button_up(distance, seed, auto_seed):
 	GameManager.game_mode = GameManager.GAME_MODES.DISTANCE
 	GameManager.number_of_regions = distance
 	
 	GameManager.game_seed = seed
+	GameManager.auto_game_seed = auto_seed
 	
 	state_transition.emit(self, "InitGame")
 
@@ -94,12 +96,14 @@ func select_time(time):
 	
 	if(seed_line_edit.text.is_valid_int()):
 		GameManager.game_seed = int(seed_line_edit.text)
+		GameManager.auto_game_seed = false
 	else:
 		GameManager.game_seed = randi()
+		GameManager.auto_game_seed = true
 		
 	
 	if GameManager.is_server():
-		select_game_mode_on_time_button_up.rpc(time, GameManager.game_seed)
+		select_game_mode_on_time_button_up.rpc(time, GameManager.game_seed, GameManager.auto_game_seed)
 	
 	state_transition.emit(self, "InitGame")
 
@@ -127,10 +131,12 @@ func select_distance(distance):
 	
 	if(seed_line_edit.text.is_valid_int()):
 		GameManager.game_seed = int(seed_line_edit.text)
+		GameManager.auto_game_seed = false
 	else:
 		GameManager.game_seed = randi()
+		GameManager.auto_game_seed = true
 	
 	if GameManager.is_server():
-		select_game_mode_on_distance_button_up.rpc(distance, GameManager.game_seed)
+		select_game_mode_on_distance_button_up.rpc(distance, GameManager.game_seed, GameManager.auto_game_seed)
 	
 	state_transition.emit(self, "InitGame")
