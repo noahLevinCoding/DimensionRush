@@ -354,7 +354,7 @@ func spawn_end_room_predict() -> void:
 	next_room_predict.calc_width()
 	next_room_predict.position.x = current_room_predict.width + current_room_predict.position.x
 	
-	game_distance = next_room_predict.position.x + next_room_predict.width
+	game_distance = next_room_predict.position.x + next_room_predict.spawn_trigger.position.x
 	print("Spawn end room predict:")
 	print(game_distance)
 	

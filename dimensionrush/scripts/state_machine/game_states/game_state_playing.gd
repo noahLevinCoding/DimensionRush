@@ -24,6 +24,7 @@ func update_game_mode_time(delta):
 		_on_finish_button_up()
 
 func _on_finish_button_up():
+	#TODO: only if server
 	if GameManager.is_online_multiplayer():
 		playing_on_finish_button_up.rpc()
 	state_transition.emit(self, "GameOver")
@@ -34,6 +35,7 @@ func playing_on_finish_button_up():
 
 
 func _on_pause_button_up():
+	#TODO: only if server
 	if GameManager.is_online_multiplayer():
 		playing_on_pause_button_up.rpc()
 	state_transition.emit(self, "Pause")

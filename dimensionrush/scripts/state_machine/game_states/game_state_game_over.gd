@@ -1,9 +1,33 @@
 class_name GameStateGameOver
 extends State
 
+@export var winner_label : Label
+
+var upper_player : Player = null
+var lower_player : Player = null
+
+func _ready() -> void:
+	SignalManager.on_player_ready.connect(on_player_ready)
+
+func on_player_ready(player: Player):
+	if player.is_upper:
+		upper_player = player;
+	else:
+		lower_player = player
+
 func enter():
 	visible = true
 	GameManager.game_is_running = false
+	
+	var upper_player_position_x = upper_player.position.x
+	var lower_player_position_x = -lower_player.position.x
+	
+	var upper_player_wins = upper_player_position_x >= lower_player_position_x
+	
+	if upper_player_wins:
+		winner_label.text = "Upper player wins!"
+	else:
+		winner_label.text = "Lower player wins!"
 	
 func exit():
 	visible = false
