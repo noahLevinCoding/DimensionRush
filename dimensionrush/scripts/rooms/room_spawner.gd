@@ -54,8 +54,13 @@ var rng_predict 		= RandomNumberGenerator.new()
 
 var game_distance : float = 0
 
+func _enter_tree() -> void:
+	SignalManager.player_died.connect(_on_player_died)
 
-
+func _on_player_died(player: Player):
+	if player.is_upper == self.is_upper:
+		player.global_position = current_room.spawnpoint.global_position
+		#TODO: reset velocity
 
 func reset() -> void:
 	if last_room != null:

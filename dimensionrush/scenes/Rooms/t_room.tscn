@@ -14,12 +14,13 @@ width = 20
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_havgt"]
 size = Vector2(20, 540)
 
-[node name="Room" type="Node2D" node_paths=PackedStringArray("spawn_trigger", "door_sprite", "door_coll_shape", "spawn_coll_shape")]
+[node name="Room" type="Node2D" node_paths=PackedStringArray("spawn_trigger", "door_sprite", "door_coll_shape", "spawn_coll_shape", "spawnpoint")]
 script = ExtResource("1_i1amk")
 spawn_trigger = NodePath("SpawnTrigger")
 door_sprite = NodePath("Door/DoorSprite")
 door_coll_shape = NodePath("Door/DoorCollisionShape2D")
 spawn_coll_shape = NodePath("SpawnTrigger/SpawnCollisionShape2D")
+spawnpoint = NodePath("Spawnpoint")
 
 [node name="Background" type="Sprite2D" parent="."]
 
@@ -52,6 +53,9 @@ position = Vector2(400, 270)
 shape = SubResource("RectangleShape2D_havgt")
 
 [node name="ItemContainer" type="Node2D" parent="."]
+
+[node name="Spawnpoint" type="Node2D" parent="."]
+position = Vector2(100, 300)
 
 [connection signal="body_entered" from="SpawnTrigger" to="." method="_on_spawn_trigger_body_entered"]
 [connection signal="body_entered" from="CameraLimitTrigger" to="." method="_on_camera_limit_trigger_body_entered"]

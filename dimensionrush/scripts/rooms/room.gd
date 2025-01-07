@@ -5,6 +5,7 @@ extends Node2D
 @export var door_sprite : Sprite2D
 @export var door_coll_shape: CollisionShape2D
 @export var spawn_coll_shape: CollisionShape2D
+@export var spawnpoint : Node2D
 
 signal spawn_trigger_entered(player: Player)
 
