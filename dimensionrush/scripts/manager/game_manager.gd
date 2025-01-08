@@ -16,7 +16,16 @@ var client_peer_id : int = 0
 var first_player_controls_resource 	: PlayerControlsResource = null
 var second_player_controls_resource : PlayerControlsResource = null
 
-var game_is_running : bool = false
+var game_is_running : bool = false :
+	set(value):
+		game_is_running = value
+		
+		if game_is_running:
+			Engine.time_scale = 1.0
+		else:
+			Engine.time_scale = 0.0
+
+
 
 var game_seed = hash("DimensionRush") : 
 	set(value):

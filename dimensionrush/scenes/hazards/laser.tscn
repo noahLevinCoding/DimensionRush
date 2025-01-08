@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://boad42diq3l0m"]
+
+[ext_resource type="Script" path="res://scripts/hazards/laser.gd" id="1_q63rg"]
+[ext_resource type="Texture2D" uid="uid://c8iycc12icthi" path="res://assets/laser/red_circle.png" id="2_16n7k"]
+
+[sub_resource type="Curve2D" id="Curve2D_erta3"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -25, 41, 0, 0, 0, 0, 53, -80)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_dj1nn"]
+resource_local_to_scene = true
+
+[node name="Laser" type="Node2D" node_paths=PackedStringArray("start_node", "end_node", "collision_polygon")]
+script = ExtResource("1_q63rg")
+start_node = NodePath("StartPath/StartPosition")
+end_node = NodePath("EndPath/EndPosition")
+collision_polygon = NodePath("Area/CollisionPolygon")
+
+[node name="StartPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_erta3")
+
+[node name="StartPosition" type="PathFollow2D" parent="StartPath"]
+position = Vector2(-25, 41)
+rotation = -0.998207
+loop = false
+
+[node name="StartSprite" type="Sprite2D" parent="StartPath/StartPosition"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_16n7k")
+
+[node name="EndPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_dj1nn")
+
+[node name="EndPosition" type="PathFollow2D" parent="EndPath"]
+position = Vector2(100, 0)
+loop = false
+
+[node name="EndSprite" type="Sprite2D" parent="EndPath/EndPosition"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_16n7k")
+
+[node name="Area" type="Area2D" parent="."]
+
+[node name="CollisionPolygon" type="CollisionPolygon2D" parent="Area"]
+position = Vector2(63, 50)
+rotation = 0.565487
+
+[connection signal="body_entered" from="Area" to="." method="_on_area_2d_body_entered"]

@@ -1,8 +1,19 @@
-[gd_scene load_steps=4 format=4 uid="uid://cybckaxs5lam6"]
+[gd_scene load_steps=7 format=4 uid="uid://cybckaxs5lam6"]
 
 [ext_resource type="PackedScene" uid="uid://bty1jksbcxbxj" path="res://scenes/rooms/t_room.tscn" id="1_kx21q"]
 [ext_resource type="TileSet" uid="uid://wgis1jtxf8re" path="res://resources/tilesets/tileset_1.tres" id="2_wvgkj"]
 [ext_resource type="PackedScene" uid="uid://cua43yccqjyu2" path="res://scenes/items/item_box.tscn" id="3_403ry"]
+[ext_resource type="PackedScene" uid="uid://boad42diq3l0m" path="res://scenes/hazards/laser.tscn" id="4_ke308"]
+
+[sub_resource type="Curve2D" id="Curve2D_pk4gk"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -53, 82, 0, 0, 0, 0, 13, -42)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_vpl2n"]
+resource_local_to_scene = true
 
 [node name="Room" instance=ExtResource("1_kx21q")]
 
@@ -24,3 +35,26 @@ position = Vector2(395, 462)
 
 [node name="ItemBox2" parent="ItemContainer" index="1" instance=ExtResource("3_403ry")]
 position = Vector2(521, 458)
+
+[node name="Laser" parent="." index="7" instance=ExtResource("4_ke308")]
+position = Vector2(1167, 378)
+width = 20
+has_timer = true
+off_time = 5.0
+has_start_path = true
+start_path_velocity = 100.0
+
+[node name="StartPath" parent="Laser" index="0"]
+curve = SubResource("Curve2D_pk4gk")
+
+[node name="StartPosition" parent="Laser/StartPath" index="0"]
+position = Vector2(-53, 82)
+rotation = -1.08168
+
+[node name="EndPath" parent="Laser" index="1"]
+curve = SubResource("Curve2D_vpl2n")
+
+[node name="EndPosition" parent="Laser/EndPath" index="0"]
+position = Vector2(306, -225)
+
+[editable path="Laser"]
