@@ -5,6 +5,7 @@ extends Resource
 @export var id : int
 
 @export var item : String
+@export var action : String
 
 @export var left : String
 @export var right : String

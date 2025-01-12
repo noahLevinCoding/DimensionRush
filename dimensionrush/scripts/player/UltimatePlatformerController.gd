@@ -310,6 +310,9 @@ func _process(_delta):
 	
 	if Input.is_action_just_pressed(player_controls_resource.item):
 		inventory.use_item()
+		
+	if Input.is_action_just_pressed(player_controls_resource.action):
+		SignalManager.on_player_action.emit(self)
 	
 	#INFO animations
 	#directions

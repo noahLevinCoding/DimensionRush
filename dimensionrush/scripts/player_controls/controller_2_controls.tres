@@ -6,7 +6,15 @@
 script = ExtResource("1_pkd65")
 type = 1
 id = 2
+item = "fill"
+action = "fill"
 left = "controller_2_left"
 right = "controller_2_right"
 up = "controller_2_up"
 down = "controller_2_down"
+jump = "fill"
+run = "fill"
+latch = "fill"
+dash = "fill"
+roll = "fill"
+twirl = "fill"

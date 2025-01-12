@@ -14,6 +14,7 @@ signal ping_other_player(player: Player)
 signal ping_other_player_response(other_player: Player)
 
 signal on_player_ready(player: Player)
+signal on_player_action(player : Player)
 
 signal changed_game_state
 signal changed_game_mode

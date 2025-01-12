@@ -6,7 +6,8 @@
 script = ExtResource("1_bgbhs")
 type = 1
 id = 1
-item = ""
+item = "fill"
+action = "fill"
 left = "controller_1_left"
 right = "controller_1_right"
 up = "controller_1_up"

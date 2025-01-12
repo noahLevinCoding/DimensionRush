@@ -7,6 +7,7 @@ script = ExtResource("1_n0r1y")
 type = 0
 id = 3
 item = "keyboard_1_item"
+action = "keyboard_1_action"
 left = "keyboard_1_left"
 right = "keyboard_1_right"
 up = "keyboard_1_up"

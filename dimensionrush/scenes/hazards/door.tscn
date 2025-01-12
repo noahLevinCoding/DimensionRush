@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://res0u8slxh8c"]
+
+[ext_resource type="Script" path="res://scripts/hazards/door.gd" id="1_0cvco"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iqlhc"]
+size = Vector2(20, 313)
+
+[node name="Door" type="Node2D" node_paths=PackedStringArray("col_shape")]
+script = ExtResource("1_0cvco")
+col_shape = NodePath("StaticBody2D/CollisionShape2D")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 146.5)
+shape = SubResource("RectangleShape2D_iqlhc")

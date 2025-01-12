@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bkcp6m6cuc5fh"]
+[gd_scene load_steps=24 format=3 uid="uid://bkcp6m6cuc5fh"]
 
 [ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="1_rro5f"]
 [ext_resource type="PackedScene" uid="uid://bdd2a752ovak" path="res://scenes/rooms/room_spawner.tscn" id="1_sb64c"]
@@ -11,8 +11,12 @@
 [ext_resource type="PackedScene" uid="uid://dyi2n3unvp0mn" path="res://scenes/game_states/game_state_select_two_player_controls.tscn" id="5_cxpx8"]
 [ext_resource type="Script" path="res://scripts/ui/distance_ui.gd" id="5_tg1lt"]
 [ext_resource type="PackedScene" uid="uid://lskje77wvt72" path="res://scenes/game_states/game_state_multiplayer_online_connection.tscn" id="6_2ui7l"]
+[ext_resource type="Texture2D" uid="uid://ddvum0aryra74" path="res://assets/progress_bar/gray.png" id="6_fpbm2"]
+[ext_resource type="Texture2D" uid="uid://uxstoisbdhw4" path="res://assets/progress_bar/over.png" id="7_5wdvj"]
 [ext_resource type="PackedScene" uid="uid://egty2a5uag5n" path="res://scenes/game_states/game_state_init_game.tscn" id="7_52gvj"]
+[ext_resource type="Texture2D" uid="uid://ddib3s76nnyp8" path="res://assets/progress_bar/blue.png" id="7_gbn30"]
 [ext_resource type="PackedScene" uid="uid://bnbiepdxbcoyf" path="res://scenes/game_states/game_state_select_game_mode.tscn" id="7_oxu7e"]
+[ext_resource type="Texture2D" uid="uid://bg8qbahh4k00n" path="res://assets/progress_bar/red.png" id="8_a3a04"]
 [ext_resource type="PackedScene" uid="uid://doa2j3gkdu6qe" path="res://scenes/game_states/game_state_playing.tscn" id="9_c2l1w"]
 [ext_resource type="PackedScene" uid="uid://bq7510d8vrixw" path="res://scenes/player/player.tscn" id="9_g6w65"]
 [ext_resource type="PackedScene" uid="uid://cn6a6e4m5ahi5" path="res://scenes/game_states/game_state_pause.tscn" id="10_bbp8v"]
@@ -66,7 +70,6 @@ is_upper = false
 [node name="GameUI" type="Node" parent="."]
 
 [node name="PlayingUI" type="CanvasLayer" parent="GameUI"]
-visible = false
 script = ExtResource("2_wuw4b")
 
 [node name="InventoryUI" type="Control" parent="GameUI/PlayingUI"]
@@ -85,8 +88,10 @@ foreground = NodePath("ColorRect/TextureRect")
 
 [node name="ColorRect" type="ColorRect" parent="GameUI/PlayingUI/InventoryUI/UpperInventoryUI"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 20.0
+offset_top = 40.0
+offset_right = 60.0
+offset_bottom = 80.0
 
 [node name="TextureRect" type="TextureRect" parent="GameUI/PlayingUI/InventoryUI/UpperInventoryUI/ColorRect"]
 layout_mode = 0
@@ -102,10 +107,10 @@ foreground = NodePath("ColorRect/TextureRect2")
 
 [node name="ColorRect" type="ColorRect" parent="GameUI/PlayingUI/InventoryUI/LowerInventoryUI"]
 layout_mode = 0
-offset_left = 1880.0
-offset_top = 540.0
-offset_right = 1920.0
-offset_bottom = 580.0
+offset_left = 1860.0
+offset_top = 580.0
+offset_right = 1900.0
+offset_bottom = 620.0
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
@@ -150,13 +155,16 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 40
 
-[node name="DistanceUI" type="Control" parent="GameUI/PlayingUI/GoalUI" node_paths=PackedStringArray("upper_progress_label", "lower_progress_label")]
+[node name="DistanceUI" type="Control" parent="GameUI/PlayingUI/GoalUI" node_paths=PackedStringArray("upper_progress_label", "lower_progress_label", "upper_progress_bar", "lower_progress_bar")]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("5_tg1lt")
 upper_progress_label = NodePath("ColorRect/UppererProgressLabel")
 lower_progress_label = NodePath("ColorRect/LowerProgressLabel")
+upper_progress_bar = NodePath("ColorRect/UpperProgressBar")
+lower_progress_bar = NodePath("ColorRect/LowerProgressBar")
 
 [node name="ColorRect" type="ColorRect" parent="GameUI/PlayingUI/GoalUI/DistanceUI"]
 layout_mode = 0
@@ -182,6 +190,30 @@ offset_right = 1300.0
 offset_bottom = 39.0
 theme = SubResource("Theme_ys6qm")
 text = "0%"
+
+[node name="UpperProgressBar" type="TextureProgressBar" parent="GameUI/PlayingUI/GoalUI/DistanceUI/ColorRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+max_value = 1.0
+step = 0.001
+texture_under = ExtResource("6_fpbm2")
+texture_over = ExtResource("7_5wdvj")
+texture_progress = ExtResource("7_gbn30")
+texture_progress_offset = Vector2(4, 0)
+
+[node name="LowerProgressBar" type="TextureProgressBar" parent="GameUI/PlayingUI/GoalUI/DistanceUI/ColorRect"]
+layout_mode = 0
+offset_left = 960.0
+offset_right = 1920.0
+offset_bottom = 40.0
+max_value = 1.0
+step = 0.001
+fill_mode = 1
+texture_under = ExtResource("6_fpbm2")
+texture_over = ExtResource("7_5wdvj")
+texture_progress = ExtResource("8_a3a04")
+texture_progress_offset = Vector2(4, 0)
 
 [node name="GameStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_rro5f")

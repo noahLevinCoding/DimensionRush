@@ -177,8 +177,6 @@ func instantiate_rooms_predict() -> void:
 	
 	
 	game_distance = next_room_predict.position.x + next_room_predict.width
-	print("Instantiate room predict:")
-	print(game_distance)
 	spawn_room_predict()
 	
 
@@ -194,8 +192,6 @@ func _on_spawn_trigger_entered(player: Player) -> void:
 		next_room.spawn_trigger_entered.disconnect(_on_spawn_trigger_entered)
 	next_room = null
 	call_deferred("spawn_room")
-	
-	print(player.position.x)
 	
 
 func spawn_room_in_region():
@@ -230,8 +226,6 @@ func spawn_room_in_region_predict():
 	next_room_predict.position.x = current_room_predict.width + current_room_predict.position.x
 	
 	game_distance = next_room_predict.position.x + next_room_predict.width
-	print("Spawn room in region predict:")
-	print(game_distance)
 	spawn_room_predict()
 
 
@@ -251,8 +245,6 @@ func spawn_end_room_in_region_predict():
 	next_room_predict.position.x = current_room_predict.width + current_room_predict.position.x
 	
 	game_distance = next_room_predict.position.x + next_room_predict.width
-	print("Spawn end room in region predict:")
-	print(game_distance)
 	spawn_room_predict()
 	
 		
@@ -314,8 +306,6 @@ func spawn_start_room_in_new_region_predict():
 	next_room_predict.position.x = current_room_predict.width + current_room_predict.position.x
 	
 	game_distance = next_room_predict.position.x + next_room_predict.width
-	print("Spawn start room in region predict:")
-	print(game_distance)
 	spawn_room_predict()
 	
 func spawn_room() -> void:
@@ -360,8 +350,6 @@ func spawn_end_room_predict() -> void:
 	next_room_predict.position.x = current_room_predict.width + current_room_predict.position.x
 	
 	game_distance = next_room_predict.position.x + next_room_predict.spawn_trigger.position.x
-	print("Spawn end room predict:")
-	print(game_distance)
 	
 	GameManager.level_distance = game_distance
 	

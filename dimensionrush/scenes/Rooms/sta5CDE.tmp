@@ -27,9 +27,8 @@ position = Vector2(395, 462)
 [node name="ItemBox2" parent="ItemContainer" index="1" instance=ExtResource("3_403ry")]
 position = Vector2(521, 458)
 
-[node name="Switch" parent="." index="7" node_paths=PackedStringArray("switchables") instance=ExtResource("4_4ie6e")]
+[node name="Switch" parent="." index="7" instance=ExtResource("4_4ie6e")]
 position = Vector2(1481, 418)
-switchables = [NodePath("../Door2")]
 
 [node name="Door2" parent="." index="8" instance=ExtResource("5_vghyy")]
 position = Vector2(1742, 211)
