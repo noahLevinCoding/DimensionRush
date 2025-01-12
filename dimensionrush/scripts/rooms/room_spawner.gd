@@ -60,7 +60,7 @@ func _enter_tree() -> void:
 func _on_player_died(player: Player):
 	if player.is_upper == self.is_upper:
 		player.global_position = current_room.spawnpoint.global_position
-		#TODO: reset velocity
+		player.velocity = Vector2.ZERO
 
 func reset() -> void:
 	if last_room != null:
