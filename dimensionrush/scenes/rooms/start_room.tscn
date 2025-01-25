@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=4 uid="uid://cybckaxs5lam6"]
+[gd_scene load_steps=9 format=4 uid="uid://cybckaxs5lam6"]
 
 [ext_resource type="PackedScene" uid="uid://bty1jksbcxbxj" path="res://scenes/rooms/t_room.tscn" id="1_kx21q"]
 [ext_resource type="TileSet" uid="uid://wgis1jtxf8re" path="res://resources/tilesets/tileset_1.tres" id="2_wvgkj"]
 [ext_resource type="PackedScene" uid="uid://cua43yccqjyu2" path="res://scenes/items/item_box.tscn" id="3_403ry"]
 [ext_resource type="PackedScene" uid="uid://m6w14awjdqvb" path="res://scenes/hazards/shooter.tscn" id="4_g6n0d"]
+[ext_resource type="PackedScene" uid="uid://res0u8slxh8c" path="res://scenes/hazards/door.tscn" id="5_b108u"]
+[ext_resource type="PackedScene" uid="uid://dfbqbwd2fuj56" path="res://scenes/hazards/switch.tscn" id="6_6s1sn"]
+[ext_resource type="PackedScene" uid="uid://deuj6f2t3slko" path="res://scenes/hazards/portal.tscn" id="7_yilxu"]
+[ext_resource type="PackedScene" uid="uid://boad42diq3l0m" path="res://scenes/hazards/laser.tscn" id="8_7q648"]
 
 [node name="Room" instance=ExtResource("1_kx21q")]
 
@@ -31,5 +35,19 @@ position = Vector2(1176, 436)
 
 [node name="Direction" parent="Shooter" index="1"]
 target_position = Vector2(72, 46)
+
+[node name="Door2" parent="." index="8" instance=ExtResource("5_b108u")]
+position = Vector2(1457, 202)
+
+[node name="Switch" parent="." index="9" instance=ExtResource("6_6s1sn")]
+position = Vector2(1365, 424)
+
+[node name="Portal" parent="." index="10" instance=ExtResource("7_yilxu")]
+position = Vector2(1594, 466)
+
+[node name="Laser" parent="." index="11" instance=ExtResource("8_7q648")]
+position = Vector2(922, 395)
+has_timer = true
+has_start_path = true
 
 [editable path="Shooter"]
