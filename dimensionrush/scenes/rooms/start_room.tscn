@@ -39,11 +39,12 @@ target_position = Vector2(72, 46)
 [node name="Door2" parent="." index="8" instance=ExtResource("5_b108u")]
 position = Vector2(1457, 202)
 
-[node name="Switch" parent="." index="9" instance=ExtResource("6_6s1sn")]
+[node name="Switch" parent="." index="9" node_paths=PackedStringArray("switchables") instance=ExtResource("6_6s1sn")]
 position = Vector2(1365, 424)
+switchables = [NodePath("../Door2")]
 
 [node name="Portal" parent="." index="10" instance=ExtResource("7_yilxu")]
-position = Vector2(1594, 466)
+position = Vector2(1592, 405)
 
 [node name="Laser" parent="." index="11" instance=ExtResource("8_7q648")]
 position = Vector2(922, 395)
