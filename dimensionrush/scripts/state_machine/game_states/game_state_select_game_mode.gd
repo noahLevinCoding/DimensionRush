@@ -56,7 +56,7 @@ func select_game_mode_on_time_button_up(time, seed, auto_seed):
 	GameManager.level_time = time
 	
 	GameManager.game_seed = seed
-	GameManager.auto_game_seed - auto_seed
+	GameManager.auto_game_seed = auto_seed
 		
 	state_transition.emit(self, "InitGame")
 

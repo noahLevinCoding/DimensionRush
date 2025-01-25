@@ -1,8 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://bq7510d8vrixw"]
+[gd_scene load_steps=25 format=3 uid="uid://bq7510d8vrixw"]
 
 [ext_resource type="Script" path="res://scripts/player/UltimatePlatformerController.gd" id="1_6y4hb"]
+[ext_resource type="Texture2D" uid="uid://bc2mxp46iyxul" path="res://assets/PixelPrototypePlayer/Sprites/Jump/Jump03.png" id="2_5yved"]
 [ext_resource type="Texture2D" uid="uid://bylpkissbbhfj" path="res://assets/PixelPrototypePlayer/Sprites/PlayerSheet.png" id="2_cn88e"]
 [ext_resource type="PackedScene" uid="uid://gqh3vbxwi676" path="res://scenes/player/inventory.tscn" id="3_iyr5i"]
+[ext_resource type="Texture2D" uid="uid://bbi4xc5scsiny" path="res://assets/PixelPrototypePlayer/Sprites/Jump/Jump01.png" id="4_7uoc8"]
 [ext_resource type="Script" path="res://scripts/effects/effect_handler.gd" id="4_cj2a5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v31ud"]
@@ -69,6 +71,14 @@ region = Rect2(672, 252, 96, 84)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("2_5yved")
+}],
+"loop": false,
+"name": &"falling",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_v31ud")
 }, {
 "duration": 1.0,
@@ -92,6 +102,14 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_7uoc8")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -181,11 +199,13 @@ effect_container = NodePath("EffectContainer")
 max_speed = 500.0
 jumpHeight = 10.0
 run = true
+jump = true
 idle = true
+falling = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tr1tu")
-animation = &"idle"
+animation = &"falling"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -210,7 +210,6 @@ func _enter_tree():
 	SignalManager.reset_multiplayer_authority.connect(reset_multiplayer_authority)
 	SignalManager.ping_other_player.connect(ping_other_player)
 	
-	SignalManager.on_player_ready.emit(self)
 
 func _exit_tree() -> void:
 	SignalManager.on_player_destroy.emit(self)
@@ -228,6 +227,8 @@ func _ready():
 	col = PlayerCollider
 	
 	_updateData()
+	
+	SignalManager.on_player_ready.emit(self)
 	
 func _updateData():
 	maxSpeed = max_speed * max_speed_multiplier

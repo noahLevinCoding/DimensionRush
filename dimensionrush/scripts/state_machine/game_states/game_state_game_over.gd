@@ -11,7 +11,6 @@ func _ready() -> void:
 	SignalManager.on_player_destroy.connect(on_player_destroy)
 
 func on_player_ready(player: Player):
-	print(player)
 	if player.is_upper:
 		upper_player = player;
 	else:
