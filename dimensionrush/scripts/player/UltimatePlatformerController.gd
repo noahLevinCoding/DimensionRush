@@ -212,6 +212,9 @@ func _enter_tree():
 	
 	SignalManager.on_player_ready.emit(self)
 
+func _exit_tree() -> void:
+	SignalManager.on_player_destroy.emit(self)
+
 func reset_multiplayer_authority():
 	set_multiplayer_authority(1);
 

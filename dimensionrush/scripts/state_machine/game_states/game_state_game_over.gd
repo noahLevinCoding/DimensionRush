@@ -8,12 +8,20 @@ var lower_player : Player = null
 
 func _ready() -> void:
 	SignalManager.on_player_ready.connect(on_player_ready)
+	SignalManager.on_player_destroy.connect(on_player_destroy)
 
 func on_player_ready(player: Player):
+	print(player)
 	if player.is_upper:
 		upper_player = player;
 	else:
 		lower_player = player
+
+func on_player_destroy(player: Player):
+	if player.is_upper:
+		upper_player = null;
+	else:
+		lower_player = null
 
 func enter():
 	visible = true

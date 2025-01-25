@@ -13,6 +13,7 @@ var lower_player : Player = null
 func _ready() -> void:
 	SignalManager.changed_game_mode.connect(changed_game_mode)
 	SignalManager.on_player_ready.connect(on_player_ready)
+	SignalManager.on_player_destroy.connect(on_player_destroy)
  
 func changed_game_mode():
 	visible = (GameManager.game_mode == GameManager.GAME_MODES.DISTANCE)
@@ -22,6 +23,12 @@ func on_player_ready(player: Player):
 		upper_player = player;
 	else:
 		lower_player = player
+		
+func on_player_destroy(player: Player):
+	if player.is_upper:
+		upper_player = null;
+	else:
+		lower_player = null
 
 func _physics_process(delta: float):
 	if visible and upper_player and lower_player and not is_zero_approx(GameManager.level_distance):
