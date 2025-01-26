@@ -1,12 +1,10 @@
 class_name Bullet
 extends Node2D
 
-
-var direction : Vector2 = Vector2(1, 0)
 var speed : float = 100.0
 
 func _physics_process(delta: float) -> void:
-	position += direction * delta * speed
+	position += Vector2.RIGHT * delta * speed
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

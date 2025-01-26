@@ -1,18 +1,66 @@
-[gd_scene load_steps=4 format=3 uid="uid://m6w14awjdqvb"]
+[gd_scene load_steps=12 format=3 uid="uid://m6w14awjdqvb"]
 
 [ext_resource type="Script" path="res://scripts/hazards/shooter.gd" id="1_qxdcl"]
-[ext_resource type="Texture2D" uid="uid://c8iycc12icthi" path="res://assets/laser/red_circle.png" id="1_ubgeo"]
 [ext_resource type="PackedScene" uid="uid://1hufxi3w7sg3" path="res://scenes/hazards/bullet.tscn" id="2_sqop0"]
+[ext_resource type="Texture2D" uid="uid://dv4g40i7gopfb" path="res://assets/PixelPrototypePlayer/Sprites/Weapons/BowDraw/BowDraw03.png" id="3_mp2av"]
+[ext_resource type="Texture2D" uid="uid://bdru11ga4e5yq" path="res://assets/PixelPrototypePlayer/Sprites/Weapons/BowAim/BowAim01.png" id="4_ip1ic"]
+[ext_resource type="Texture2D" uid="uid://u13g2u0awwep" path="res://assets/PixelPrototypePlayer/Sprites/Weapons/BowAim/BowAim02.png" id="5_jphto"]
+[ext_resource type="Texture2D" uid="uid://3h3iorcnv58s" path="res://assets/PixelPrototypePlayer/Sprites/Weapons/BowFire/BowFire01.png" id="6_joa43"]
+[ext_resource type="Texture2D" uid="uid://kgqpdml8cmrg" path="res://assets/PixelPrototypePlayer/Sprites/Weapons/BowFire/BowFire02.png" id="7_fotoh"]
+[ext_resource type="Texture2D" uid="uid://dlbuysi33ia6q" path="res://assets/PixelPrototypePlayer/Sprites/Weapons/BowFire/BowFire03.png" id="8_r8jg6"]
+[ext_resource type="Texture2D" uid="uid://ck77bpktoqo1q" path="res://assets/PixelPrototypePlayer/Sprites/Weapons/BowFire/BowFire04.png" id="9_8pv5c"]
+[ext_resource type="Texture2D" uid="uid://8s64lpklvs55" path="res://assets/PixelPrototypePlayer/Sprites/Weapons/BowFire/BowFire05.png" id="10_7s4qw"]
 
-[node name="Shooter" type="Node2D" node_paths=PackedStringArray("raycast")]
+[sub_resource type="SpriteFrames" id="SpriteFrames_a215v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_mp2av")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ip1ic")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jphto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_joa43")
+}],
+"loop": false,
+"name": &"prepare",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_fotoh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_r8jg6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_8pv5c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_7s4qw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mp2av")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 20.0
+}]
+
+[node name="Shooter" type="Node2D" node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("1_qxdcl")
-raycast = NodePath("Direction")
+speed = 300.0
+animated_sprite = NodePath("Sprite")
 bullet_scene = ExtResource("2_sqop0")
 
-[node name="Sprite" type="Sprite2D" parent="."]
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("1_ubgeo")
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_a215v")
+animation = &"prepare"
+offset = Vector2(-8, -2)
 
-[node name="Direction" type="RayCast2D" parent="."]
-enabled = false
-target_position = Vector2(36, -47)
+[connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]

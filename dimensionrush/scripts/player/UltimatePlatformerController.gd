@@ -376,6 +376,7 @@ func _process(_delta):
 			
 		#crouch
 		if crouching and !rolling:
+			print("Crouching and not rolling")
 			if abs(velocity.x) > 10:
 				anim.speed_scale = 1
 				anim.play("crouch_walk")

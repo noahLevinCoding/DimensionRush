@@ -1,47 +1,107 @@
-[gd_scene load_steps=5 format=3 uid="uid://drve2dny0aalb"]
+[gd_scene load_steps=10 format=3 uid="uid://drve2dny0aalb"]
 
 [ext_resource type="Script" path="res://scripts/state_machine/game_states/game_state_titlescreen.gd" id="1_dnv71"]
+[ext_resource type="Texture2D" uid="uid://bvqhffe4dpux0" path="res://assets/titlescreen/titlescreen.png" id="2_clwf4"]
+[ext_resource type="FontFile" uid="uid://u3ide4v6ikg2" path="res://assets/kenney_ui-pack-space-expansion/Font/Kenney Future.ttf" id="3_b4jus"]
+[ext_resource type="Texture2D" uid="uid://c2bp8m1d6brjw" path="res://assets/kenney_ui-pack-space-expansion/PNG/Blue/Double/bar_round_gloss_large.png" id="3_qa2ps"]
+[ext_resource type="Texture2D" uid="uid://xcbrtpl5n6q0" path="res://assets/kenney_ui-pack-space-expansion/PNG/Grey/Default/bar_square_gloss_large.png" id="5_vy72l"]
+[ext_resource type="Texture2D" uid="uid://d4efsx60y2bq" path="res://assets/kenney_ui-pack-space-expansion/PNG/Grey/Double/bar_square_gloss_small.png" id="6_wewnm"]
 
 [sub_resource type="Theme" id="Theme_832dg"]
-default_font_size = 80
+default_font = ExtResource("3_b4jus")
+default_font_size = 90
 
-[sub_resource type="Theme" id="Theme_nl4gj"]
-default_font_size = 50
+[sub_resource type="Theme" id="Theme_o4lhl"]
+default_font = ExtResource("3_b4jus")
 
-[sub_resource type="Theme" id="Theme_ytpkb"]
+[sub_resource type="Theme" id="Theme_k0is2"]
 default_font_size = 50
 
 [node name="Titlescreen" type="Node2D"]
 script = ExtResource("1_dnv71")
 
-[node name="BackgroundColorRect" type="ColorRect" parent="."]
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(-90, 0)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("2_clwf4")
+centered = false
+
+[node name="Heading" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HeadingBackground" type="Sprite2D" parent="Heading"]
+position = Vector2(941.5, 400.45)
+scale = Vector2(3.90104, 5.89375)
+texture = ExtResource("3_qa2ps")
+
+[node name="HeadingLabel" type="Label" parent="Heading"]
+custom_minimum_size = Vector2(1920, 0)
+offset_top = 300.0
 offset_right = 1920.0
-offset_bottom = 1080.0
-color = Color(0.345261, 0.697965, 0.823645, 1)
-
-[node name="HeadingLabel" type="Label" parent="."]
-offset_left = 713.0
-offset_top = 431.0
-offset_right = 1136.0
-offset_bottom = 541.0
+offset_bottom = 507.0
 theme = SubResource("Theme_832dg")
-text = "Titlescreen"
+text = "Dimension
+Rush"
+horizontal_alignment = 1
 
-[node name="PlayButton" type="Button" parent="."]
-offset_left = 849.0
-offset_top = 643.0
-offset_right = 1025.0
-offset_bottom = 722.0
-theme = SubResource("Theme_nl4gj")
+[node name="Play" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 211.0
+offset_top = -169.0
+offset_right = 251.0
+offset_bottom = -129.0
+theme = SubResource("Theme_o4lhl")
+
+[node name="PlayBackground" type="TextureButton" parent="Play"]
+layout_mode = 0
+offset_left = 649.0
+offset_top = 790.0
+offset_right = 745.0
+offset_bottom = 814.0
+scale = Vector2(2.125, 3.20833)
+texture_normal = ExtResource("5_vy72l")
+
+[node name="Label" type="Label" parent="Play"]
+offset_left = 676.0
+offset_top = 801.0
+offset_right = 842.0
+offset_bottom = 858.0
+theme = SubResource("Theme_k0is2")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Play"
 
-[node name="ExitButton" type="Button" parent="."]
-offset_left = 894.0
-offset_top = 786.0
-offset_right = 991.0
-offset_bottom = 863.0
-theme = SubResource("Theme_ytpkb")
+[node name="Exit" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1046.0
+offset_top = 239.0
+offset_right = 1086.0
+offset_bottom = 279.0
+theme = SubResource("Theme_o4lhl")
+
+[node name="ExitBackground" type="TextureButton" parent="Exit"]
+layout_mode = 0
+offset_left = 626.0
+offset_top = 757.0
+offset_right = 719.0
+offset_bottom = 789.0
+scale = Vector2(2.125, 3.20833)
+texture_normal = ExtResource("6_wewnm")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Exit"]
+offset_left = 660.0
+offset_top = 779.0
+offset_right = 801.0
+offset_bottom = 836.0
+theme = SubResource("Theme_k0is2")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Exit"
 
-[connection signal="button_up" from="PlayButton" to="." method="_on_play_button_up"]
-[connection signal="button_up" from="ExitButton" to="." method="_on_exit_button_up"]
+[connection signal="button_up" from="Play/PlayBackground" to="." method="_on_play_button_up"]
+[connection signal="button_up" from="Exit/ExitBackground" to="." method="_on_exit_button_up"]

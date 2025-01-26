@@ -32,9 +32,7 @@ position = Vector2(521, 458)
 
 [node name="Shooter" parent="." index="7" instance=ExtResource("4_g6n0d")]
 position = Vector2(1176, 436)
-
-[node name="Direction" parent="Shooter" index="1"]
-target_position = Vector2(72, 46)
+rotation = 3.14159
 
 [node name="Door2" parent="." index="8" instance=ExtResource("5_b108u")]
 position = Vector2(1457, 202)
