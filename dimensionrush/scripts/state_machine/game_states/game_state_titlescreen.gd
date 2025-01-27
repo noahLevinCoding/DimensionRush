@@ -9,14 +9,15 @@ func enter():
 	var args = OS.get_cmdline_args()
 	if "debug" in args:
 		GameManager.debug_mode = true
-		_on_play_button_up()
+		_on_play_button_pressed()
 	
 	
 func exit():
 	visible = false
 
-func _on_play_button_up():
+func _on_play_button_pressed() -> void:
 	state_transition.emit(self, "SelectPlayerMode")
 
-func _on_exit_button_up():
+
+func _on_exit_button_pressed() -> void:
 	get_tree().quit()

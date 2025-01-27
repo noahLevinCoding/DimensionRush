@@ -1,11 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://drve2dny0aalb"]
+[gd_scene load_steps=15 format=3 uid="uid://drve2dny0aalb"]
 
 [ext_resource type="Script" path="res://scripts/state_machine/game_states/game_state_titlescreen.gd" id="1_dnv71"]
-[ext_resource type="Texture2D" uid="uid://bvqhffe4dpux0" path="res://assets/titlescreen/titlescreen.png" id="2_clwf4"]
+[ext_resource type="Texture2D" uid="uid://plnk2l8lsbca" path="res://assets/titlescreen/3.webp" id="2_h8kot"]
 [ext_resource type="FontFile" uid="uid://u3ide4v6ikg2" path="res://assets/kenney_ui-pack-space-expansion/Font/Kenney Future.ttf" id="3_b4jus"]
 [ext_resource type="Texture2D" uid="uid://c2bp8m1d6brjw" path="res://assets/kenney_ui-pack-space-expansion/PNG/Blue/Double/bar_round_gloss_large.png" id="3_qa2ps"]
 [ext_resource type="Texture2D" uid="uid://xcbrtpl5n6q0" path="res://assets/kenney_ui-pack-space-expansion/PNG/Grey/Default/bar_square_gloss_large.png" id="5_vy72l"]
+[ext_resource type="Texture2D" uid="uid://yxdlb6fgqy45" path="res://assets/kenney_ui-pack-space-expansion/buttons/bar_square_gloss_large_black_pressed.png" id="6_5575u"]
+[ext_resource type="Texture2D" uid="uid://cyomx7lrxu7ay" path="res://assets/kenney_ui-pack-space-expansion/buttons/bar_square_gloss_large_black.png" id="6_q8ffd"]
 [ext_resource type="Texture2D" uid="uid://d4efsx60y2bq" path="res://assets/kenney_ui-pack-space-expansion/PNG/Grey/Double/bar_square_gloss_small.png" id="6_wewnm"]
+[ext_resource type="Script" path="res://scripts/ui/button/text_texture_button.gd" id="8_fkxyh"]
+[ext_resource type="Script" path="res://scripts/ui/button/custom_label.gd" id="9_fqsvw"]
 
 [sub_resource type="Theme" id="Theme_832dg"]
 default_font = ExtResource("3_b4jus")
@@ -15,18 +19,22 @@ default_font_size = 90
 default_font = ExtResource("3_b4jus")
 
 [sub_resource type="Theme" id="Theme_k0is2"]
-default_font_size = 50
+default_font_size = 60
+
+[sub_resource type="Theme" id="Theme_lpumd"]
+default_font = ExtResource("3_b4jus")
+default_font_size = 40
 
 [node name="Titlescreen" type="Node2D"]
 script = ExtResource("1_dnv71")
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(-90, 0)
-scale = Vector2(1.1, 1.1)
-texture = ExtResource("2_clwf4")
+scale = Vector2(1.072, 1.056)
+texture = ExtResource("2_h8kot")
 centered = false
 
 [node name="Heading" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -39,6 +47,7 @@ texture = ExtResource("3_qa2ps")
 
 [node name="HeadingLabel" type="Label" parent="Heading"]
 custom_minimum_size = Vector2(1920, 0)
+layout_mode = 0
 offset_top = 300.0
 offset_right = 1920.0
 offset_bottom = 507.0
@@ -50,29 +59,39 @@ horizontal_alignment = 1
 [node name="Play" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 211.0
-offset_top = -169.0
-offset_right = 251.0
-offset_bottom = -129.0
+offset_left = 221.0
+offset_top = 118.0
+offset_right = 261.0
+offset_bottom = 158.0
 theme = SubResource("Theme_o4lhl")
 
-[node name="PlayBackground" type="TextureButton" parent="Play"]
+[node name="PlayBackground" type="TextureButton" parent="Play" node_paths=PackedStringArray("label")]
 layout_mode = 0
-offset_left = 649.0
-offset_top = 790.0
-offset_right = 745.0
+offset_left = 538.0
+offset_top = 783.0
+offset_right = 758.0
 offset_bottom = 814.0
-scale = Vector2(2.125, 3.20833)
+scale = Vector2(1.92208, 3.08833)
 texture_normal = ExtResource("5_vy72l")
+texture_pressed = ExtResource("6_5575u")
+texture_hover = ExtResource("6_q8ffd")
+stretch_mode = 0
+script = ExtResource("8_fkxyh")
+label = NodePath("../Label")
 
 [node name="Label" type="Label" parent="Play"]
-offset_left = 676.0
-offset_top = 801.0
-offset_right = 842.0
-offset_bottom = 858.0
+layout_mode = 0
+offset_left = 538.0
+offset_top = 783.0
+offset_right = 961.0
+offset_bottom = 878.0
 theme = SubResource("Theme_k0is2")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
 text = "Play"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("9_fqsvw")
 
 [node name="Exit" type="Control" parent="."]
 layout_mode = 3
@@ -83,25 +102,33 @@ offset_right = 1086.0
 offset_bottom = 279.0
 theme = SubResource("Theme_o4lhl")
 
-[node name="ExitBackground" type="TextureButton" parent="Exit"]
+[node name="ExitBackground" type="TextureButton" parent="Exit" node_paths=PackedStringArray("label")]
 layout_mode = 0
-offset_left = 626.0
-offset_top = 757.0
-offset_right = 719.0
-offset_bottom = 789.0
+offset_left = 700.0
+offset_top = 752.0
+offset_right = 772.0
+offset_bottom = 774.0
 scale = Vector2(2.125, 3.20833)
 texture_normal = ExtResource("6_wewnm")
+texture_pressed = ExtResource("6_5575u")
+texture_hover = ExtResource("6_q8ffd")
 ignore_texture_size = true
 stretch_mode = 0
+script = ExtResource("8_fkxyh")
+label = NodePath("../Label")
 
 [node name="Label" type="Label" parent="Exit"]
-offset_left = 660.0
-offset_top = 779.0
-offset_right = 801.0
-offset_bottom = 836.0
-theme = SubResource("Theme_k0is2")
+layout_mode = 0
+offset_left = 725.0
+offset_top = 765.0
+offset_right = 838.0
+offset_bottom = 810.0
+theme = SubResource("Theme_lpumd")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Exit"
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+text = "QUIT"
+script = ExtResource("9_fqsvw")
 
-[connection signal="button_up" from="Play/PlayBackground" to="." method="_on_play_button_up"]
-[connection signal="button_up" from="Exit/ExitBackground" to="." method="_on_exit_button_up"]
+[connection signal="pressed" from="Play/PlayBackground" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Exit/ExitBackground" to="." method="_on_exit_button_pressed"]

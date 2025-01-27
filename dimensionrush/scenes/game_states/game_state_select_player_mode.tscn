@@ -1,25 +1,41 @@
-[gd_scene load_steps=5 format=3 uid="uid://5i7y4qtqe0xo"]
+[gd_scene load_steps=15 format=3 uid="uid://5i7y4qtqe0xo"]
 
 [ext_resource type="Script" path="res://scripts/state_machine/game_states/game_state_select_player_mode.gd" id="1_ygq3w"]
+[ext_resource type="Texture2D" uid="uid://plnk2l8lsbca" path="res://assets/titlescreen/3.webp" id="2_dyrpk"]
+[ext_resource type="FontFile" uid="uid://u3ide4v6ikg2" path="res://assets/kenney_ui-pack-space-expansion/Font/Kenney Future.ttf" id="3_xw8yi"]
+[ext_resource type="Texture2D" uid="uid://xcbrtpl5n6q0" path="res://assets/kenney_ui-pack-space-expansion/PNG/Grey/Default/bar_square_gloss_large.png" id="4_3ag5j"]
+[ext_resource type="Texture2D" uid="uid://yxdlb6fgqy45" path="res://assets/kenney_ui-pack-space-expansion/buttons/bar_square_gloss_large_black_pressed.png" id="5_hr5ku"]
+[ext_resource type="Texture2D" uid="uid://cyomx7lrxu7ay" path="res://assets/kenney_ui-pack-space-expansion/buttons/bar_square_gloss_large_black.png" id="6_ev4lc"]
+[ext_resource type="Script" path="res://scripts/ui/button/text_texture_button.gd" id="7_v8a6y"]
+[ext_resource type="Texture2D" uid="uid://d4efsx60y2bq" path="res://assets/kenney_ui-pack-space-expansion/PNG/Grey/Double/bar_square_gloss_small.png" id="8_k8dl0"]
+[ext_resource type="Script" path="res://scripts/ui/button/custom_label.gd" id="8_nbc2e"]
 
 [sub_resource type="Theme" id="Theme_dhk4m"]
 default_font_size = 80
 
-[sub_resource type="Theme" id="Theme_ev1c2"]
-default_font_size = 50
+[sub_resource type="Theme" id="Theme_1ligb"]
+default_font = ExtResource("3_xw8yi")
 
-[sub_resource type="Theme" id="Theme_kgtal"]
-default_font_size = 50
+[sub_resource type="Theme" id="Theme_e8cec"]
+default_font_size = 60
+
+[sub_resource type="Theme" id="Theme_uqax8"]
+default_font = ExtResource("3_xw8yi")
+
+[sub_resource type="Theme" id="Theme_8vh0w"]
+default_font = ExtResource("3_xw8yi")
+default_font_size = 40
 
 [node name="SelectPlayerMode" type="Node2D"]
 script = ExtResource("1_ygq3w")
 
-[node name="BackgroundColorRect" type="ColorRect" parent="."]
-offset_right = 1920.0
-offset_bottom = 1080.0
-color = Color(0.227451, 0.454902, 0.133333, 1)
+[node name="Background" type="Sprite2D" parent="."]
+scale = Vector2(1.072, 1.056)
+texture = ExtResource("2_dyrpk")
+centered = false
 
 [node name="HeadingLabel" type="Label" parent="."]
+visible = false
 offset_left = 641.0
 offset_top = 126.0
 offset_right = 1372.0
@@ -27,39 +43,154 @@ offset_bottom = 236.0
 theme = SubResource("Theme_dhk4m")
 text = "Select Player Mode"
 
-[node name="SingleplayerButton" type="Button" parent="."]
-offset_left = 834.0
-offset_top = 468.0
-offset_right = 1137.0
-offset_bottom = 545.0
-theme = SubResource("Theme_ev1c2")
+[node name="Singpleplayer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -148.0
+offset_right = 40.0
+offset_bottom = -108.0
+theme = SubResource("Theme_1ligb")
+
+[node name="Button" type="TextureButton" parent="Singpleplayer" node_paths=PackedStringArray("label")]
+layout_mode = 0
+offset_left = 520.0
+offset_top = 783.0
+offset_right = 994.0
+offset_bottom = 814.0
+scale = Vector2(1.92208, 3.08833)
+texture_normal = ExtResource("4_3ag5j")
+texture_pressed = ExtResource("5_hr5ku")
+texture_hover = ExtResource("6_ev4lc")
+stretch_mode = 0
+script = ExtResource("7_v8a6y")
+label = NodePath("../Label")
+
+[node name="Label" type="Label" parent="Singpleplayer"]
+layout_mode = 0
+offset_left = 557.0
+offset_top = 783.0
+offset_right = 1395.0
+offset_bottom = 878.0
+theme = SubResource("Theme_e8cec")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
 text = "Singleplayer"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_nbc2e")
 
-[node name="MultiplayerLocalButton" type="Button" parent="."]
-offset_left = 845.0
-offset_top = 611.0
-offset_right = 1148.0
-offset_bottom = 688.0
-theme = SubResource("Theme_ev1c2")
-text = "Multiplayer Local"
+[node name="MultiplayerLocal" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -16.0
+offset_right = 40.0
+offset_bottom = 24.0
+theme = SubResource("Theme_1ligb")
 
-[node name="MultiplayerOnlineButton" type="Button" parent="."]
-offset_left = 853.0
-offset_top = 751.0
-offset_right = 1156.0
-offset_bottom = 828.0
-theme = SubResource("Theme_ev1c2")
-text = "Multiplayer Online"
+[node name="Button" type="TextureButton" parent="MultiplayerLocal" node_paths=PackedStringArray("label")]
+layout_mode = 0
+offset_left = 520.0
+offset_top = 783.0
+offset_right = 994.0
+offset_bottom = 814.0
+scale = Vector2(1.92208, 3.08833)
+texture_normal = ExtResource("4_3ag5j")
+texture_pressed = ExtResource("5_hr5ku")
+texture_hover = ExtResource("6_ev4lc")
+stretch_mode = 0
+script = ExtResource("7_v8a6y")
+label = NodePath("../Label")
 
-[node name="BackButton" type="Button" parent="."]
-offset_left = 116.0
-offset_top = 939.0
-offset_right = 239.0
-offset_bottom = 1016.0
-theme = SubResource("Theme_kgtal")
-text = "Back"
+[node name="Label" type="Label" parent="MultiplayerLocal"]
+layout_mode = 0
+offset_left = 560.0
+offset_top = 783.0
+offset_right = 1394.0
+offset_bottom = 878.0
+theme = SubResource("Theme_e8cec")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+text = "Local Multiplayer"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_nbc2e")
 
-[connection signal="button_up" from="SingleplayerButton" to="." method="_on_singleplayer_button_up"]
-[connection signal="button_up" from="MultiplayerLocalButton" to="." method="_on_multiplayer_local_button_up"]
-[connection signal="button_up" from="MultiplayerOnlineButton" to="." method="_on_multiplayer_online_button_up"]
-[connection signal="button_up" from="BackButton" to="." method="_on_back_button_up"]
+[node name="MultiplayerOnline" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 120.0
+offset_right = 40.0
+offset_bottom = 160.0
+theme = SubResource("Theme_1ligb")
+
+[node name="Button" type="TextureButton" parent="MultiplayerOnline" node_paths=PackedStringArray("label")]
+layout_mode = 0
+offset_left = 520.0
+offset_top = 783.0
+offset_right = 994.0
+offset_bottom = 814.0
+scale = Vector2(1.92208, 3.08833)
+texture_normal = ExtResource("4_3ag5j")
+texture_pressed = ExtResource("5_hr5ku")
+texture_hover = ExtResource("6_ev4lc")
+stretch_mode = 0
+script = ExtResource("7_v8a6y")
+label = NodePath("../Label")
+
+[node name="Label" type="Label" parent="MultiplayerOnline"]
+layout_mode = 0
+offset_left = 560.0
+offset_top = 783.0
+offset_right = 1394.0
+offset_bottom = 878.0
+theme = SubResource("Theme_e8cec")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+text = "Online Multiplayer"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_nbc2e")
+
+[node name="Back" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1046.0
+offset_top = 239.0
+offset_right = 1086.0
+offset_bottom = 279.0
+theme = SubResource("Theme_uqax8")
+
+[node name="Background" type="TextureButton" parent="Back" node_paths=PackedStringArray("label")]
+layout_mode = 0
+offset_left = 700.0
+offset_top = 752.0
+offset_right = 772.0
+offset_bottom = 774.0
+scale = Vector2(2.125, 3.20833)
+texture_normal = ExtResource("8_k8dl0")
+texture_pressed = ExtResource("5_hr5ku")
+texture_hover = ExtResource("6_ev4lc")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("7_v8a6y")
+label = NodePath("../Label")
+
+[node name="Label" type="Label" parent="Back"]
+layout_mode = 0
+offset_left = 706.0
+offset_top = 765.0
+offset_right = 847.0
+offset_bottom = 810.0
+theme = SubResource("Theme_8vh0w")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+text = "BACK"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_nbc2e")
+
+[connection signal="pressed" from="Singpleplayer/Button" to="." method="_on_singleplayer_button_pressed"]
+[connection signal="pressed" from="MultiplayerLocal/Button" to="." method="_on_multiplayer_local_button_pressed"]
+[connection signal="pressed" from="MultiplayerOnline/Button" to="." method="_on_multiplayer_online_button_pressed"]
+[connection signal="pressed" from="Back/Background" to="." method="_on_back_button_pressed"]

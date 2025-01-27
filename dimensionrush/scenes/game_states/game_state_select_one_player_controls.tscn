@@ -1,76 +1,218 @@
-[gd_scene load_steps=11 format=3 uid="uid://cu14ec3hwpjqt"]
+[gd_scene load_steps=30 format=3 uid="uid://cu14ec3hwpjqt"]
 
 [ext_resource type="Script" path="res://scripts/state_machine/game_states/game_state_select_one_player_controls.gd" id="1_7uvi8"]
 [ext_resource type="Script" path="res://scripts/player_controls/player_controls_resource.gd" id="2_32tqk"]
 [ext_resource type="Resource" uid="uid://ddbie5vom6exv" path="res://scripts/player_controls/controller_1_controls.tres" id="3_qp3mx"]
-[ext_resource type="Resource" uid="uid://rdne16eu8tau" path="res://scripts/player_controls/controller_2_controls.tres" id="4_dwpo6"]
 [ext_resource type="Resource" uid="uid://cm45otuwt1765" path="res://scripts/player_controls/keyboard_1_controls.tres" id="5_4p4kw"]
-[ext_resource type="Resource" uid="uid://badtrr2yo2okd" path="res://scripts/player_controls/keyboard_2_controls.tres" id="6_jucy1"]
+[ext_resource type="Texture2D" uid="uid://plnk2l8lsbca" path="res://assets/titlescreen/3.webp" id="7_dh8dl"]
+[ext_resource type="FontFile" uid="uid://u3ide4v6ikg2" path="res://assets/kenney_ui-pack-space-expansion/Font/Kenney Future.ttf" id="7_ruosx"]
+[ext_resource type="Texture2D" uid="uid://d4efsx60y2bq" path="res://assets/kenney_ui-pack-space-expansion/PNG/Grey/Double/bar_square_gloss_small.png" id="8_b1636"]
+[ext_resource type="Texture2D" uid="uid://yxdlb6fgqy45" path="res://assets/kenney_ui-pack-space-expansion/buttons/bar_square_gloss_large_black_pressed.png" id="9_smmmv"]
+[ext_resource type="Texture2D" uid="uid://cyomx7lrxu7ay" path="res://assets/kenney_ui-pack-space-expansion/buttons/bar_square_gloss_large_black.png" id="10_trwto"]
+[ext_resource type="Script" path="res://scripts/ui/button/text_texture_button.gd" id="11_8xhwy"]
+[ext_resource type="Texture2D" uid="uid://xcbrtpl5n6q0" path="res://assets/kenney_ui-pack-space-expansion/PNG/Grey/Default/bar_square_gloss_large.png" id="13_7r35o"]
+[ext_resource type="Texture2D" uid="uid://dmilp3m025hs7" path="res://assets/kenney_ui-pack-space-expansion/buttons/bar_square_gloss_large_disabled.png" id="14_73lom"]
+[ext_resource type="Script" path="res://scripts/ui/button/custom_label.gd" id="15_jmg3u"]
+[ext_resource type="Texture2D" uid="uid://cwth1fdrnlph5" path="res://assets/kenney_ui-pack-space-expansion/PNG/Grey/Double/button_square_header_large_rectangle_screws.png" id="16_xvflf"]
+[ext_resource type="Texture2D" uid="uid://cwpo1c8xk20p" path="res://assets/kenney_ui-pack-space-expansion/PNG/Extra/Double/button_square.png" id="17_cih3y"]
+[ext_resource type="Texture2D" uid="uid://c0wxpskig7jpr" path="res://assets/kenney_input-prompts/Keyboard & Mouse/Default/keyboard_w_outline.png" id="18_0oule"]
+[ext_resource type="Texture2D" uid="uid://b104kgfvcy50p" path="res://assets/kenney_input-prompts/Keyboard & Mouse/Vector/keyboard_d_outline.svg" id="18_rlqcn"]
+[ext_resource type="Texture2D" uid="uid://biddx168ucg1e" path="res://assets/kenney_input-prompts/Keyboard & Mouse/Vector/keyboard_a_outline.svg" id="19_86d1x"]
+[ext_resource type="Texture2D" uid="uid://bwuilwgityku3" path="res://assets/kenney_input-prompts/Xbox Series/Default/xbox_button_a.png" id="19_n6kkb"]
+[ext_resource type="Texture2D" uid="uid://dvh5afxj1o6i3" path="res://assets/kenney_input-prompts/Keyboard & Mouse/Vector/keyboard_w_outline.svg" id="20_0ur8w"]
+[ext_resource type="Texture2D" uid="uid://bvg13mjp22foe" path="res://assets/kenney_input-prompts/Keyboard & Mouse/Vector/keyboard_s_outline.svg" id="21_38rly"]
+[ext_resource type="Texture2D" uid="uid://du2eao6n8utfq" path="res://assets/kenney_input-prompts/Xbox Series/Vector/controller_xboxone.svg" id="22_gpj65"]
 
-[sub_resource type="Theme" id="Theme_gaa32"]
-default_font_size = 80
+[sub_resource type="Theme" id="Theme_c3khg"]
+default_font = ExtResource("7_ruosx")
 
-[sub_resource type="Theme" id="Theme_n2c3c"]
-default_font_size = 50
+[sub_resource type="Theme" id="Theme_vgky7"]
+default_font = ExtResource("7_ruosx")
+default_font_size = 40
 
-[sub_resource type="Theme" id="Theme_nxchn"]
-default_font_size = 50
+[sub_resource type="Theme" id="Theme_ufcrd"]
+default_font = ExtResource("7_ruosx")
 
-[sub_resource type="Theme" id="Theme_c1nsu"]
-default_font_size = 50
+[sub_resource type="Theme" id="Theme_vyf5o"]
+default_font_size = 60
 
-[node name="SelectOnePlayerControls" type="Node2D" node_paths=PackedStringArray("player_controls_resource_id_label", "next_button")]
+[sub_resource type="Theme" id="Theme_5c70i"]
+default_font = ExtResource("7_ruosx")
+default_font_size = 30
+
+[sub_resource type="Theme" id="Theme_ablje"]
+default_font_size = 60
+
+[sub_resource type="Theme" id="Theme_8p60g"]
+default_font_size = 40
+
+[node name="SelectOnePlayerControls" type="Node2D" node_paths=PackedStringArray("keyboard_icon_node", "controller_icon_node", "next_button", "next_label")]
 script = ExtResource("1_7uvi8")
-player_controls_resources = Array[ExtResource("2_32tqk")]([ExtResource("3_qp3mx"), ExtResource("4_dwpo6"), ExtResource("5_4p4kw"), ExtResource("6_jucy1")])
-player_controls_resource_id_label = NodePath("DeviceIdLabel")
-next_button = NodePath("NextButton")
+player_controls_resources = Array[ExtResource("2_32tqk")]([ExtResource("3_qp3mx"), ExtResource("5_4p4kw")])
+keyboard_icon_node = NodePath("Control/KeyboardIcon")
+controller_icon_node = NodePath("Control/ControllerIcon")
+next_button = NodePath("Next/Background")
+next_label = NodePath("Next/Label")
 
-[node name="BackgroundColorRect" type="ColorRect" parent="."]
-offset_right = 1920.0
-offset_bottom = 1080.0
-color = Color(1, 0.643137, 1, 1)
+[node name="Background" type="Sprite2D" parent="."]
+scale = Vector2(1.072, 1.056)
+texture = ExtResource("7_dh8dl")
+centered = false
 
-[node name="HeadingLabel" type="Label" parent="."]
-offset_left = 641.0
-offset_top = 126.0
-offset_right = 1372.0
-offset_bottom = 236.0
-theme = SubResource("Theme_gaa32")
-text = "Select Input Device"
+[node name="Back" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1046.0
+offset_top = 239.0
+offset_right = 1086.0
+offset_bottom = 279.0
+theme = SubResource("Theme_c3khg")
 
-[node name="DeviceLabel" type="Label" parent="."]
-offset_left = 774.0
-offset_top = 498.0
-offset_right = 1090.0
-offset_bottom = 567.0
-theme = SubResource("Theme_n2c3c")
-text = "Input Device:"
+[node name="Background" type="TextureButton" parent="Back" node_paths=PackedStringArray("label")]
+layout_mode = 0
+offset_left = 700.0
+offset_top = 752.0
+offset_right = 772.0
+offset_bottom = 774.0
+scale = Vector2(2.125, 3.20833)
+texture_normal = ExtResource("8_b1636")
+texture_pressed = ExtResource("9_smmmv")
+texture_hover = ExtResource("10_trwto")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("11_8xhwy")
+label = NodePath("../Label")
 
-[node name="DeviceIdLabel" type="Label" parent="."]
-offset_left = 1101.0
-offset_top = 498.0
-offset_right = 1198.0
-offset_bottom = 567.0
-theme = SubResource("Theme_n2c3c")
-text = "0
-"
+[node name="Label" type="Label" parent="Back"]
+layout_mode = 0
+offset_left = 706.0
+offset_top = 765.0
+offset_right = 847.0
+offset_bottom = 810.0
+theme = SubResource("Theme_vgky7")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+text = "BACK"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("15_jmg3u")
 
-[node name="NextButton" type="Button" parent="."]
-offset_left = 923.0
-offset_top = 747.0
-offset_right = 1046.0
-offset_bottom = 824.0
-theme = SubResource("Theme_nxchn")
-disabled = true
-text = "Next"
+[node name="Next" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 221.0
+offset_top = 118.0
+offset_right = 261.0
+offset_bottom = 158.0
+theme = SubResource("Theme_ufcrd")
 
-[node name="BackButton" type="Button" parent="."]
-offset_left = 76.0
-offset_top = 925.0
-offset_right = 199.0
-offset_bottom = 1002.0
-theme = SubResource("Theme_c1nsu")
-text = "Back"
+[node name="Background" type="TextureButton" parent="Next" node_paths=PackedStringArray("label")]
+layout_mode = 0
+offset_left = 538.0
+offset_top = 783.0
+offset_right = 758.0
+offset_bottom = 814.0
+scale = Vector2(1.92208, 3.08833)
+texture_normal = ExtResource("13_7r35o")
+texture_pressed = ExtResource("9_smmmv")
+texture_hover = ExtResource("10_trwto")
+texture_disabled = ExtResource("14_73lom")
+stretch_mode = 0
+script = ExtResource("11_8xhwy")
+label = NodePath("../Label")
 
-[connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]
-[connection signal="button_up" from="BackButton" to="." method="_on_back_button_up"]
+[node name="Label" type="Label" parent="Next"]
+layout_mode = 0
+offset_left = 538.0
+offset_top = 783.0
+offset_right = 961.0
+offset_bottom = 878.0
+theme = SubResource("Theme_vyf5o")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+text = "NEXT"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("15_jmg3u")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 984.0
+offset_top = 466.0
+offset_right = 1024.0
+offset_bottom = 506.0
+theme = SubResource("Theme_5c70i")
+
+[node name="ButtonSquareHeaderBladeRectangle2" type="Sprite2D" parent="Control"]
+texture_filter = 2
+position = Vector2(-9.99994, 4.37502)
+scale = Vector2(2, 1.828)
+texture = ExtResource("16_xvflf")
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -375.0
+offset_top = -97.0
+offset_right = 358.0
+offset_bottom = 3.0
+theme = SubResource("Theme_ablje")
+text = "INPUT DEVICE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -327.0
+offset_top = 39.375
+offset_right = 123.0
+offset_bottom = 84.375
+theme = SubResource("Theme_8p60g")
+text = "Press a button: "
+
+[node name="KeyboardWOutline" type="Sprite2D" parent="Control"]
+position = Vector2(170, 60)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("18_0oule")
+
+[node name="XboxButtonA" type="Sprite2D" parent="Control"]
+position = Vector2(262, 62)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("19_n6kkb")
+
+[node name="ButtonSquare" type="Sprite2D" parent="Control"]
+position = Vector2(-11, 274)
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("17_cih3y")
+
+[node name="KeyboardIcon" type="Node2D" parent="Control"]
+visible = false
+position = Vector2(1, -1)
+
+[node name="KeyboardArrows2" type="Sprite2D" parent="Control/KeyboardIcon"]
+position = Vector2(38, 300)
+texture = ExtResource("18_rlqcn")
+
+[node name="KeyboardArrows3" type="Sprite2D" parent="Control/KeyboardIcon"]
+position = Vector2(-62, 300)
+texture = ExtResource("19_86d1x")
+
+[node name="KeyboardArrows4" type="Sprite2D" parent="Control/KeyboardIcon"]
+position = Vector2(-12, 250)
+texture = ExtResource("20_0ur8w")
+
+[node name="KeyboardArrows5" type="Sprite2D" parent="Control/KeyboardIcon"]
+position = Vector2(-12, 300)
+texture = ExtResource("21_38rly")
+
+[node name="ControllerIcon" type="Node2D" parent="Control"]
+visible = false
+
+[node name="ControllerXboxone" type="Sprite2D" parent="Control/ControllerIcon"]
+position = Vector2(-11, 273)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("22_gpj65")
+
+[connection signal="pressed" from="Back/Background" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Next/Background" to="." method="_on_next_button_pressed"]

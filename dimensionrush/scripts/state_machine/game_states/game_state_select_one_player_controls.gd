@@ -3,8 +3,10 @@ extends State
 
 @export var player_controls_resources : Array[PlayerControlsResource]
 
-@export var player_controls_resource_id_label : Label
-@export var next_button : Button
+@export var keyboard_icon_node : Node2D
+@export var controller_icon_node : Node2D
+@export var next_button : CustomTextureButton
+@export var next_label : CustomLabel
 
 var selected_player_controls_resource : PlayerControlsResource = null
 
@@ -20,8 +22,15 @@ func _unhandled_input(_event: InputEvent):
 	for player_controls_resource in player_controls_resources:
 		if is_action_of_player_controls_resource_just_pressed(player_controls_resource):
 			selected_player_controls_resource = player_controls_resource
-			player_controls_resource_id_label.text = str(player_controls_resource.id)
+			
+			match player_controls_resource.type:
+				PlayerControlsResource.INPUT_DEVICE_TYPE.KEYBOARD:
+					keyboard_icon_node.visible = true
+				PlayerControlsResource.INPUT_DEVICE_TYPE.CONTROLLER:
+					controller_icon_node.visible = true
+			
 			next_button.disabled = false
+			next_label.disabled = false
 		
 
 func is_action_of_player_controls_resource_just_pressed(player_controls_resource: PlayerControlsResource) -> bool:
@@ -33,8 +42,11 @@ func is_action_of_player_controls_resource_just_pressed(player_controls_resource
 	return left_just_pressed or right_just_pressed or up_just_pressed or down_just_pressed
 
 func reset():
-	player_controls_resource_id_label.text = "0"
+	keyboard_icon_node.visible = false
+	controller_icon_node.visible = false
+	
 	next_button.disabled = true
+	next_label.disabled = true
 	selected_player_controls_resource = null
 
 
@@ -48,5 +60,5 @@ func _on_next_button_pressed():
 			state_transition.emit(self, "MultiplayerOnlineConnection")
 
 
-func _on_back_button_up():
+func _on_back_button_pressed() -> void:
 	state_transition.emit(self, "SelectPlayerMode")

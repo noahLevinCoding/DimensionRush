@@ -1,7 +1,9 @@
 class_name PlayerControlsResource
 extends Resource
 
-@export_enum("Keyboard", "Controller") var type 
+enum INPUT_DEVICE_TYPE {KEYBOARD, CONTROLLER}
+
+@export var type : INPUT_DEVICE_TYPE 
 @export var id : int
 
 @export var item : String
