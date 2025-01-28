@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dyi2n3unvp0mn"]
+[gd_scene load_steps=32 format=3 uid="uid://dyi2n3unvp0mn"]
 
 [ext_resource type="Script" path="res://scripts/state_machine/game_states/game_state_select_two_player_controls.gd" id="1_qborb"]
 [ext_resource type="Script" path="res://scripts/player_controls/player_controls_resource.gd" id="2_wh7t8"]
@@ -13,12 +13,17 @@
 [ext_resource type="Texture2D" uid="uid://cyomx7lrxu7ay" path="res://assets/kenney_ui-pack-space-expansion/buttons/bar_square_gloss_large_black.png" id="11_22krt"]
 [ext_resource type="Script" path="res://scripts/ui/button/text_texture_button.gd" id="12_q4u67"]
 [ext_resource type="Script" path="res://scripts/ui/button/custom_label.gd" id="13_qqsw3"]
-
-[sub_resource type="Theme" id="Theme_n2c3c"]
-default_font_size = 50
-
-[sub_resource type="Theme" id="Theme_nxchn"]
-default_font_size = 50
+[ext_resource type="Texture2D" uid="uid://xcbrtpl5n6q0" path="res://assets/kenney_ui-pack-space-expansion/PNG/Grey/Default/bar_square_gloss_large.png" id="14_proiv"]
+[ext_resource type="Texture2D" uid="uid://dmilp3m025hs7" path="res://assets/kenney_ui-pack-space-expansion/buttons/bar_square_gloss_large_disabled.png" id="15_mctxk"]
+[ext_resource type="Texture2D" uid="uid://cwth1fdrnlph5" path="res://assets/kenney_ui-pack-space-expansion/PNG/Grey/Double/button_square_header_large_rectangle_screws.png" id="16_gr8mj"]
+[ext_resource type="Texture2D" uid="uid://c0wxpskig7jpr" path="res://assets/kenney_input-prompts/Keyboard & Mouse/Default/keyboard_w_outline.png" id="17_5k8vx"]
+[ext_resource type="Texture2D" uid="uid://bwuilwgityku3" path="res://assets/kenney_input-prompts/Xbox Series/Default/xbox_button_a.png" id="18_dqor8"]
+[ext_resource type="Texture2D" uid="uid://cwpo1c8xk20p" path="res://assets/kenney_ui-pack-space-expansion/PNG/Extra/Double/button_square.png" id="19_ekxdc"]
+[ext_resource type="Texture2D" uid="uid://b104kgfvcy50p" path="res://assets/kenney_input-prompts/Keyboard & Mouse/Vector/keyboard_d_outline.svg" id="20_x5t2g"]
+[ext_resource type="Texture2D" uid="uid://biddx168ucg1e" path="res://assets/kenney_input-prompts/Keyboard & Mouse/Vector/keyboard_a_outline.svg" id="21_3wvbf"]
+[ext_resource type="Texture2D" uid="uid://dvh5afxj1o6i3" path="res://assets/kenney_input-prompts/Keyboard & Mouse/Vector/keyboard_w_outline.svg" id="22_enbc0"]
+[ext_resource type="Texture2D" uid="uid://bvg13mjp22foe" path="res://assets/kenney_input-prompts/Keyboard & Mouse/Vector/keyboard_s_outline.svg" id="23_wxc3c"]
+[ext_resource type="Texture2D" uid="uid://du2eao6n8utfq" path="res://assets/kenney_input-prompts/Xbox Series/Vector/controller_xboxone.svg" id="24_56pw7"]
 
 [sub_resource type="Theme" id="Theme_k0ri6"]
 default_font = ExtResource("8_8i11k")
@@ -27,60 +32,36 @@ default_font = ExtResource("8_8i11k")
 default_font = ExtResource("8_8i11k")
 default_font_size = 40
 
-[node name="SelectTwoPlayerControls" type="Node2D" node_paths=PackedStringArray("player_controls_resource_id_label_1", "player_controls_resource_id_label_2", "next_button")]
+[sub_resource type="Theme" id="Theme_bk7px"]
+default_font = ExtResource("8_8i11k")
+
+[sub_resource type="Theme" id="Theme_l5hlk"]
+default_font_size = 60
+
+[sub_resource type="Theme" id="Theme_qs4vw"]
+default_font = ExtResource("8_8i11k")
+default_font_size = 30
+
+[sub_resource type="Theme" id="Theme_ccr7q"]
+default_font_size = 60
+
+[sub_resource type="Theme" id="Theme_byv2w"]
+default_font_size = 40
+
+[node name="SelectTwoPlayerControls" type="Node2D" node_paths=PackedStringArray("keyboard_icon_node_1", "controller_icon_node_1", "keyboard_icon_node_2", "controller_icon_node_2", "next_button", "next_label")]
 script = ExtResource("1_qborb")
 player_controls_resources = Array[ExtResource("2_wh7t8")]([ExtResource("3_e4b4p"), ExtResource("4_ho5vc"), ExtResource("5_npikv"), ExtResource("6_mmw55")])
-player_controls_resource_id_label_1 = NodePath("DeviceIdLabel1")
-player_controls_resource_id_label_2 = NodePath("DeviceIdLabel2")
-next_button = NodePath("NextButton")
+keyboard_icon_node_1 = NodePath("Control/Input1/KeyboardIcon")
+controller_icon_node_1 = NodePath("Control/Input1/ControllerIcon")
+keyboard_icon_node_2 = NodePath("Control/Input2/KeyboardIcon")
+controller_icon_node_2 = NodePath("Control/Input2/ControllerIcon")
+next_button = NodePath("Next/Background")
+next_label = NodePath("Next/Label")
 
 [node name="Background" type="Sprite2D" parent="."]
 scale = Vector2(1.072, 1.056)
 texture = ExtResource("7_hf10e")
 centered = false
-
-[node name="DeviceLabel1" type="Label" parent="."]
-offset_left = 774.0
-offset_top = 498.0
-offset_right = 1090.0
-offset_bottom = 567.0
-theme = SubResource("Theme_n2c3c")
-text = "Input Device:"
-
-[node name="DeviceIdLabel1" type="Label" parent="."]
-offset_left = 1101.0
-offset_top = 498.0
-offset_right = 1198.0
-offset_bottom = 567.0
-theme = SubResource("Theme_n2c3c")
-text = "0
-"
-
-[node name="DeviceLabel2" type="Label" parent="."]
-offset_left = 774.0
-offset_top = 587.0
-offset_right = 1090.0
-offset_bottom = 656.0
-theme = SubResource("Theme_n2c3c")
-text = "Input Device:"
-
-[node name="DeviceIdLabel2" type="Label" parent="."]
-offset_left = 1101.0
-offset_top = 590.0
-offset_right = 1198.0
-offset_bottom = 659.0
-theme = SubResource("Theme_n2c3c")
-text = "0
-"
-
-[node name="NextButton" type="Button" parent="."]
-offset_left = 923.0
-offset_top = 747.0
-offset_right = 1046.0
-offset_bottom = 824.0
-theme = SubResource("Theme_nxchn")
-disabled = true
-text = "Next"
 
 [node name="Back" type="Control" parent="."]
 layout_mode = 3
@@ -121,5 +102,160 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("13_qqsw3")
 
-[connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]
+[node name="Next" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 221.0
+offset_top = 118.0
+offset_right = 261.0
+offset_bottom = 158.0
+theme = SubResource("Theme_bk7px")
+
+[node name="Background" type="TextureButton" parent="Next" node_paths=PackedStringArray("label")]
+layout_mode = 0
+offset_left = 538.0
+offset_top = 783.0
+offset_right = 758.0
+offset_bottom = 814.0
+scale = Vector2(1.92208, 3.08833)
+texture_normal = ExtResource("14_proiv")
+texture_pressed = ExtResource("10_txps6")
+texture_hover = ExtResource("11_22krt")
+texture_disabled = ExtResource("15_mctxk")
+stretch_mode = 0
+script = ExtResource("12_q4u67")
+label = NodePath("../Label")
+
+[node name="Label" type="Label" parent="Next"]
+layout_mode = 0
+offset_left = 538.0
+offset_top = 783.0
+offset_right = 961.0
+offset_bottom = 878.0
+theme = SubResource("Theme_l5hlk")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+text = "NEXT"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("13_qqsw3")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 984.0
+offset_top = 466.0
+offset_right = 1024.0
+offset_bottom = 506.0
+theme = SubResource("Theme_qs4vw")
+
+[node name="ButtonSquareHeaderBladeRectangle2" type="Sprite2D" parent="Control"]
+texture_filter = 2
+position = Vector2(-9.99994, 4.37502)
+scale = Vector2(2, 1.828)
+texture = ExtResource("16_gr8mj")
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -375.0
+offset_top = -97.0
+offset_right = 358.0
+offset_bottom = 3.0
+theme = SubResource("Theme_ccr7q")
+text = "INPUT DEVICE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -327.0
+offset_top = 39.375
+offset_right = 123.0
+offset_bottom = 84.375
+theme = SubResource("Theme_byv2w")
+text = "Press a button: "
+
+[node name="KeyboardWOutline" type="Sprite2D" parent="Control"]
+position = Vector2(170, 60)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("17_5k8vx")
+
+[node name="XboxButtonA" type="Sprite2D" parent="Control"]
+position = Vector2(262, 62)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("18_dqor8")
+
+[node name="Input1" type="Sprite2D" parent="Control"]
+position = Vector2(-151, 274)
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("19_ekxdc")
+
+[node name="KeyboardIcon" type="Node2D" parent="Control/Input1"]
+visible = false
+position = Vector2(6.85718, -157.143)
+scale = Vector2(0.571429, 0.571429)
+
+[node name="KeyboardArrows2" type="Sprite2D" parent="Control/Input1/KeyboardIcon"]
+position = Vector2(38, 300)
+texture = ExtResource("20_x5t2g")
+
+[node name="KeyboardArrows3" type="Sprite2D" parent="Control/Input1/KeyboardIcon"]
+position = Vector2(-62, 300)
+texture = ExtResource("21_3wvbf")
+
+[node name="KeyboardArrows4" type="Sprite2D" parent="Control/Input1/KeyboardIcon"]
+position = Vector2(-12, 250)
+texture = ExtResource("22_enbc0")
+
+[node name="KeyboardArrows5" type="Sprite2D" parent="Control/Input1/KeyboardIcon"]
+position = Vector2(-12, 300)
+texture = ExtResource("23_wxc3c")
+
+[node name="ControllerIcon" type="Node2D" parent="Control/Input1"]
+visible = false
+position = Vector2(6.28577, -156.571)
+scale = Vector2(0.571429, 0.571429)
+
+[node name="ControllerXboxone" type="Sprite2D" parent="Control/Input1/ControllerIcon"]
+position = Vector2(-11, 273)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("24_56pw7")
+
+[node name="Input2" type="Sprite2D" parent="Control"]
+position = Vector2(129, 274)
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("19_ekxdc")
+
+[node name="KeyboardIcon" type="Node2D" parent="Control/Input2"]
+visible = false
+position = Vector2(6.85718, -157.143)
+scale = Vector2(0.571429, 0.571429)
+
+[node name="KeyboardArrows2" type="Sprite2D" parent="Control/Input2/KeyboardIcon"]
+position = Vector2(38, 300)
+texture = ExtResource("20_x5t2g")
+
+[node name="KeyboardArrows3" type="Sprite2D" parent="Control/Input2/KeyboardIcon"]
+position = Vector2(-62, 300)
+texture = ExtResource("21_3wvbf")
+
+[node name="KeyboardArrows4" type="Sprite2D" parent="Control/Input2/KeyboardIcon"]
+position = Vector2(-12, 250)
+texture = ExtResource("22_enbc0")
+
+[node name="KeyboardArrows5" type="Sprite2D" parent="Control/Input2/KeyboardIcon"]
+position = Vector2(-12, 300)
+texture = ExtResource("23_wxc3c")
+
+[node name="ControllerIcon" type="Node2D" parent="Control/Input2"]
+visible = false
+position = Vector2(6.28577, -156.571)
+scale = Vector2(0.571429, 0.571429)
+
+[node name="ControllerXboxone" type="Sprite2D" parent="Control/Input2/ControllerIcon"]
+position = Vector2(-11, 273)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("24_56pw7")
+
 [connection signal="pressed" from="Back/Background" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Next/Background" to="." method="_on_next_button_pressed"]
