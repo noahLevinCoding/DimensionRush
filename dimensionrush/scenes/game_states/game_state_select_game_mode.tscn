@@ -1,105 +1,193 @@
-[gd_scene load_steps=5 format=3 uid="uid://bnbiepdxbcoyf"]
+[gd_scene load_steps=18 format=3 uid="uid://bnbiepdxbcoyf"]
 
 [ext_resource type="Script" path="res://scripts/state_machine/game_states/game_state_select_game_mode.gd" id="1_sqvv8"]
+[ext_resource type="Texture2D" uid="uid://plnk2l8lsbca" path="res://assets/titlescreen/3.webp" id="2_jfjje"]
+[ext_resource type="FontFile" uid="uid://u3ide4v6ikg2" path="res://assets/kenney_ui-pack-space-expansion/Font/Kenney Future.ttf" id="3_nokut"]
+[ext_resource type="Texture2D" uid="uid://d4efsx60y2bq" path="res://assets/kenney_ui-pack-space-expansion/PNG/Grey/Double/bar_square_gloss_small.png" id="4_w0uqe"]
+[ext_resource type="Texture2D" uid="uid://yxdlb6fgqy45" path="res://assets/kenney_ui-pack-space-expansion/buttons/bar_square_gloss_large_black_pressed.png" id="5_yyuii"]
+[ext_resource type="Texture2D" uid="uid://cyomx7lrxu7ay" path="res://assets/kenney_ui-pack-space-expansion/buttons/bar_square_gloss_large_black.png" id="6_dfk3a"]
+[ext_resource type="Script" path="res://scripts/ui/button/text_texture_button.gd" id="7_cqrdj"]
+[ext_resource type="Script" path="res://scripts/ui/button/custom_label.gd" id="8_lf56b"]
+[ext_resource type="Texture2D" uid="uid://xcbrtpl5n6q0" path="res://assets/kenney_ui-pack-space-expansion/PNG/Grey/Default/bar_square_gloss_large.png" id="9_gbcwa"]
+[ext_resource type="Texture2D" uid="uid://dmilp3m025hs7" path="res://assets/kenney_ui-pack-space-expansion/buttons/bar_square_gloss_large_disabled.png" id="10_elk1e"]
+
+[sub_resource type="Theme" id="Theme_211vf"]
+default_font = ExtResource("3_nokut")
+
+[sub_resource type="Theme" id="Theme_hpbpy"]
+default_font = ExtResource("3_nokut")
+default_font_size = 40
+
+[sub_resource type="Theme" id="Theme_joyaf"]
+default_font = ExtResource("3_nokut")
+
+[sub_resource type="Theme" id="Theme_a234d"]
+default_font_size = 60
 
 [sub_resource type="Theme" id="Theme_dhk4m"]
 default_font_size = 80
 
-[sub_resource type="Theme" id="Theme_ev1c2"]
-default_font_size = 50
+[sub_resource type="Theme" id="Theme_2226e"]
+default_font = ExtResource("3_nokut")
 
-[sub_resource type="Theme" id="Theme_kgtal"]
-default_font_size = 50
+[sub_resource type="Theme" id="Theme_v5ukg"]
+default_font_size = 60
 
-[node name="SelectGameMode" type="Node2D" node_paths=PackedStringArray("time_button", "distance_button", "main_node", "time_node", "distance_node", "seed_line_edit")]
+[node name="SelectGameMode" type="Node2D" node_paths=PackedStringArray("time_button", "time_label", "distance_button", "distance_label", "main_node", "time_node", "distance_node", "seed_line_edit")]
 script = ExtResource("1_sqvv8")
-time_button = NodePath("main/TimeButton")
-distance_button = NodePath("main/DistanceButton")
+time_button = NodePath("main/Time/Background")
+time_label = NodePath("main/Time/Label")
+distance_button = NodePath("main/Distance/Background")
+distance_label = NodePath("main/Distance/Label")
 main_node = NodePath("main")
 time_node = NodePath("time")
 distance_node = NodePath("distance")
 seed_line_edit = NodePath("main/SeedLineEdit")
 
+[node name="Background" type="Sprite2D" parent="."]
+scale = Vector2(1.072, 1.056)
+texture = ExtResource("2_jfjje")
+centered = false
+
 [node name="main" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="BackgroundColorRect" type="ColorRect" parent="main"]
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-color = Color(0.177502, 0.222476, 1, 1)
-
-[node name="HeadingLabel" type="Label" parent="main"]
-layout_mode = 0
-offset_left = 641.0
-offset_top = 126.0
-offset_right = 1372.0
-offset_bottom = 236.0
-theme = SubResource("Theme_dhk4m")
-text = "Select Game Mode"
-
-[node name="TimeButton" type="Button" parent="main"]
-layout_mode = 0
-offset_left = 834.0
-offset_top = 468.0
-offset_right = 1137.0
-offset_bottom = 545.0
-theme = SubResource("Theme_ev1c2")
-text = "Time"
-
-[node name="DistanceButton" type="Button" parent="main"]
-layout_mode = 0
-offset_left = 845.0
-offset_top = 611.0
-offset_right = 1148.0
-offset_bottom = 688.0
-theme = SubResource("Theme_ev1c2")
-text = "Distance"
-
-[node name="BackButton" type="Button" parent="main"]
-layout_mode = 0
-offset_left = 116.0
-offset_top = 939.0
-offset_right = 239.0
-offset_bottom = 1016.0
-theme = SubResource("Theme_kgtal")
-text = "Back"
-
-[node name="SeedLabel" type="Label" parent="main"]
-layout_mode = 0
-offset_left = 1343.0
-offset_top = 971.0
-offset_right = 1465.0
-offset_bottom = 1040.0
-theme_override_font_sizes/font_size = 47
-text = "Seed:"
-
-[node name="SeedLineEdit" type="LineEdit" parent="main"]
-layout_mode = 0
-offset_left = 1485.0
-offset_top = 971.0
-offset_right = 1885.0
-offset_bottom = 1048.0
-theme_override_font_sizes/font_size = 47
-placeholder_text = "Enter Seed"
-
-[node name="time" type="Control" parent="."]
 visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="BackgroundColorRect" type="ColorRect" parent="time"]
+[node name="SeedLineEdit" type="LineEdit" parent="main"]
 layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-color = Color(3.85046e-07, 0.419147, 0.611709, 1)
+offset_left = 21.0
+offset_top = 985.0
+offset_right = 421.0
+offset_bottom = 1062.0
+theme_override_fonts/font = ExtResource("3_nokut")
+theme_override_font_sizes/font_size = 40
+placeholder_text = "Enter Seed"
+
+[node name="Back" type="Control" parent="main"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1046.0
+offset_top = 239.0
+offset_right = 1086.0
+offset_bottom = 279.0
+theme = SubResource("Theme_211vf")
+
+[node name="Background" type="TextureButton" parent="main/Back" node_paths=PackedStringArray("label")]
+layout_mode = 0
+offset_left = 700.0
+offset_top = 752.0
+offset_right = 772.0
+offset_bottom = 774.0
+scale = Vector2(2.125, 3.20833)
+texture_normal = ExtResource("4_w0uqe")
+texture_pressed = ExtResource("5_yyuii")
+texture_hover = ExtResource("6_dfk3a")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("7_cqrdj")
+label = NodePath("../Label")
+
+[node name="Label" type="Label" parent="main/Back"]
+layout_mode = 0
+offset_left = 706.0
+offset_top = 765.0
+offset_right = 847.0
+offset_bottom = 810.0
+theme = SubResource("Theme_hpbpy")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+text = "BACK"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_lf56b")
+
+[node name="Distance" type="Control" parent="main"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 221.0
+offset_top = 118.0
+offset_right = 261.0
+offset_bottom = 158.0
+theme = SubResource("Theme_joyaf")
+
+[node name="Background" type="TextureButton" parent="main/Distance" node_paths=PackedStringArray("label")]
+layout_mode = 0
+offset_left = 508.0
+offset_top = 783.0
+offset_right = 770.0
+offset_bottom = 814.0
+scale = Vector2(1.92208, 3.08833)
+texture_normal = ExtResource("9_gbcwa")
+texture_pressed = ExtResource("5_yyuii")
+texture_hover = ExtResource("6_dfk3a")
+texture_disabled = ExtResource("10_elk1e")
+stretch_mode = 0
+script = ExtResource("7_cqrdj")
+label = NodePath("../Label")
+
+[node name="Label" type="Label" parent="main/Distance"]
+layout_mode = 0
+offset_left = 509.0
+offset_top = 783.0
+offset_right = 1026.0
+offset_bottom = 878.0
+theme = SubResource("Theme_a234d")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+text = "Dimensions"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_lf56b")
+
+[node name="Time" type="Control" parent="main"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 221.0
+offset_right = 261.0
+offset_bottom = 40.0
+theme = SubResource("Theme_joyaf")
+
+[node name="Background" type="TextureButton" parent="main/Time" node_paths=PackedStringArray("label")]
+layout_mode = 0
+offset_left = 508.0
+offset_top = 783.0
+offset_right = 770.0
+offset_bottom = 814.0
+scale = Vector2(1.92208, 3.08833)
+texture_normal = ExtResource("9_gbcwa")
+texture_pressed = ExtResource("5_yyuii")
+texture_hover = ExtResource("6_dfk3a")
+texture_disabled = ExtResource("10_elk1e")
+stretch_mode = 0
+script = ExtResource("7_cqrdj")
+label = NodePath("../Label")
+
+[node name="Label" type="Label" parent="main/Time"]
+layout_mode = 0
+offset_left = 509.0
+offset_top = 783.0
+offset_right = 1026.0
+offset_bottom = 878.0
+theme = SubResource("Theme_a234d")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+text = "Time"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_lf56b")
+
+[node name="time" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="HeadingLabel" type="Label" parent="time"]
+visible = false
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -115,41 +203,157 @@ grow_vertical = 2
 theme = SubResource("Theme_dhk4m")
 text = "Select Time"
 
-[node name="Option1" type="Button" parent="time"]
-layout_mode = 0
-offset_left = 415.0
-offset_top = 511.0
-offset_right = 718.0
-offset_bottom = 588.0
-theme = SubResource("Theme_ev1c2")
-text = "10s"
+[node name="Back" type="Control" parent="time"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1046.0
+offset_top = 239.0
+offset_right = 1086.0
+offset_bottom = 279.0
+theme = SubResource("Theme_211vf")
 
-[node name="Option2" type="Button" parent="time"]
+[node name="Background" type="TextureButton" parent="time/Back" node_paths=PackedStringArray("label")]
 layout_mode = 0
-offset_left = 855.0
-offset_top = 506.0
-offset_right = 1158.0
-offset_bottom = 583.0
-theme = SubResource("Theme_ev1c2")
-text = "20s"
+offset_left = 700.0
+offset_top = 752.0
+offset_right = 772.0
+offset_bottom = 774.0
+scale = Vector2(2.125, 3.20833)
+texture_normal = ExtResource("4_w0uqe")
+texture_pressed = ExtResource("5_yyuii")
+texture_hover = ExtResource("6_dfk3a")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("7_cqrdj")
+label = NodePath("../Label")
 
-[node name="Option3" type="Button" parent="time"]
+[node name="Label" type="Label" parent="time/Back"]
 layout_mode = 0
-offset_left = 1307.0
-offset_top = 511.0
-offset_right = 1610.0
-offset_bottom = 588.0
-theme = SubResource("Theme_ev1c2")
-text = "30s"
+offset_left = 706.0
+offset_top = 765.0
+offset_right = 847.0
+offset_bottom = 810.0
+theme = SubResource("Theme_hpbpy")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+text = "BACK"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_lf56b")
 
-[node name="BackButton" type="Button" parent="time"]
+[node name="Option1" type="Control" parent="time"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 221.0
+offset_top = -118.0
+offset_right = 261.0
+offset_bottom = -78.0
+theme = SubResource("Theme_2226e")
+
+[node name="Background" type="TextureButton" parent="time/Option1" node_paths=PackedStringArray("label")]
 layout_mode = 0
-offset_left = 116.0
-offset_top = 939.0
-offset_right = 239.0
-offset_bottom = 1016.0
-theme = SubResource("Theme_kgtal")
-text = "Back"
+offset_left = 538.0
+offset_top = 783.0
+offset_right = 758.0
+offset_bottom = 814.0
+scale = Vector2(1.92208, 3.08833)
+texture_normal = ExtResource("9_gbcwa")
+texture_pressed = ExtResource("5_yyuii")
+texture_hover = ExtResource("6_dfk3a")
+texture_disabled = ExtResource("10_elk1e")
+stretch_mode = 0
+script = ExtResource("7_cqrdj")
+label = NodePath("../Label")
+
+[node name="Label" type="Label" parent="time/Option1"]
+layout_mode = 0
+offset_left = 538.0
+offset_top = 783.0
+offset_right = 961.0
+offset_bottom = 878.0
+theme = SubResource("Theme_v5ukg")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+text = "10 sec"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_lf56b")
+
+[node name="Option2" type="Control" parent="time"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 221.0
+offset_right = 261.0
+offset_bottom = 40.0
+theme = SubResource("Theme_2226e")
+
+[node name="Background" type="TextureButton" parent="time/Option2" node_paths=PackedStringArray("label")]
+layout_mode = 0
+offset_left = 538.0
+offset_top = 783.0
+offset_right = 758.0
+offset_bottom = 814.0
+scale = Vector2(1.92208, 3.08833)
+texture_normal = ExtResource("9_gbcwa")
+texture_pressed = ExtResource("5_yyuii")
+texture_hover = ExtResource("6_dfk3a")
+texture_disabled = ExtResource("10_elk1e")
+stretch_mode = 0
+script = ExtResource("7_cqrdj")
+label = NodePath("../Label")
+
+[node name="Label" type="Label" parent="time/Option2"]
+layout_mode = 0
+offset_left = 538.0
+offset_top = 783.0
+offset_right = 961.0
+offset_bottom = 878.0
+theme = SubResource("Theme_v5ukg")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+text = "20 sec"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_lf56b")
+
+[node name="Option3" type="Control" parent="time"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 221.0
+offset_top = 118.0
+offset_right = 261.0
+offset_bottom = 158.0
+theme = SubResource("Theme_2226e")
+
+[node name="Background" type="TextureButton" parent="time/Option3" node_paths=PackedStringArray("label")]
+layout_mode = 0
+offset_left = 538.0
+offset_top = 783.0
+offset_right = 758.0
+offset_bottom = 814.0
+scale = Vector2(1.92208, 3.08833)
+texture_normal = ExtResource("9_gbcwa")
+texture_pressed = ExtResource("5_yyuii")
+texture_hover = ExtResource("6_dfk3a")
+texture_disabled = ExtResource("10_elk1e")
+stretch_mode = 0
+script = ExtResource("7_cqrdj")
+label = NodePath("../Label")
+
+[node name="Label" type="Label" parent="time/Option3"]
+layout_mode = 0
+offset_left = 538.0
+offset_top = 783.0
+offset_right = 961.0
+offset_bottom = 878.0
+theme = SubResource("Theme_v5ukg")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+text = "30 sec"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_lf56b")
 
 [node name="distance" type="Control" parent="."]
 visible = false
@@ -158,13 +362,8 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="BackgroundColorRect" type="ColorRect" parent="distance"]
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-color = Color(0.389954, 0.171829, 0.919365, 1)
-
 [node name="HeadingLabel" type="Label" parent="distance"]
+visible = false
 layout_mode = 0
 offset_left = 641.0
 offset_top = 126.0
@@ -173,50 +372,166 @@ offset_bottom = 236.0
 theme = SubResource("Theme_dhk4m")
 text = "Select distance"
 
-[node name="Option1" type="Button" parent="distance"]
+[node name="Option1" type="Control" parent="distance"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 221.0
+offset_top = -118.0
+offset_right = 261.0
+offset_bottom = -78.0
+theme = SubResource("Theme_2226e")
+
+[node name="Background" type="TextureButton" parent="distance/Option1" node_paths=PackedStringArray("label")]
 layout_mode = 0
-offset_left = 402.0
-offset_top = 515.0
-offset_right = 705.0
-offset_bottom = 592.0
-theme = SubResource("Theme_ev1c2")
+offset_left = 538.0
+offset_top = 783.0
+offset_right = 758.0
+offset_bottom = 814.0
+scale = Vector2(1.92208, 3.08833)
+texture_normal = ExtResource("9_gbcwa")
+texture_pressed = ExtResource("5_yyuii")
+texture_hover = ExtResource("6_dfk3a")
+texture_disabled = ExtResource("10_elk1e")
+stretch_mode = 0
+script = ExtResource("7_cqrdj")
+label = NodePath("../Label")
+
+[node name="Label" type="Label" parent="distance/Option1"]
+layout_mode = 0
+offset_left = 538.0
+offset_top = 783.0
+offset_right = 961.0
+offset_bottom = 878.0
+theme = SubResource("Theme_v5ukg")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
 text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_lf56b")
 
-[node name="Option2" type="Button" parent="distance"]
+[node name="Option2" type="Control" parent="distance"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 221.0
+offset_right = 261.0
+offset_bottom = 40.0
+theme = SubResource("Theme_2226e")
+
+[node name="Background" type="TextureButton" parent="distance/Option2" node_paths=PackedStringArray("label")]
 layout_mode = 0
-offset_left = 831.0
-offset_top = 516.0
-offset_right = 1134.0
-offset_bottom = 593.0
-theme = SubResource("Theme_ev1c2")
+offset_left = 538.0
+offset_top = 783.0
+offset_right = 758.0
+offset_bottom = 814.0
+scale = Vector2(1.92208, 3.08833)
+texture_normal = ExtResource("9_gbcwa")
+texture_pressed = ExtResource("5_yyuii")
+texture_hover = ExtResource("6_dfk3a")
+texture_disabled = ExtResource("10_elk1e")
+stretch_mode = 0
+script = ExtResource("7_cqrdj")
+label = NodePath("../Label")
+
+[node name="Label" type="Label" parent="distance/Option2"]
+layout_mode = 0
+offset_left = 538.0
+offset_top = 783.0
+offset_right = 961.0
+offset_bottom = 878.0
+theme = SubResource("Theme_v5ukg")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
 text = "4"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_lf56b")
 
-[node name="Option3" type="Button" parent="distance"]
+[node name="Option3" type="Control" parent="distance"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 221.0
+offset_top = 118.0
+offset_right = 261.0
+offset_bottom = 158.0
+theme = SubResource("Theme_2226e")
+
+[node name="Background" type="TextureButton" parent="distance/Option3" node_paths=PackedStringArray("label")]
 layout_mode = 0
-offset_left = 1242.0
-offset_top = 516.0
-offset_right = 1545.0
-offset_bottom = 593.0
-theme = SubResource("Theme_ev1c2")
+offset_left = 538.0
+offset_top = 783.0
+offset_right = 758.0
+offset_bottom = 814.0
+scale = Vector2(1.92208, 3.08833)
+texture_normal = ExtResource("9_gbcwa")
+texture_pressed = ExtResource("5_yyuii")
+texture_hover = ExtResource("6_dfk3a")
+texture_disabled = ExtResource("10_elk1e")
+stretch_mode = 0
+script = ExtResource("7_cqrdj")
+label = NodePath("../Label")
+
+[node name="Label" type="Label" parent="distance/Option3"]
+layout_mode = 0
+offset_left = 538.0
+offset_top = 783.0
+offset_right = 961.0
+offset_bottom = 878.0
+theme = SubResource("Theme_v5ukg")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
 text = "8"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_lf56b")
 
-[node name="BackButton" type="Button" parent="distance"]
+[node name="Back" type="Control" parent="distance"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1046.0
+offset_top = 239.0
+offset_right = 1086.0
+offset_bottom = 279.0
+theme = SubResource("Theme_211vf")
+
+[node name="Background" type="TextureButton" parent="distance/Back" node_paths=PackedStringArray("label")]
 layout_mode = 0
-offset_left = 116.0
-offset_top = 939.0
-offset_right = 239.0
-offset_bottom = 1016.0
-theme = SubResource("Theme_kgtal")
-text = "Back"
+offset_left = 700.0
+offset_top = 752.0
+offset_right = 772.0
+offset_bottom = 774.0
+scale = Vector2(2.125, 3.20833)
+texture_normal = ExtResource("4_w0uqe")
+texture_pressed = ExtResource("5_yyuii")
+texture_hover = ExtResource("6_dfk3a")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("7_cqrdj")
+label = NodePath("../Label")
 
-[connection signal="button_up" from="main/TimeButton" to="." method="_on_time_button_up"]
-[connection signal="button_up" from="main/DistanceButton" to="." method="_on_distance_button_up"]
-[connection signal="button_up" from="main/BackButton" to="." method="_on_back_button_up"]
-[connection signal="button_up" from="time/Option1" to="." method="_on_time_option_1_button_up"]
-[connection signal="button_up" from="time/Option2" to="." method="_on_time_option_2_button_up"]
-[connection signal="button_up" from="time/Option3" to="." method="_on_time_option_3_button_up"]
-[connection signal="button_up" from="time/BackButton" to="." method="_on_time_or_distance_back_button_up"]
-[connection signal="button_up" from="distance/Option1" to="." method="_on_distance_option_1_button_up"]
-[connection signal="button_up" from="distance/Option2" to="." method="_on_distance_option_2_button_up"]
-[connection signal="button_up" from="distance/Option3" to="." method="_on_distance_option_3_button_up"]
-[connection signal="button_up" from="distance/BackButton" to="." method="_on_time_or_distance_back_button_up"]
+[node name="Label" type="Label" parent="distance/Back"]
+layout_mode = 0
+offset_left = 706.0
+offset_top = 765.0
+offset_right = 847.0
+offset_bottom = 810.0
+theme = SubResource("Theme_hpbpy")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+text = "BACK"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_lf56b")
+
+[connection signal="pressed" from="main/Back/Background" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="main/Distance/Background" to="." method="_on_distance_button_pressed"]
+[connection signal="pressed" from="main/Time/Background" to="." method="_on_time_button_pressed"]
+[connection signal="pressed" from="time/Back/Background" to="." method="_on_time_or_distance_button_pressed"]
+[connection signal="pressed" from="time/Option1/Background" to="." method="_on_time_option_1_button_pressed"]
+[connection signal="pressed" from="time/Option2/Background" to="." method="_on_time_option_2_button_pressed"]
+[connection signal="pressed" from="time/Option3/Background" to="." method="_on_time_option_3_button_pressed"]
+[connection signal="pressed" from="distance/Option1/Background" to="." method="_on_distance_option_1_button_pressed"]
+[connection signal="pressed" from="distance/Option2/Background" to="." method="_on_distance_option_2_button_pressed"]
+[connection signal="pressed" from="distance/Option3/Background" to="." method="_on_distance_option_3_button_pressed"]
+[connection signal="pressed" from="distance/Back/Background" to="." method="_on_time_or_distance_button_pressed"]

@@ -1,37 +1,64 @@
-[gd_scene load_steps=4 format=3 uid="uid://egty2a5uag5n"]
+[gd_scene load_steps=11 format=3 uid="uid://egty2a5uag5n"]
 
 [ext_resource type="Script" path="res://scripts/state_machine/game_states/game_state_init_game.gd" id="1_xyjpb"]
+[ext_resource type="Texture2D" uid="uid://plnk2l8lsbca" path="res://assets/titlescreen/3.webp" id="2_3oq3j"]
+[ext_resource type="FontFile" uid="uid://u3ide4v6ikg2" path="res://assets/kenney_ui-pack-space-expansion/Font/Kenney Future.ttf" id="3_c7q87"]
+[ext_resource type="Texture2D" uid="uid://xcbrtpl5n6q0" path="res://assets/kenney_ui-pack-space-expansion/PNG/Grey/Default/bar_square_gloss_large.png" id="4_188jh"]
+[ext_resource type="Texture2D" uid="uid://yxdlb6fgqy45" path="res://assets/kenney_ui-pack-space-expansion/buttons/bar_square_gloss_large_black_pressed.png" id="5_gfokc"]
+[ext_resource type="Texture2D" uid="uid://cyomx7lrxu7ay" path="res://assets/kenney_ui-pack-space-expansion/buttons/bar_square_gloss_large_black.png" id="6_0q1jk"]
+[ext_resource type="Script" path="res://scripts/ui/button/text_texture_button.gd" id="7_ngwus"]
+[ext_resource type="Script" path="res://scripts/ui/button/custom_label.gd" id="8_4te8v"]
 
-[sub_resource type="Theme" id="Theme_mrtoi"]
-default_font_size = 80
+[sub_resource type="Theme" id="Theme_mmdfl"]
+default_font = ExtResource("3_c7q87")
 
-[sub_resource type="Theme" id="Theme_acc8u"]
-default_font_size = 50
+[sub_resource type="Theme" id="Theme_nkkgt"]
+default_font_size = 60
 
 [node name="InitGame" type="Node2D" node_paths=PackedStringArray("start_button")]
 script = ExtResource("1_xyjpb")
-start_button = NodePath("StartButton")
+start_button = NodePath("")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 1920.0
-offset_bottom = 1080.0
-color = Color(0.551014, 1, 0.72694, 1)
+[node name="Background" type="Sprite2D" parent="."]
+scale = Vector2(1.072, 1.056)
+texture = ExtResource("2_3oq3j")
+centered = false
 
-[node name="Heading" type="Label" parent="."]
-offset_left = 782.0
-offset_top = 182.0
-offset_right = 1159.0
-offset_bottom = 292.0
-theme = SubResource("Theme_mrtoi")
-text = "Init Game"
+[node name="Start" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 221.0
+offset_top = 118.0
+offset_right = 261.0
+offset_bottom = 158.0
+theme = SubResource("Theme_mmdfl")
 
-[node name="StartButton" type="Button" parent="."]
-offset_left = 900.0
-offset_top = 554.0
-offset_right = 1025.0
-offset_bottom = 631.0
-theme = SubResource("Theme_acc8u")
-disabled = true
+[node name="PlayBackground" type="TextureButton" parent="Start" node_paths=PackedStringArray("label")]
+layout_mode = 0
+offset_left = 538.0
+offset_top = 783.0
+offset_right = 758.0
+offset_bottom = 814.0
+scale = Vector2(1.92208, 3.08833)
+texture_normal = ExtResource("4_188jh")
+texture_pressed = ExtResource("5_gfokc")
+texture_hover = ExtResource("6_0q1jk")
+stretch_mode = 0
+script = ExtResource("7_ngwus")
+label = NodePath("../Label")
+
+[node name="Label" type="Label" parent="Start"]
+layout_mode = 0
+offset_left = 538.0
+offset_top = 783.0
+offset_right = 961.0
+offset_bottom = 878.0
+theme = SubResource("Theme_nkkgt")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
 text = "Start"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_4te8v")
 
-[connection signal="button_up" from="StartButton" to="." method="_on_start_button_up"]
+[connection signal="pressed" from="Start/PlayBackground" to="." method="_on_play_button_pressed"]

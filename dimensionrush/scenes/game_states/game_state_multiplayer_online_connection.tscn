@@ -1,108 +1,175 @@
-[gd_scene load_steps=6 format=3 uid="uid://lskje77wvt72"]
+[gd_scene load_steps=16 format=3 uid="uid://lskje77wvt72"]
 
 [ext_resource type="Script" path="res://scripts/state_machine/game_states/game_state_multiplayer_online_connection.gd" id="1_elv82"]
-
-[sub_resource type="Theme" id="Theme_k7f0l"]
-default_font_size = 80
-
-[sub_resource type="Theme" id="Theme_sodlo"]
-default_font_size = 50
+[ext_resource type="Texture2D" uid="uid://plnk2l8lsbca" path="res://assets/titlescreen/3.webp" id="2_sgsqb"]
+[ext_resource type="FontFile" uid="uid://u3ide4v6ikg2" path="res://assets/kenney_ui-pack-space-expansion/Font/Kenney Future.ttf" id="3_uquit"]
+[ext_resource type="Texture2D" uid="uid://d4efsx60y2bq" path="res://assets/kenney_ui-pack-space-expansion/PNG/Grey/Double/bar_square_gloss_small.png" id="4_mcjbd"]
+[ext_resource type="Texture2D" uid="uid://yxdlb6fgqy45" path="res://assets/kenney_ui-pack-space-expansion/buttons/bar_square_gloss_large_black_pressed.png" id="5_480vo"]
+[ext_resource type="Texture2D" uid="uid://cyomx7lrxu7ay" path="res://assets/kenney_ui-pack-space-expansion/buttons/bar_square_gloss_large_black.png" id="6_bv4xy"]
+[ext_resource type="Script" path="res://scripts/ui/button/text_texture_button.gd" id="7_hftm4"]
+[ext_resource type="Script" path="res://scripts/ui/button/custom_label.gd" id="8_x437x"]
+[ext_resource type="Texture2D" uid="uid://xcbrtpl5n6q0" path="res://assets/kenney_ui-pack-space-expansion/PNG/Grey/Default/bar_square_gloss_large.png" id="9_1svx8"]
+[ext_resource type="Texture2D" uid="uid://dmilp3m025hs7" path="res://assets/kenney_ui-pack-space-expansion/buttons/bar_square_gloss_large_disabled.png" id="10_4xf2h"]
 
 [sub_resource type="Theme" id="Theme_5hvhg"]
 default_font_size = 50
 
-[sub_resource type="Theme" id="Theme_7ww65"]
-default_font_size = 50
+[sub_resource type="Theme" id="Theme_sbn1g"]
+default_font = ExtResource("3_uquit")
 
-[node name="MultiplayerOnlineConnection" type="Node2D" node_paths=PackedStringArray("host_ip_label", "host_ip_line_edit")]
+[sub_resource type="Theme" id="Theme_3k61h"]
+default_font = ExtResource("3_uquit")
+default_font_size = 40
+
+[sub_resource type="Theme" id="Theme_cblee"]
+default_font = ExtResource("3_uquit")
+
+[sub_resource type="Theme" id="Theme_o8lr2"]
+default_font_size = 60
+
+[node name="MultiplayerOnlineConnection" type="Node2D" node_paths=PackedStringArray("host_ip_line_edit", "host_button", "join_button")]
 script = ExtResource("1_elv82")
-host_ip_label = NodePath("Host/HostIpLabel")
-host_ip_line_edit = NodePath("Client/ClientIpLineEdit")
+host_ip_line_edit = NodePath("IP/LineEdit")
+host_button = NodePath("Host/Background")
+join_button = NodePath("Join/Background")
 
-[node name="BackgroundColorRect" type="ColorRect" parent="."]
-offset_right = 1920.0
-offset_bottom = 1080.0
-color = Color(0.720567, 0.852188, 0, 1)
+[node name="Background" type="Sprite2D" parent="."]
+scale = Vector2(1.072, 1.056)
+texture = ExtResource("2_sgsqb")
+centered = false
 
-[node name="HeadingLabel" type="Label" parent="."]
-offset_left = 473.0
-offset_top = 171.0
-offset_right = 1653.0
-offset_bottom = 281.0
-theme = SubResource("Theme_k7f0l")
-text = "Multiplayer Online Connection
-"
+[node name="IP" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = SubResource("Theme_5hvhg")
+
+[node name="LineEdit" type="LineEdit" parent="IP"]
+layout_mode = 0
+offset_left = 692.0
+offset_top = 600.0
+offset_right = 1249.0
+offset_bottom = 680.0
+theme_override_fonts/font = ExtResource("3_uquit")
+placeholder_text = "Enter IP"
+alignment = 1
+max_length = 15
+
+[node name="Back" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1046.0
+offset_top = 239.0
+offset_right = 1086.0
+offset_bottom = 279.0
+theme = SubResource("Theme_sbn1g")
+
+[node name="Background" type="TextureButton" parent="Back" node_paths=PackedStringArray("label")]
+layout_mode = 0
+offset_left = 700.0
+offset_top = 752.0
+offset_right = 772.0
+offset_bottom = 774.0
+scale = Vector2(2.125, 3.20833)
+texture_normal = ExtResource("4_mcjbd")
+texture_pressed = ExtResource("5_480vo")
+texture_hover = ExtResource("6_bv4xy")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("7_hftm4")
+label = NodePath("../Label")
+
+[node name="Label" type="Label" parent="Back"]
+layout_mode = 0
+offset_left = 706.0
+offset_top = 765.0
+offset_right = 847.0
+offset_bottom = 810.0
+theme = SubResource("Theme_3k61h")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+text = "BACK"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_x437x")
 
 [node name="Host" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 712.0
-offset_top = 521.0
-offset_right = 752.0
-offset_bottom = 561.0
-theme = SubResource("Theme_sodlo")
+offset_left = 221.0
+offset_top = 118.0
+offset_right = 261.0
+offset_bottom = 158.0
+theme = SubResource("Theme_cblee")
 
-[node name="HostButton" type="Button" parent="Host"]
+[node name="Background" type="TextureButton" parent="Host" node_paths=PackedStringArray("label")]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-text = "Host"
+offset_left = 538.0
+offset_top = 783.0
+offset_right = 758.0
+offset_bottom = 814.0
+scale = Vector2(1.92208, 3.08833)
+texture_normal = ExtResource("9_1svx8")
+texture_pressed = ExtResource("5_480vo")
+texture_hover = ExtResource("6_bv4xy")
+texture_disabled = ExtResource("10_4xf2h")
+stretch_mode = 0
+script = ExtResource("7_hftm4")
+label = NodePath("../Label")
 
-[node name="HostLabel" type="Label" parent="Host"]
+[node name="Label" type="Label" parent="Host"]
 layout_mode = 0
-offset_left = 139.0
-offset_top = 3.0
-offset_right = 199.0
-offset_bottom = 72.0
-text = "IP:"
+offset_left = 538.0
+offset_top = 783.0
+offset_right = 961.0
+offset_bottom = 878.0
+theme = SubResource("Theme_o8lr2")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+text = "HOST"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_x437x")
 
-[node name="HostIpLabel" type="Label" parent="Host"]
-layout_mode = 0
-offset_left = 206.0
-offset_top = 4.0
-offset_right = 320.0
-offset_bottom = 73.0
-text = "/"
-
-[node name="Client" type="Control" parent="."]
+[node name="Join" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 707.0
-offset_top = 624.0
-offset_right = 747.0
-offset_bottom = 664.0
-theme = SubResource("Theme_5hvhg")
+offset_left = 221.0
+offset_right = 261.0
+offset_bottom = 40.0
+theme = SubResource("Theme_cblee")
 
-[node name="ClientButton" type="Button" parent="Client"]
+[node name="Background" type="TextureButton" parent="Join" node_paths=PackedStringArray("label")]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 538.0
+offset_top = 783.0
+offset_right = 758.0
+offset_bottom = 814.0
+scale = Vector2(1.92208, 3.08833)
+texture_normal = ExtResource("9_1svx8")
+texture_pressed = ExtResource("5_480vo")
+texture_hover = ExtResource("6_bv4xy")
+texture_disabled = ExtResource("10_4xf2h")
+stretch_mode = 0
+script = ExtResource("7_hftm4")
+label = NodePath("../Label")
+
+[node name="Label" type="Label" parent="Join"]
+layout_mode = 0
+offset_left = 538.0
+offset_top = 783.0
+offset_right = 961.0
+offset_bottom = 878.0
+theme = SubResource("Theme_o8lr2")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
 text = "Join"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_x437x")
 
-[node name="ClientLabel" type="Label" parent="Client"]
-layout_mode = 0
-offset_left = 121.0
-offset_top = 6.0
-offset_right = 181.0
-offset_bottom = 75.0
-text = "IP:"
-
-[node name="ClientIpLineEdit" type="LineEdit" parent="Client"]
-layout_mode = 0
-offset_left = 193.0
-offset_top = 6.0
-offset_right = 593.0
-offset_bottom = 83.0
-placeholder_text = "Enter IP"
-
-[node name="BackButton" type="Button" parent="."]
-offset_left = 28.0
-offset_top = 970.0
-offset_right = 151.0
-offset_bottom = 1047.0
-theme = SubResource("Theme_7ww65")
-text = "Back"
-
-[connection signal="button_up" from="Host/HostButton" to="." method="_on_host_button_up"]
-[connection signal="button_up" from="Client/ClientButton" to="." method="_on_client_button_up"]
-[connection signal="button_up" from="BackButton" to="." method="_on_back_button_up"]
+[connection signal="pressed" from="Back/Background" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Host/Background" to="." method="_on_host_button_pressed"]
+[connection signal="pressed" from="Join/Background" to="." method="_on_join_button_pressed"]

@@ -91,11 +91,6 @@ func init_game_on_online_ready():
 func init_game_on_start_button_up():
 	state_transition.emit(self, "Playing")
 
-func _on_start_button_up():
-	if GameManager.is_online_multiplayer():
-		init_game_on_start_button_up.rpc()
-	state_transition.emit(self, "Playing")
-
 
 func resetUI():
 	if GameManager.is_online_multiplayer():
@@ -197,3 +192,9 @@ func spawnPlayerSingleplayer():
 	player_scene_instance_2.player_controls_resource = GameManager.second_player_controls_resource
 
 	
+
+
+func _on_play_button_pressed() -> void:
+	if GameManager.is_online_multiplayer():
+		init_game_on_start_button_up.rpc()
+	state_transition.emit(self, "Playing")
