@@ -6,7 +6,8 @@ extends State
 @export var lower_subviewport : SubViewport
 @export var player_scene : PackedScene
 
-@export var start_button : Button
+@export var start_button : CustomTextureButton
+@export var start_label : CustomLabel
 
 var player_scene_instance_1 : Player = null
 var player_scene_instance_2 : Player = null
@@ -44,6 +45,7 @@ func enter_offline():
 	clearNodes()
 	spawnPlayer()
 	start_button.disabled = false
+	start_label.disabled = false
 	visible = true
 	
 func enter_online():
@@ -86,6 +88,7 @@ func exit():
 @rpc("any_peer")
 func init_game_on_online_ready():
 	start_button.disabled = false
+	start_label.disabled = false
 
 @rpc("any_peer")
 func init_game_on_start_button_up():
@@ -95,6 +98,7 @@ func init_game_on_start_button_up():
 func resetUI():
 	if GameManager.is_online_multiplayer():
 		start_button.disabled = true
+		start_label.disabled = true
 
 @rpc("any_peer")
 func clearNodes():

@@ -15,9 +15,10 @@ default_font = ExtResource("3_c7q87")
 [sub_resource type="Theme" id="Theme_nkkgt"]
 default_font_size = 60
 
-[node name="InitGame" type="Node2D" node_paths=PackedStringArray("start_button")]
+[node name="InitGame" type="Node2D" node_paths=PackedStringArray("start_button", "start_label")]
 script = ExtResource("1_xyjpb")
-start_button = NodePath("")
+start_button = NodePath("Start/PlayBackground")
+start_label = NodePath("Start/Label")
 
 [node name="Background" type="Sprite2D" parent="."]
 scale = Vector2(1.072, 1.056)
