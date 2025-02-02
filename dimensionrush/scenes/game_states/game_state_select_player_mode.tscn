@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://5i7y4qtqe0xo"]
+[gd_scene load_steps=16 format=3 uid="uid://5i7y4qtqe0xo"]
 
 [ext_resource type="Script" path="res://scripts/state_machine/game_states/game_state_select_player_mode.gd" id="1_ygq3w"]
 [ext_resource type="Texture2D" uid="uid://plnk2l8lsbca" path="res://assets/titlescreen/3.webp" id="2_dyrpk"]
@@ -9,9 +9,7 @@
 [ext_resource type="Script" path="res://scripts/ui/button/text_texture_button.gd" id="7_v8a6y"]
 [ext_resource type="Texture2D" uid="uid://d4efsx60y2bq" path="res://assets/kenney_ui-pack-space-expansion/PNG/Grey/Double/bar_square_gloss_small.png" id="8_k8dl0"]
 [ext_resource type="Script" path="res://scripts/ui/button/custom_label.gd" id="8_nbc2e"]
-
-[sub_resource type="Theme" id="Theme_dhk4m"]
-default_font_size = 80
+[ext_resource type="Texture2D" uid="uid://c7vf3cqe17e5c" path="res://assets/kenney_ui-pack-space-expansion/PNG/Extra/Double/bar_shadow_round_large.png" id="10_si4c4"]
 
 [sub_resource type="Theme" id="Theme_1ligb"]
 default_font = ExtResource("3_xw8yi")
@@ -26,6 +24,10 @@ default_font = ExtResource("3_xw8yi")
 default_font = ExtResource("3_xw8yi")
 default_font_size = 40
 
+[sub_resource type="Theme" id="Theme_w0c6i"]
+default_font = ExtResource("3_xw8yi")
+default_font_size = 60
+
 [node name="SelectPlayerMode" type="Node2D"]
 script = ExtResource("1_ygq3w")
 
@@ -33,15 +35,6 @@ script = ExtResource("1_ygq3w")
 scale = Vector2(1.072, 1.056)
 texture = ExtResource("2_dyrpk")
 centered = false
-
-[node name="HeadingLabel" type="Label" parent="."]
-visible = false
-offset_left = 641.0
-offset_top = 126.0
-offset_right = 1372.0
-offset_bottom = 236.0
-theme = SubResource("Theme_dhk4m")
-text = "Select Player Mode"
 
 [node name="Singpleplayer" type="Control" parent="."]
 layout_mode = 3
@@ -189,6 +182,29 @@ text = "BACK"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("8_nbc2e")
+
+[node name="Mode" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BarShadowRoundLarge" type="Sprite2D" parent="Mode"]
+position = Vector2(960, 478)
+scale = Vector2(3.1875, 2.70833)
+texture = ExtResource("10_si4c4")
+
+[node name="Heading" type="Label" parent="Mode"]
+layout_mode = 0
+offset_left = 654.0
+offset_top = 414.0
+offset_right = 1267.0
+offset_bottom = 543.0
+theme = SubResource("Theme_w0c6i")
+text = "player mode"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="Singpleplayer/Button" to="." method="_on_singleplayer_button_pressed"]
 [connection signal="pressed" from="MultiplayerLocal/Button" to="." method="_on_multiplayer_local_button_pressed"]

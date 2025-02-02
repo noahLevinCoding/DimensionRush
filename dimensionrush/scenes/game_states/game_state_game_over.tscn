@@ -1,66 +1,185 @@
-[gd_scene load_steps=7 format=3 uid="uid://bfyty2mamr5uu"]
+[gd_scene load_steps=17 format=3 uid="uid://bfyty2mamr5uu"]
 
 [ext_resource type="Script" path="res://scripts/state_machine/game_states/game_state_game_over.gd" id="1_xwkyw"]
 [ext_resource type="Script" path="res://scripts/ui/game_seed_container.gd" id="2_id0ka"]
+[ext_resource type="Texture2D" uid="uid://plnk2l8lsbca" path="res://assets/titlescreen/3.webp" id="2_o636i"]
+[ext_resource type="FontFile" uid="uid://u3ide4v6ikg2" path="res://assets/kenney_ui-pack-space-expansion/Font/Kenney Future.ttf" id="4_ocj0t"]
+[ext_resource type="Texture2D" uid="uid://xcbrtpl5n6q0" path="res://assets/kenney_ui-pack-space-expansion/PNG/Grey/Default/bar_square_gloss_large.png" id="5_u5tsq"]
+[ext_resource type="Texture2D" uid="uid://yxdlb6fgqy45" path="res://assets/kenney_ui-pack-space-expansion/buttons/bar_square_gloss_large_black_pressed.png" id="6_pd54w"]
+[ext_resource type="Texture2D" uid="uid://cyomx7lrxu7ay" path="res://assets/kenney_ui-pack-space-expansion/buttons/bar_square_gloss_large_black.png" id="7_4lf3w"]
+[ext_resource type="Texture2D" uid="uid://dmilp3m025hs7" path="res://assets/kenney_ui-pack-space-expansion/buttons/bar_square_gloss_large_disabled.png" id="8_3dr27"]
+[ext_resource type="Script" path="res://scripts/ui/button/text_texture_button.gd" id="9_lw5nc"]
+[ext_resource type="Texture2D" uid="uid://c7vf3cqe17e5c" path="res://assets/kenney_ui-pack-space-expansion/PNG/Extra/Double/bar_shadow_round_large.png" id="10_32x3e"]
+[ext_resource type="Script" path="res://scripts/ui/button/custom_label.gd" id="10_xd761"]
+
+[sub_resource type="Theme" id="Theme_kt6m5"]
+default_font = ExtResource("4_ocj0t")
+
+[sub_resource type="Theme" id="Theme_ma4fn"]
+default_font_size = 60
 
 [sub_resource type="Theme" id="Theme_mrtoi"]
+default_font = ExtResource("4_ocj0t")
 default_font_size = 80
 
-[sub_resource type="Theme" id="Theme_acc8u"]
-default_font_size = 50
+[sub_resource type="Theme" id="Theme_llfan"]
+default_font = ExtResource("4_ocj0t")
 
-[sub_resource type="Theme" id="Theme_6tk2t"]
-default_font_size = 50
-
-[sub_resource type="Theme" id="Theme_74n00"]
+[sub_resource type="Theme" id="Theme_2ia68"]
 default_font_size = 30
 
 [node name="GameOver" type="Node2D" node_paths=PackedStringArray("winner_label")]
 script = ExtResource("1_xwkyw")
-winner_label = NodePath("Heading")
+winner_label = NodePath("Winner/Heading")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 1920.0
-offset_bottom = 1080.0
-color = Color(0.993222, 0.854764, 0.799963, 1)
+[node name="Background" type="Sprite2D" parent="."]
+scale = Vector2(1.072, 1.056)
+texture = ExtResource("2_o636i")
+centered = false
 
-[node name="Heading" type="Label" parent="."]
-offset_left = 782.0
-offset_top = 182.0
-offset_right = 1159.0
-offset_bottom = 292.0
-theme = SubResource("Theme_mrtoi")
-text = "Game Over"
+[node name="Restart" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 176.0
+offset_top = -118.0
+offset_right = 216.0
+offset_bottom = -78.0
+theme = SubResource("Theme_kt6m5")
 
-[node name="RestartButton" type="Button" parent="."]
-offset_left = 677.0
-offset_top = 531.0
-offset_right = 827.0
-offset_bottom = 608.0
-theme = SubResource("Theme_acc8u")
+[node name="Background" type="TextureButton" parent="Restart" node_paths=PackedStringArray("label")]
+layout_mode = 0
+offset_left = 508.0
+offset_top = 783.0
+offset_right = 810.0
+offset_bottom = 814.0
+scale = Vector2(1.92208, 3.08833)
+texture_normal = ExtResource("5_u5tsq")
+texture_pressed = ExtResource("6_pd54w")
+texture_hover = ExtResource("7_4lf3w")
+texture_disabled = ExtResource("8_3dr27")
+stretch_mode = 0
+script = ExtResource("9_lw5nc")
+label = NodePath("../Label")
+
+[node name="Label" type="Label" parent="Restart"]
+layout_mode = 0
+offset_left = 532.0
+offset_top = 783.0
+offset_right = 1075.0
+offset_bottom = 878.0
+theme = SubResource("Theme_ma4fn")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
 text = "Restart"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("10_xd761")
 
-[node name="TitlescreenButton" type="Button" parent="."]
-offset_left = 1083.0
-offset_top = 527.0
-offset_right = 1236.0
-offset_bottom = 604.0
-theme = SubResource("Theme_acc8u")
-text = "Titlescreen"
+[node name="ChangeGameMode" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 176.0
+offset_right = 216.0
+offset_bottom = 40.0
+theme = SubResource("Theme_kt6m5")
 
-[node name="ChangeGameModeButton" type="Button" parent="."]
-offset_left = 1189.0
-offset_top = 706.0
-offset_right = 1675.0
-offset_bottom = 783.0
-theme = SubResource("Theme_6tk2t")
-text = "Change game mode"
+[node name="Background" type="TextureButton" parent="ChangeGameMode" node_paths=PackedStringArray("label")]
+layout_mode = 0
+offset_left = 508.0
+offset_top = 783.0
+offset_right = 810.0
+offset_bottom = 814.0
+scale = Vector2(1.92208, 3.08833)
+texture_normal = ExtResource("5_u5tsq")
+texture_pressed = ExtResource("6_pd54w")
+texture_hover = ExtResource("7_4lf3w")
+texture_disabled = ExtResource("8_3dr27")
+stretch_mode = 0
+script = ExtResource("9_lw5nc")
+label = NodePath("../Label")
+
+[node name="Label" type="Label" parent="ChangeGameMode"]
+layout_mode = 0
+offset_left = 532.0
+offset_top = 783.0
+offset_right = 1075.0
+offset_bottom = 878.0
+theme = SubResource("Theme_ma4fn")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+text = "Change mode"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("10_xd761")
+
+[node name="Quit" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 176.0
+offset_top = 118.0
+offset_right = 216.0
+offset_bottom = 158.0
+theme = SubResource("Theme_kt6m5")
+
+[node name="Background" type="TextureButton" parent="Quit" node_paths=PackedStringArray("label")]
+layout_mode = 0
+offset_left = 508.0
+offset_top = 783.0
+offset_right = 810.0
+offset_bottom = 814.0
+scale = Vector2(1.92208, 3.08833)
+texture_normal = ExtResource("5_u5tsq")
+texture_pressed = ExtResource("6_pd54w")
+texture_hover = ExtResource("7_4lf3w")
+texture_disabled = ExtResource("8_3dr27")
+stretch_mode = 0
+script = ExtResource("9_lw5nc")
+label = NodePath("../Label")
+
+[node name="Label" type="Label" parent="Quit"]
+layout_mode = 0
+offset_left = 532.0
+offset_top = 783.0
+offset_right = 1075.0
+offset_bottom = 878.0
+theme = SubResource("Theme_ma4fn")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("10_xd761")
+
+[node name="Winner" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BarShadowRoundLarge" type="Sprite2D" parent="Winner"]
+position = Vector2(960, 478)
+scale = Vector2(6.02083, 4.27083)
+texture = ExtResource("10_32x3e")
+
+[node name="Heading" type="Label" parent="Winner"]
+layout_mode = 0
+offset_left = 382.0
+offset_top = 377.0
+offset_right = 1538.0
+offset_bottom = 580.0
+theme = SubResource("Theme_mrtoi")
+text = "Upper player wins"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="GameSeedContainer" type="HBoxContainer" parent="." node_paths=PackedStringArray("game_seed_label")]
-offset_right = 82.0
-offset_bottom = 42.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+offset_left = 9.0
+offset_top = 1046.0
+offset_right = 123.0
+offset_bottom = 1088.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_llfan")
 alignment = 2
 script = ExtResource("2_id0ka")
 game_seed_label = NodePath("GameSeedLabel")
@@ -68,18 +187,19 @@ game_seed_label = NodePath("GameSeedLabel")
 [node name="GameSeedTextLabel" type="Label" parent="GameSeedContainer"]
 layout_mode = 2
 size_flags_horizontal = 2
-theme = SubResource("Theme_74n00")
+size_flags_vertical = 0
+theme = SubResource("Theme_2ia68")
 text = "Seed:
 "
 
 [node name="GameSeedLabel" type="Label" parent="GameSeedContainer"]
 layout_mode = 2
 size_flags_horizontal = 2
-theme = SubResource("Theme_74n00")
+theme = SubResource("Theme_2ia68")
 text = "
 "
 
-[connection signal="button_up" from="RestartButton" to="." method="_on_restart_button_up"]
-[connection signal="button_up" from="TitlescreenButton" to="." method="_on_titlescreen_button_up"]
-[connection signal="button_up" from="ChangeGameModeButton" to="." method="_on_change_game_mode_button_up"]
+[connection signal="pressed" from="Restart/Background" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="ChangeGameMode/Background" to="." method="_on_change_game_mode_button_pressed"]
+[connection signal="pressed" from="Quit/Background" to="." method="_on_quit_button_pressed"]
 [connection signal="gui_input" from="GameSeedContainer" to="GameSeedContainer" method="_on_gui_input"]
