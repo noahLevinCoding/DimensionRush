@@ -1,21 +1,23 @@
-[gd_scene load_steps=25 format=3 uid="uid://bkcp6m6cuc5fh"]
+[gd_scene load_steps=27 format=3 uid="uid://bkcp6m6cuc5fh"]
 
 [ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="1_rro5f"]
-[ext_resource type="PackedScene" uid="uid://bdd2a752ovak" path="res://scenes/rooms/room_spawner.tscn" id="1_sb64c"]
+[ext_resource type="PackedScene" uid="uid://bdd2a752ovak" path="res://scenes/Rooms/room_spawner.tscn" id="1_sb64c"]
 [ext_resource type="PackedScene" uid="uid://drve2dny0aalb" path="res://scenes/game_states/game_state_titlescreen.tscn" id="2_8036h"]
 [ext_resource type="Script" path="res://scripts/ui/inventory_ui.gd" id="2_puyum"]
 [ext_resource type="Script" path="res://scripts/ui/playing_ui.gd" id="2_wuw4b"]
 [ext_resource type="PackedScene" uid="uid://5i7y4qtqe0xo" path="res://scenes/game_states/game_state_select_player_mode.tscn" id="3_2epx2"]
-[ext_resource type="Texture2D" uid="uid://bfiacwj64t3yr" path="res://assets/kenney_ui-pack-pixel-adventure/Tiles/Large tiles/Thick outline/tile_0026.png" id="4_ih6x4"]
+[ext_resource type="Texture2D" uid="uid://dq4ybw1mh2mwt" path="res://assets/kenney_ui-pack-space-expansion/PNG/Grey/Double/bar_round_gloss_large_square.png" id="4_f5gtt"]
 [ext_resource type="PackedScene" uid="uid://cu14ec3hwpjqt" path="res://scenes/game_states/game_state_select_one_player_controls.tscn" id="4_qjabk"]
 [ext_resource type="Script" path="res://scripts/ui/time_ui.gd" id="4_vgc6u"]
 [ext_resource type="PackedScene" uid="uid://dyi2n3unvp0mn" path="res://scenes/game_states/game_state_select_two_player_controls.tscn" id="5_cxpx8"]
+[ext_resource type="Texture2D" uid="uid://yctafjeq23fj" path="res://assets/items/stun.png" id="5_knqts"]
 [ext_resource type="Script" path="res://scripts/ui/distance_ui.gd" id="5_tg1lt"]
 [ext_resource type="PackedScene" uid="uid://lskje77wvt72" path="res://scenes/game_states/game_state_multiplayer_online_connection.tscn" id="6_2ui7l"]
 [ext_resource type="Texture2D" uid="uid://ddvum0aryra74" path="res://assets/progress_bar/gray.png" id="6_fpbm2"]
 [ext_resource type="Texture2D" uid="uid://uxstoisbdhw4" path="res://assets/progress_bar/over.png" id="7_5wdvj"]
 [ext_resource type="PackedScene" uid="uid://egty2a5uag5n" path="res://scenes/game_states/game_state_init_game.tscn" id="7_52gvj"]
 [ext_resource type="Texture2D" uid="uid://ddib3s76nnyp8" path="res://assets/progress_bar/blue.png" id="7_gbn30"]
+[ext_resource type="Texture2D" uid="uid://byvodmh07ldee" path="res://assets/kenney_ui-pack-space-expansion/PNG/Grey/Double/bar_round_gloss_large_m.png" id="7_kajtd"]
 [ext_resource type="PackedScene" uid="uid://bnbiepdxbcoyf" path="res://scenes/game_states/game_state_select_game_mode.tscn" id="7_oxu7e"]
 [ext_resource type="Texture2D" uid="uid://bg8qbahh4k00n" path="res://assets/progress_bar/red.png" id="8_a3a04"]
 [ext_resource type="PackedScene" uid="uid://doa2j3gkdu6qe" path="res://scenes/game_states/game_state_playing.tscn" id="9_c2l1w"]
@@ -92,7 +94,7 @@ offset_left = 5.0
 offset_top = 5.0
 offset_right = 85.0
 offset_bottom = 85.0
-texture = ExtResource("4_ih6x4")
+texture = ExtResource("4_f5gtt")
 
 [node name="TextureRect" type="TextureRect" parent="GameUI/PlayingUI/InventoryUI/UpperInventoryUI/ColorRect"]
 layout_mode = 1
@@ -107,6 +109,8 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("5_knqts")
+expand_mode = 1
 
 [node name="LowerInventoryUI" type="Control" parent="GameUI/PlayingUI/InventoryUI" node_paths=PackedStringArray("foreground")]
 layout_mode = 3
@@ -122,7 +126,7 @@ offset_right = 1915.0
 offset_bottom = 650.0
 size_flags_horizontal = 8
 size_flags_vertical = 8
-texture = ExtResource("4_ih6x4")
+texture = ExtResource("4_f5gtt")
 
 [node name="TextureRect2" type="TextureRect" parent="GameUI/PlayingUI/InventoryUI/LowerInventoryUI/ColorRect"]
 layout_mode = 1
@@ -145,19 +149,18 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="TimeUI" type="Control" parent="GameUI/PlayingUI/GoalUI" node_paths=PackedStringArray("timer_label")]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_vgc6u")
 timer_label = NodePath("ColorRect/TimerLabel")
 
-[node name="ColorRect" type="ColorRect" parent="GameUI/PlayingUI/GoalUI/TimeUI"]
+[node name="ColorRect" type="TextureRect" parent="GameUI/PlayingUI/GoalUI/TimeUI"]
 layout_mode = 0
 offset_top = 520.0
 offset_right = 1920.0
 offset_bottom = 560.0
-color = Color(1, 0.0784314, 1, 1)
+texture = ExtResource("7_kajtd")
 
 [node name="TimerLabel" type="Label" parent="GameUI/PlayingUI/GoalUI/TimeUI/ColorRect"]
 layout_mode = 1
@@ -167,9 +170,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.5
-offset_top = -11.5
+offset_top = -27.5
 offset_right = 20.5
-offset_bottom = 11.5
+offset_bottom = 27.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 40
