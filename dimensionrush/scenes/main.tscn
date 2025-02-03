@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bkcp6m6cuc5fh"]
+[gd_scene load_steps=26 format=3 uid="uid://bkcp6m6cuc5fh"]
 
 [ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="1_rro5f"]
 [ext_resource type="PackedScene" uid="uid://bdd2a752ovak" path="res://scenes/Rooms/room_spawner.tscn" id="1_sb64c"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://cu14ec3hwpjqt" path="res://scenes/game_states/game_state_select_one_player_controls.tscn" id="4_qjabk"]
 [ext_resource type="Script" path="res://scripts/ui/time_ui.gd" id="4_vgc6u"]
 [ext_resource type="PackedScene" uid="uid://dyi2n3unvp0mn" path="res://scenes/game_states/game_state_select_two_player_controls.tscn" id="5_cxpx8"]
-[ext_resource type="Texture2D" uid="uid://yctafjeq23fj" path="res://assets/items/stun.png" id="5_knqts"]
 [ext_resource type="Script" path="res://scripts/ui/distance_ui.gd" id="5_tg1lt"]
 [ext_resource type="PackedScene" uid="uid://lskje77wvt72" path="res://scenes/game_states/game_state_multiplayer_online_connection.tscn" id="6_2ui7l"]
 [ext_resource type="Texture2D" uid="uid://ddvum0aryra74" path="res://assets/progress_bar/gray.png" id="6_fpbm2"]
@@ -73,6 +72,7 @@ is_upper = false
 [node name="GameUI" type="Node" parent="."]
 
 [node name="PlayingUI" type="CanvasLayer" parent="GameUI"]
+visible = false
 script = ExtResource("2_wuw4b")
 
 [node name="InventoryUI" type="Control" parent="GameUI/PlayingUI"]
@@ -109,7 +109,6 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5_knqts")
 expand_mode = 1
 
 [node name="LowerInventoryUI" type="Control" parent="GameUI/PlayingUI/InventoryUI" node_paths=PackedStringArray("foreground")]
