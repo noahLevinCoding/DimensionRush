@@ -305,18 +305,18 @@ vertical_alignment = 1
 script = ExtResource("7_l0pbf")
 
 [node name="SettingsBackground" type="ColorRect" parent="."]
-offset_left = 408.0
+offset_left = 494.0
 offset_top = 399.0
-offset_right = 1841.0
+offset_right = 1773.0
 offset_bottom = 873.0
-color = Color(0.239216, 0.239216, 0.239216, 0.772549)
+color = Color(0.239216, 0.239216, 0.239216, 0.470588)
 
 [node name="Wrapper" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 530.0
 offset_top = 401.0
-offset_right = 1554.0
+offset_right = 1749.0
 offset_bottom = 875.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Wrapper"]
@@ -330,7 +330,7 @@ offset_bottom = 129.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_6niv6")
-theme_override_constants/separation = 10
+theme_override_constants/separation = 20
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Wrapper/VBoxContainer"]
 layout_mode = 2
