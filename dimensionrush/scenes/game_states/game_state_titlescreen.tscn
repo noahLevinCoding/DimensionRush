@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://drve2dny0aalb"]
+[gd_scene load_steps=16 format=3 uid="uid://drve2dny0aalb"]
 
 [ext_resource type="Script" path="res://scripts/state_machine/game_states/game_state_titlescreen.gd" id="1_dnv71"]
 [ext_resource type="Texture2D" uid="uid://plnk2l8lsbca" path="res://assets/titlescreen/3.webp" id="2_h8kot"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://d4efsx60y2bq" path="res://assets/kenney_ui-pack-space-expansion/PNG/Grey/Double/bar_square_gloss_small.png" id="6_wewnm"]
 [ext_resource type="Script" path="res://scripts/ui/button/text_texture_button.gd" id="8_fkxyh"]
 [ext_resource type="Script" path="res://scripts/ui/button/custom_label.gd" id="9_fqsvw"]
+[ext_resource type="Script" path="res://scripts/ui/button/options_button.gd" id="11_axawp"]
 
 [sub_resource type="Theme" id="Theme_832dg"]
 default_font = ExtResource("3_b4jus")
@@ -130,5 +131,46 @@ theme_override_constants/outline_size = 0
 text = "QUIT"
 script = ExtResource("9_fqsvw")
 
+[node name="Options" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -686.0
+offset_top = 239.0
+offset_right = -646.0
+offset_bottom = 279.0
+theme = SubResource("Theme_o4lhl")
+script = ExtResource("11_axawp")
+
+[node name="Background" type="TextureButton" parent="Options" node_paths=PackedStringArray("label")]
+layout_mode = 0
+offset_left = 716.0
+offset_top = 752.0
+offset_right = 826.0
+offset_bottom = 774.0
+scale = Vector2(2.125, 3.20833)
+texture_normal = ExtResource("6_wewnm")
+texture_pressed = ExtResource("6_5575u")
+texture_hover = ExtResource("6_q8ffd")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("8_fkxyh")
+label = NodePath("../Label")
+
+[node name="Label" type="Label" parent="Options"]
+layout_mode = 0
+offset_left = 713.0
+offset_top = 765.0
+offset_right = 953.0
+offset_bottom = 810.0
+theme = SubResource("Theme_lpumd")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("9_fqsvw")
+
 [connection signal="pressed" from="Play/PlayBackground" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="Exit/ExitBackground" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Options/Background" to="Options" method="_on_options_button_pressed"]
