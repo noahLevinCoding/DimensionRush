@@ -1,7 +1,7 @@
 class_name SoundResource
 extends Resource
 
-var master_volume
-var sfx_volume
-var music_volume
-var ui_volume
+@export var master_volume : float
+@export var sfx_volume : float
+@export var music_volume : float
+@export var ui_volume : float

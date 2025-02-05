@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bcm2kpinsgehy"]
+[gd_scene load_steps=16 format=3 uid="uid://bcm2kpinsgehy"]
 
 [ext_resource type="Script" path="res://scripts/ui/settings.gd" id="1_a0yiy"]
 [ext_resource type="Texture2D" uid="uid://cacanwgyf2pne" path="res://assets/titlescreen/3_2.png" id="2_cs2nk"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scripts/ui/button/text_texture_button.gd" id="7_47wwm"]
 [ext_resource type="Script" path="res://scripts/ui/button/custom_label.gd" id="8_dnv3y"]
 [ext_resource type="Texture2D" uid="uid://d4efsx60y2bq" path="res://assets/kenney_ui-pack-space-expansion/PNG/Grey/Double/bar_square_gloss_small.png" id="9_0dae2"]
+[ext_resource type="Script" path="res://scripts/ui/slider/volume_slider.gd" id="10_eknmf"]
 
 [sub_resource type="Theme" id="Theme_o4lhl"]
 default_font = ExtResource("3_bjr2r")
@@ -23,8 +24,20 @@ default_font = ExtResource("3_bjr2r")
 default_font = ExtResource("3_bjr2r")
 default_font_size = 40
 
+[sub_resource type="Theme" id="Theme_0er1e"]
+default_font = ExtResource("3_bjr2r")
+default_font_size = 50
+
 [node name="Settings" type="Node2D"]
 script = ExtResource("1_a0yiy")
+
+[node name="PreventInput" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1969.0
+offset_bottom = 1136.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Background" type="Sprite2D" parent="."]
 scale = Vector2(1.072, 1.056)
@@ -301,12 +314,100 @@ vertical_alignment = 1
 script = ExtResource("8_dnv3y")
 
 [node name="SettingsBackground" type="ColorRect" parent="."]
-visible = false
-offset_left = 79.0
-offset_top = 350.0
-offset_right = 1841.0
-offset_bottom = 1050.0
-color = Color(0.239216, 0.239216, 0.239216, 0.772549)
+offset_left = 494.0
+offset_top = 399.0
+offset_right = 1773.0
+offset_bottom = 873.0
+color = Color(0.239216, 0.239216, 0.239216, 0.470588)
+
+[node name="Wrapper" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 563.0
+offset_top = 401.0
+offset_right = 1712.0
+offset_bottom = 875.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Wrapper"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -129.0
+offset_bottom = 129.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_0er1e")
+theme_override_constants/separation = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Wrapper/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Wrapper/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Master"
+
+[node name="HSlider" type="HSlider" parent="Wrapper/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.001
+script = ExtResource("10_eknmf")
+bus_name = "Master"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Wrapper/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 77
+
+[node name="Label" type="Label" parent="Wrapper/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Music"
+
+[node name="HSlider" type="HSlider" parent="Wrapper/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.001
+script = ExtResource("10_eknmf")
+bus_name = "Music"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Wrapper/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 215
+
+[node name="Label" type="Label" parent="Wrapper/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "UI"
+
+[node name="HSlider" type="HSlider" parent="Wrapper/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.001
+script = ExtResource("10_eknmf")
+bus_name = "UI"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Wrapper/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 150
+
+[node name="Label" type="Label" parent="Wrapper/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "SFX"
+
+[node name="HSlider" type="HSlider" parent="Wrapper/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.001
+script = ExtResource("10_eknmf")
+bus_name = "SFX"
 
 [connection signal="pressed" from="Audio/Button" to="." method="_on_audio_button_pressed"]
 [connection signal="pressed" from="Controls/Button" to="." method="_on_controls_button_pressed"]

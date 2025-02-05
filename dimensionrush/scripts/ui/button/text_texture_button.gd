@@ -25,12 +25,14 @@ func _ready() -> void:
 	if hover_sound != null:
 		audio_stream_player_hover.stream = hover_sound
 		audio_stream_player_hover.volume_db = -10
+		audio_stream_player_hover.bus = "UI"
 		
 	audio_stream_player_click = AudioStreamPlayer.new()
 	add_child(audio_stream_player_click)
 	if click_sound != null:
 		audio_stream_player_click.stream = click_sound
 		audio_stream_player_click.volume_db = -20
+		audio_stream_player_click.bus = "UI"
 	
 #Prevent playing sounds directly after state change	
 func _on_visiblity_changed():

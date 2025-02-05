@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://caef237x1kcet"]
+[gd_scene load_steps=15 format=3 uid="uid://caef237x1kcet"]
 
 [ext_resource type="Texture2D" uid="uid://cacanwgyf2pne" path="res://assets/titlescreen/3_2.png" id="1_46h8m"]
 [ext_resource type="FontFile" uid="uid://u3ide4v6ikg2" path="res://assets/kenney_ui-pack-space-expansion/Font/Kenney Future.ttf" id="2_8f5tb"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/ui/button/text_texture_button.gd" id="6_kuhdb"]
 [ext_resource type="Script" path="res://scripts/ui/button/custom_label.gd" id="7_l0pbf"]
 [ext_resource type="Texture2D" uid="uid://d4efsx60y2bq" path="res://assets/kenney_ui-pack-space-expansion/PNG/Grey/Double/bar_square_gloss_small.png" id="8_oq800"]
+[ext_resource type="Script" path="res://scripts/ui/slider/volume_slider.gd" id="9_4uau5"]
 
 [sub_resource type="Theme" id="Theme_c0kin"]
 default_font = ExtResource("2_8f5tb")
@@ -304,7 +305,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("7_l0pbf")
 
-[node name="SettingsBackground" type="ColorRect" parent="."]
+[node name="SettingsBackground" type="ColorRect" parent="Node2D"]
 offset_left = 494.0
 offset_top = 399.0
 offset_right = 1773.0
@@ -314,9 +315,9 @@ color = Color(0.239216, 0.239216, 0.239216, 0.470588)
 [node name="Wrapper" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 530.0
+offset_left = 563.0
 offset_top = 401.0
-offset_right = 1749.0
+offset_right = 1712.0
 offset_bottom = 875.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Wrapper"]
@@ -344,7 +345,10 @@ text = "Master"
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-value = 50.0
+max_value = 1.0
+step = 0.001
+script = ExtResource("9_4uau5")
+bus_name = "Master"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Wrapper/VBoxContainer"]
 layout_mode = 2
@@ -358,7 +362,10 @@ text = "Music"
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-value = 50.0
+max_value = 1.0
+step = 0.001
+script = ExtResource("9_4uau5")
+bus_name = "Music"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="Wrapper/VBoxContainer"]
 layout_mode = 2
@@ -372,7 +379,10 @@ text = "UI"
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-value = 50.0
+max_value = 1.0
+step = 0.001
+script = ExtResource("9_4uau5")
+bus_name = "UI"
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="Wrapper/VBoxContainer"]
 layout_mode = 2
@@ -386,4 +396,7 @@ text = "SFX"
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-value = 50.0
+max_value = 1.0
+step = 0.001
+script = ExtResource("9_4uau5")
+bus_name = "SFX"
