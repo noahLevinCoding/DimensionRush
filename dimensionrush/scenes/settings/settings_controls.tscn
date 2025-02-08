@@ -1,0 +1,362 @@
+[gd_scene load_steps=18 format=3 uid="uid://dbya5c45d0vr"]
+
+[ext_resource type="Texture2D" uid="uid://cacanwgyf2pne" path="res://assets/titlescreen/3_2.png" id="1_brkl0"]
+[ext_resource type="FontFile" uid="uid://u3ide4v6ikg2" path="res://assets/kenney_ui-pack-space-expansion/Font/Kenney Future.ttf" id="2_io6o8"]
+[ext_resource type="Texture2D" uid="uid://xcbrtpl5n6q0" path="res://assets/kenney_ui-pack-space-expansion/PNG/Grey/Default/bar_square_gloss_large.png" id="3_00clk"]
+[ext_resource type="Texture2D" uid="uid://yxdlb6fgqy45" path="res://assets/kenney_ui-pack-space-expansion/buttons/bar_square_gloss_large_black_pressed.png" id="4_wk0ta"]
+[ext_resource type="Texture2D" uid="uid://cyomx7lrxu7ay" path="res://assets/kenney_ui-pack-space-expansion/buttons/bar_square_gloss_large_black.png" id="5_27xdg"]
+[ext_resource type="Script" path="res://scripts/ui/button/text_texture_button.gd" id="6_8hsch"]
+[ext_resource type="Script" path="res://scripts/ui/button/custom_label.gd" id="7_p8o0j"]
+[ext_resource type="Texture2D" uid="uid://d4efsx60y2bq" path="res://assets/kenney_ui-pack-space-expansion/PNG/Grey/Double/bar_square_gloss_small.png" id="8_285fg"]
+[ext_resource type="Texture2D" uid="uid://b104kgfvcy50p" path="res://assets/kenney_input-prompts/Keyboard & Mouse/Vector/keyboard_d_outline.svg" id="9_r0y3k"]
+[ext_resource type="Texture2D" uid="uid://biddx168ucg1e" path="res://assets/kenney_input-prompts/Keyboard & Mouse/Vector/keyboard_a_outline.svg" id="10_2hfyi"]
+[ext_resource type="Texture2D" uid="uid://dvh5afxj1o6i3" path="res://assets/kenney_input-prompts/Keyboard & Mouse/Vector/keyboard_w_outline.svg" id="11_dteyj"]
+[ext_resource type="Texture2D" uid="uid://bvg13mjp22foe" path="res://assets/kenney_input-prompts/Keyboard & Mouse/Vector/keyboard_s_outline.svg" id="12_174id"]
+[ext_resource type="Texture2D" uid="uid://du2eao6n8utfq" path="res://assets/kenney_input-prompts/Xbox Series/Vector/controller_xboxone.svg" id="13_b8ba4"]
+
+[sub_resource type="Theme" id="Theme_c0kin"]
+default_font = ExtResource("2_io6o8")
+
+[sub_resource type="Theme" id="Theme_4unu6"]
+default_font_size = 50
+
+[sub_resource type="Theme" id="Theme_jp747"]
+default_font = ExtResource("2_io6o8")
+
+[sub_resource type="Theme" id="Theme_g8s2b"]
+default_font = ExtResource("2_io6o8")
+default_font_size = 40
+
+[node name="SettingsAudio" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+visible = false
+
+[node name="Background" type="Sprite2D" parent="Node2D"]
+scale = Vector2(1.072, 1.056)
+texture = ExtResource("1_brkl0")
+centered = false
+
+[node name="Audio" type="Control" parent="Node2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 400.0
+offset_right = 40.0
+offset_bottom = 440.0
+theme = SubResource("Theme_c0kin")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="TextureButton" parent="Node2D/Audio" node_paths=PackedStringArray("label")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -11.6
+anchor_top = -17.425
+anchor_right = -8.2
+anchor_bottom = -17.425
+offset_left = 511.0
+offset_top = 697.0
+offset_right = 799.0
+offset_bottom = 769.0
+texture_normal = ExtResource("3_00clk")
+texture_pressed = ExtResource("4_wk0ta")
+texture_hover = ExtResource("5_27xdg")
+stretch_mode = 0
+script = ExtResource("6_8hsch")
+label = NodePath("../Label")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Node2D/Audio"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.82175
+anchor_right = 4.80325
+anchor_bottom = 0.1
+offset_left = 79.87
+offset_right = 279.87
+offset_bottom = 68.0
+theme = SubResource("Theme_4unu6")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+text = "Audio"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("7_p8o0j")
+metadata/_edit_use_anchors_ = true
+
+[node name="Controls" type="Control" parent="Node2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 500.0
+offset_right = 40.0
+offset_bottom = 540.0
+theme = SubResource("Theme_c0kin")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="TextureButton" parent="Node2D/Controls" node_paths=PackedStringArray("label")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -11.6
+anchor_top = -17.425
+anchor_right = -8.2
+anchor_bottom = -17.425
+offset_left = 511.0
+offset_top = 697.0
+offset_right = 799.0
+offset_bottom = 769.0
+texture_normal = ExtResource("3_00clk")
+texture_pressed = ExtResource("4_wk0ta")
+texture_hover = ExtResource("5_27xdg")
+stretch_mode = 0
+script = ExtResource("6_8hsch")
+label = NodePath("../Label")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Node2D/Controls"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.82175
+anchor_right = 4.80325
+anchor_bottom = 0.1
+offset_left = 79.87
+offset_right = 279.87
+offset_bottom = 68.0
+theme = SubResource("Theme_4unu6")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+text = "Controls"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("7_p8o0j")
+metadata/_edit_use_anchors_ = true
+
+[node name="Dimensions" type="Control" parent="Node2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 600.0
+offset_right = 40.0
+offset_bottom = 640.0
+theme = SubResource("Theme_c0kin")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="TextureButton" parent="Node2D/Dimensions" node_paths=PackedStringArray("label")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -11.6
+anchor_top = -17.425
+anchor_right = -8.2
+anchor_bottom = -17.425
+offset_left = 511.0
+offset_top = 697.0
+offset_right = 799.0
+offset_bottom = 769.0
+texture_normal = ExtResource("3_00clk")
+texture_pressed = ExtResource("4_wk0ta")
+texture_hover = ExtResource("5_27xdg")
+stretch_mode = 0
+script = ExtResource("6_8hsch")
+label = NodePath("../Label")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Node2D/Dimensions"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.82175
+anchor_right = 4.80325
+anchor_bottom = 0.1
+offset_left = 79.87
+offset_right = 279.87
+offset_bottom = 68.0
+theme = SubResource("Theme_4unu6")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+text = "Dimensions"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("7_p8o0j")
+metadata/_edit_use_anchors_ = true
+
+[node name="Items" type="Control" parent="Node2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 700.0
+offset_right = 40.0
+offset_bottom = 740.0
+theme = SubResource("Theme_c0kin")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="TextureButton" parent="Node2D/Items" node_paths=PackedStringArray("label")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -11.6
+anchor_top = -17.425
+anchor_right = -8.2
+anchor_bottom = -17.425
+offset_left = 511.0
+offset_top = 697.0
+offset_right = 799.0
+offset_bottom = 769.0
+texture_normal = ExtResource("3_00clk")
+texture_pressed = ExtResource("4_wk0ta")
+texture_hover = ExtResource("5_27xdg")
+stretch_mode = 0
+script = ExtResource("6_8hsch")
+label = NodePath("../Label")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Node2D/Items"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.82175
+anchor_right = 4.80325
+anchor_bottom = 0.1
+offset_left = 79.87
+offset_right = 279.87
+offset_bottom = 68.0
+theme = SubResource("Theme_4unu6")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+text = "Items"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("7_p8o0j")
+metadata/_edit_use_anchors_ = true
+
+[node name="Credits" type="Control" parent="Node2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 800.0
+offset_right = 40.0
+offset_bottom = 840.0
+theme = SubResource("Theme_c0kin")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="TextureButton" parent="Node2D/Credits" node_paths=PackedStringArray("label")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -11.6
+anchor_top = -17.425
+anchor_right = -8.2
+anchor_bottom = -17.425
+offset_left = 511.0
+offset_top = 697.0
+offset_right = 799.0
+offset_bottom = 769.0
+texture_normal = ExtResource("3_00clk")
+texture_pressed = ExtResource("4_wk0ta")
+texture_hover = ExtResource("5_27xdg")
+stretch_mode = 0
+script = ExtResource("6_8hsch")
+label = NodePath("../Label")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Node2D/Credits"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.82175
+anchor_right = 4.80325
+anchor_bottom = 0.1
+offset_left = 79.87
+offset_right = 279.87
+offset_bottom = 68.0
+theme = SubResource("Theme_4unu6")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+text = "Credits"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("7_p8o0j")
+metadata/_edit_use_anchors_ = true
+
+[node name="Back" type="Control" parent="Node2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1046.0
+offset_top = 239.0
+offset_right = 1086.0
+offset_bottom = 279.0
+theme = SubResource("Theme_jp747")
+
+[node name="Background" type="TextureButton" parent="Node2D/Back" node_paths=PackedStringArray("label")]
+layout_mode = 0
+offset_left = 700.0
+offset_top = 752.0
+offset_right = 772.0
+offset_bottom = 774.0
+scale = Vector2(2.125, 3.20833)
+texture_normal = ExtResource("8_285fg")
+texture_pressed = ExtResource("4_wk0ta")
+texture_hover = ExtResource("5_27xdg")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("6_8hsch")
+label = NodePath("../Label")
+
+[node name="Label" type="Label" parent="Node2D/Back"]
+layout_mode = 0
+offset_left = 706.0
+offset_top = 765.0
+offset_right = 847.0
+offset_bottom = 810.0
+theme = SubResource("Theme_g8s2b")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+text = "BACK"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("7_p8o0j")
+
+[node name="SettingsBackground" type="ColorRect" parent="Node2D"]
+offset_left = 494.0
+offset_top = 399.0
+offset_right = 1773.0
+offset_bottom = 873.0
+color = Color(0.239216, 0.239216, 0.239216, 0.470588)
+
+[node name="Wrapper" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 563.0
+offset_top = 401.0
+offset_right = 1712.0
+offset_bottom = 875.0
+
+[node name="Label2" type="Label" parent="Wrapper"]
+layout_mode = 2
+offset_top = 43.0
+offset_right = 1149.0
+offset_bottom = 139.0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_io6o8")
+theme_override_font_sizes/font_size = 70
+text = "Controls"
+horizontal_alignment = 1
+
+[node name="KeyboardIcon" type="Node2D" parent="Wrapper"]
+position = Vector2(347, -243)
+scale = Vector2(2, 2)
+
+[node name="KeyboardArrows2" type="Sprite2D" parent="Wrapper/KeyboardIcon"]
+position = Vector2(38, 300)
+texture = ExtResource("9_r0y3k")
+
+[node name="KeyboardArrows3" type="Sprite2D" parent="Wrapper/KeyboardIcon"]
+position = Vector2(-62, 300)
+texture = ExtResource("10_2hfyi")
+
+[node name="KeyboardArrows4" type="Sprite2D" parent="Wrapper/KeyboardIcon"]
+position = Vector2(-12, 250)
+texture = ExtResource("11_dteyj")
+
+[node name="KeyboardArrows5" type="Sprite2D" parent="Wrapper/KeyboardIcon"]
+position = Vector2(-12, 300)
+texture = ExtResource("12_174id")
+
+[node name="ControllerIcon" type="Node2D" parent="Wrapper"]
+position = Vector2(826, -243)
+scale = Vector2(2, 2)
+
+[node name="ControllerXboxone" type="Sprite2D" parent="Wrapper/ControllerIcon"]
+position = Vector2(-11, 273)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("13_b8ba4")

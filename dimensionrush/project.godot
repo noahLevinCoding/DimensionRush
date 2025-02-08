@@ -28,6 +28,8 @@ window/size/viewport_height=540
 window/size/mode=3
 window/stretch/mode="viewport"
 window/stretch/scale=0.5
+mouse_cursor/custom_image="res://assets/kenney_crosshairPack/PNG/Outline/crosshair037.png"
+mouse_cursor/custom_image_hotspot=Vector2(36, 36)
 
 [file_customization]
 
