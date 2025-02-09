@@ -33,6 +33,7 @@ script = ExtResource("1_xwkyw")
 winner_label = NodePath("Winner/Heading")
 
 [node name="Background" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(1.072, 1.056)
 texture = ExtResource("2_o636i")
 centered = false

@@ -55,6 +55,7 @@ next_button = NodePath("Next/Background")
 next_label = NodePath("Next/Label")
 
 [node name="Background" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(1.072, 1.056)
 texture = ExtResource("7_dh8dl")
 centered = false

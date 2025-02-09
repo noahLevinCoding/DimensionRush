@@ -45,6 +45,7 @@ distance_node = NodePath("distance")
 seed_line_edit = NodePath("main/SeedLineEdit")
 
 [node name="Background" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(1.072, 1.056)
 texture = ExtResource("2_jfjje")
 centered = false

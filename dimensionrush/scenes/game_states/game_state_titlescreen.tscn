@@ -30,6 +30,7 @@ default_font_size = 40
 script = ExtResource("1_dnv71")
 
 [node name="Background" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(1.072, 1.056)
 texture = ExtResource("2_h8kot")
 centered = false

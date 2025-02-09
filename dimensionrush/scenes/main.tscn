@@ -1,7 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://bkcp6m6cuc5fh"]
+[gd_scene load_steps=28 format=3 uid="uid://bkcp6m6cuc5fh"]
 
 [ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="1_rro5f"]
 [ext_resource type="PackedScene" uid="uid://bdd2a752ovak" path="res://scenes/rooms/room_spawner.tscn" id="1_sb64c"]
+[ext_resource type="Script" path="res://scripts/ui/menu_ui.gd" id="2_8p16b"]
+[ext_resource type="VideoStream" path="res://assets/titlescreen/titlescreen_video_loop.ogv" id="2_53v87"]
 [ext_resource type="PackedScene" uid="uid://drve2dny0aalb" path="res://scenes/game_states/game_state_titlescreen.tscn" id="2_8036h"]
 [ext_resource type="Script" path="res://scripts/ui/inventory_ui.gd" id="2_puyum"]
 [ext_resource type="Script" path="res://scripts/ui/playing_ui.gd" id="2_wuw4b"]
@@ -70,6 +72,21 @@ scale = Vector2(-1, 1)
 is_upper = false
 
 [node name="GameUI" type="Node" parent="."]
+
+[node name="MenuUI" type="Control" parent="GameUI" node_paths=PackedStringArray("video_stream_player")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("2_8p16b")
+video_stream_player = NodePath("VideoStreamPlayer")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="GameUI/MenuUI"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+stream = ExtResource("2_53v87")
+autoplay = true
+expand = true
+loop = true
 
 [node name="PlayingUI" type="CanvasLayer" parent="GameUI"]
 visible = false

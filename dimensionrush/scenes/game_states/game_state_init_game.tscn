@@ -21,6 +21,7 @@ start_button = NodePath("Start/PlayBackground")
 start_label = NodePath("Start/Label")
 
 [node name="Background" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(1.072, 1.056)
 texture = ExtResource("2_3oq3j")
 centered = false
