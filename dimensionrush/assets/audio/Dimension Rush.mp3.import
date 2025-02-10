@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://r5vwm30milvx"
+path="res://.godot/imported/Dimension Rush.mp3-6b8537a946f2864ca2c11dc72e016914.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Dimension Rush.mp3"
+dest_files=["res://.godot/imported/Dimension Rush.mp3-6b8537a946f2864ca2c11dc72e016914.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

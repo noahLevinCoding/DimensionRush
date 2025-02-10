@@ -36,6 +36,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Background" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(1.072, 1.056)
 texture = ExtResource("2_cs2nk")
 centered = false

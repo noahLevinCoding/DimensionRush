@@ -1,7 +1,7 @@
-[gd_scene load_steps=28 format=3 uid="uid://bkcp6m6cuc5fh"]
+[gd_scene load_steps=29 format=3 uid="uid://bkcp6m6cuc5fh"]
 
 [ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="1_rro5f"]
-[ext_resource type="PackedScene" uid="uid://bdd2a752ovak" path="res://scenes/rooms/room_spawner.tscn" id="1_sb64c"]
+[ext_resource type="PackedScene" uid="uid://bdd2a752ovak" path="res://scenes/Rooms/room_spawner.tscn" id="1_sb64c"]
 [ext_resource type="Script" path="res://scripts/ui/menu_ui.gd" id="2_8p16b"]
 [ext_resource type="VideoStream" path="res://assets/titlescreen/titlescreen_video_loop.ogv" id="2_53v87"]
 [ext_resource type="PackedScene" uid="uid://drve2dny0aalb" path="res://scenes/game_states/game_state_titlescreen.tscn" id="2_8036h"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://bq7510d8vrixw" path="res://scenes/player/player.tscn" id="9_g6w65"]
 [ext_resource type="PackedScene" uid="uid://cn6a6e4m5ahi5" path="res://scenes/game_states/game_state_pause.tscn" id="10_bbp8v"]
 [ext_resource type="PackedScene" uid="uid://bfyty2mamr5uu" path="res://scenes/game_states/game_state_game_over.tscn" id="11_d1js4"]
+[ext_resource type="AudioStream" uid="uid://r5vwm30milvx" path="res://assets/audio/Dimension Rush.mp3" id="26_2u4o6"]
 
 [sub_resource type="Theme" id="Theme_vksom"]
 default_font_size = 30
@@ -300,3 +301,12 @@ spawn_path = NodePath("../../Game/ViewportBox/UpperSubViewportContainer/UpperSub
 [node name="MultiplayerSpawnerLowerSubviewport" type="MultiplayerSpawner" parent="Network"]
 _spawnable_scenes = PackedStringArray("res://scenes/player/player.tscn", "res://scenes/items/item_box.tscn")
 spawn_path = NodePath("../../Game/ViewportBox/LowerSubViewportContainer/LowerSubViewport")
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("26_2u4o6")
+volume_db = -12.519
+autoplay = true
+bus = &"Music"
+parameters/looping = true
