@@ -12,10 +12,10 @@ var settings_credits_scene 	  = preload("res://scenes/settings/settings_credits.
 
 func _ready() -> void:
 	_on_audio_button_pressed()
-	#owner_state.visible = false
+	owner_state.visible = false
 
 func _on_back_pressed() -> void:
-	#owner_state.visible = true
+	owner_state.visible = true
 	queue_free()
 
 func clear_content() -> void:

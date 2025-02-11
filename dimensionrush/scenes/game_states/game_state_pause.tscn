@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cn6a6e4m5ahi5"]
+[gd_scene load_steps=17 format=3 uid="uid://cn6a6e4m5ahi5"]
 
 [ext_resource type="Script" path="res://scripts/state_machine/game_states/game_state_pause.gd" id="1_dpgna"]
 [ext_resource type="Script" path="res://scripts/ui/game_seed_container.gd" id="2_qaeg4"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dmilp3m025hs7" path="res://assets/kenney_ui-pack-space-expansion/buttons/bar_square_gloss_large_disabled.png" id="8_m7ye5"]
 [ext_resource type="Script" path="res://scripts/ui/button/text_texture_button.gd" id="9_m1ito"]
 [ext_resource type="Script" path="res://scripts/ui/button/custom_label.gd" id="10_a6wty"]
+[ext_resource type="Script" path="res://scripts/ui/button/options_button.gd" id="11_5rmv4"]
 
 [sub_resource type="Theme" id="Theme_mrtoi"]
 default_font_size = 80
@@ -67,6 +68,7 @@ text = "Seed:
 [node name="GameSeedLabel" type="Label" parent="GameSeedContainer"]
 layout_mode = 2
 size_flags_horizontal = 2
+size_flags_vertical = 0
 theme = SubResource("Theme_u0kbq")
 text = "
 "
@@ -75,9 +77,9 @@ text = "
 layout_mode = 3
 anchors_preset = 0
 offset_left = 176.0
-offset_top = -236.0
+offset_top = -354.0
 offset_right = 216.0
-offset_bottom = -196.0
+offset_bottom = -314.0
 theme = SubResource("Theme_pfedi")
 
 [node name="Background" type="TextureButton" parent="Continue" node_paths=PackedStringArray("label")]
@@ -113,9 +115,9 @@ script = ExtResource("10_a6wty")
 layout_mode = 3
 anchors_preset = 0
 offset_left = 176.0
-offset_top = -118.0
+offset_top = -236.0
 offset_right = 216.0
-offset_bottom = -78.0
+offset_bottom = -196.0
 theme = SubResource("Theme_pfedi")
 
 [node name="Background" type="TextureButton" parent="Restart" node_paths=PackedStringArray("label")]
@@ -151,8 +153,9 @@ script = ExtResource("10_a6wty")
 layout_mode = 3
 anchors_preset = 0
 offset_left = 176.0
+offset_top = -118.0
 offset_right = 216.0
-offset_bottom = 40.0
+offset_bottom = -78.0
 theme = SubResource("Theme_pfedi")
 
 [node name="Background" type="TextureButton" parent="ChangeGameMode" node_paths=PackedStringArray("label")]
@@ -180,6 +183,44 @@ theme = SubResource("Theme_6a7ey")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 0
 text = "Change mode"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("10_a6wty")
+
+[node name="Options" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 176.0
+offset_right = 216.0
+offset_bottom = 40.0
+theme = SubResource("Theme_pfedi")
+script = ExtResource("11_5rmv4")
+
+[node name="Background" type="TextureButton" parent="Options" node_paths=PackedStringArray("label")]
+layout_mode = 0
+offset_left = 508.0
+offset_top = 783.0
+offset_right = 810.0
+offset_bottom = 814.0
+scale = Vector2(1.92208, 3.08833)
+texture_normal = ExtResource("5_hx5et")
+texture_pressed = ExtResource("6_t7b7b")
+texture_hover = ExtResource("7_i0mj6")
+texture_disabled = ExtResource("8_m7ye5")
+stretch_mode = 0
+script = ExtResource("9_m1ito")
+label = NodePath("../Label")
+
+[node name="Label" type="Label" parent="Options"]
+layout_mode = 0
+offset_left = 532.0
+offset_top = 783.0
+offset_right = 1075.0
+offset_bottom = 878.0
+theme = SubResource("Theme_6a7ey")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+text = "Options"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("10_a6wty")
@@ -226,4 +267,5 @@ script = ExtResource("10_a6wty")
 [connection signal="pressed" from="Continue/Background" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="Restart/Background" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="ChangeGameMode/Background" to="." method="_on_change_game_mode_button_pressed"]
+[connection signal="pressed" from="Options/Background" to="Options" method="_on_options_button_pressed"]
 [connection signal="pressed" from="Quit/Background" to="." method="_on_quit_button_pressed"]

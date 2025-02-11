@@ -196,6 +196,7 @@ text = "Seed:
 [node name="GameSeedLabel" type="Label" parent="GameSeedContainer"]
 layout_mode = 2
 size_flags_horizontal = 2
+size_flags_vertical = 0
 theme = SubResource("Theme_2ia68")
 text = "
 "
