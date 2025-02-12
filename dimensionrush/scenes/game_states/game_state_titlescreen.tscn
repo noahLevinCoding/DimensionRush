@@ -26,8 +26,9 @@ default_font_size = 60
 default_font = ExtResource("3_b4jus")
 default_font_size = 40
 
-[node name="Titlescreen" type="Node2D"]
+[node name="Titlescreen" type="Node2D" node_paths=PackedStringArray("options_node")]
 script = ExtResource("1_dnv71")
+options_node = NodePath("Options")
 
 [node name="Background" type="Sprite2D" parent="."]
 visible = false

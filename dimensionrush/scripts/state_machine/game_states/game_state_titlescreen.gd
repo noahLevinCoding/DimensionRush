@@ -1,6 +1,8 @@
 class_name GameStateTitlescreen
 extends State
 
+@export var options_node : Control
+
 func enter():
 	visible = true
 	GameManager.reset()
@@ -21,3 +23,11 @@ func _on_play_button_pressed() -> void:
 
 func _on_exit_button_pressed() -> void:
 	get_tree().quit()
+
+func _input(event: InputEvent) -> void:
+	if visible:
+		if Input.is_action_just_pressed("accept"):
+			_on_play_button_pressed()
+		elif Input.is_action_just_pressed("escape"):
+			print("test")
+			#options_node._on_options_button_pressed()

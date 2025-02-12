@@ -45,3 +45,7 @@ func _on_items_button_pressed() -> void:
 func _on_credits_button_pressed() -> void:
 	clear_content()
 	content_node.add_child(settings_credits_scene.instantiate())
+
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("escape"):
+		_on_back_pressed()
