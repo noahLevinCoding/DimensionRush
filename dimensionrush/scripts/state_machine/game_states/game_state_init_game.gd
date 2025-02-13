@@ -202,3 +202,8 @@ func _on_play_button_pressed() -> void:
 	if GameManager.is_online_multiplayer():
 		init_game_on_start_button_up.rpc()
 	state_transition.emit(self, "Playing")
+
+func _input(event: InputEvent) -> void:
+	if visible:
+		if Input.is_action_just_pressed("accept"):
+			_on_play_button_pressed()

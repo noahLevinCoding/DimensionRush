@@ -43,3 +43,10 @@ func _on_pause_button_up():
 @rpc("any_peer")
 func playing_on_pause_button_up():
 	state_transition.emit(self, "Pause")
+
+func _input(event: InputEvent) -> void:
+	if visible:
+		if Input.is_action_just_pressed("accept"):
+			_on_finish_button_up()
+		elif Input.is_action_just_pressed("escape"):
+			_on_pause_button_up()

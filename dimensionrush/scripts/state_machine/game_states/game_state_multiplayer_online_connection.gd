@@ -90,3 +90,8 @@ func _on_join_button_pressed() -> void:
 	multiplayer.peer_disconnected.connect(_on_peer_disconnected)
 	
 	#disabledUI()
+
+func _input(event: InputEvent) -> void:
+	if visible:
+		if Input.is_action_just_pressed("escape"):
+			_on_back_button_pressed()

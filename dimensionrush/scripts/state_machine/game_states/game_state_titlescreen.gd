@@ -28,6 +28,4 @@ func _input(event: InputEvent) -> void:
 	if visible:
 		if Input.is_action_just_pressed("accept"):
 			_on_play_button_pressed()
-		elif Input.is_action_just_pressed("escape"):
-			print("test")
-			#options_node._on_options_button_pressed()
+		

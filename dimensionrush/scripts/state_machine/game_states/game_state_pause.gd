@@ -55,3 +55,8 @@ func _on_continue_button_pressed() -> void:
 	if GameManager.is_online_multiplayer():
 		pause_on_continue_button_up.rpc()
 	state_transition.emit(self, "Playing")
+
+func _input(event: InputEvent) -> void:
+	if visible:
+		if Input.is_action_just_pressed("accept") or Input.is_action_just_pressed("escape"):
+			_on_continue_button_pressed()

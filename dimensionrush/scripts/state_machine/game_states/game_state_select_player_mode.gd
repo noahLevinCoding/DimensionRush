@@ -29,3 +29,8 @@ func _on_multiplayer_online_button_pressed() -> void:
 
 func _on_back_button_pressed() -> void:
 	state_transition.emit(self, "Titlescreen")
+
+func _input(event: InputEvent) -> void:
+	if visible:
+		if Input.is_action_just_pressed("escape"):
+			_on_back_button_pressed()

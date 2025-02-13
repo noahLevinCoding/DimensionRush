@@ -62,3 +62,9 @@ func _on_next_button_pressed():
 
 func _on_back_button_pressed() -> void:
 	state_transition.emit(self, "SelectPlayerMode")
+
+
+func _input(event: InputEvent) -> void:
+	if visible:
+		if Input.is_action_just_pressed("escape"):
+			_on_back_button_pressed()
