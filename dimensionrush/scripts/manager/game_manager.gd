@@ -22,8 +22,10 @@ var game_is_running : bool = false :
 		
 		if game_is_running:
 			Engine.time_scale = 1.0
+			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		else:
 			Engine.time_scale = 0.0
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 
 

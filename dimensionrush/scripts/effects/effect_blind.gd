@@ -23,7 +23,10 @@ func init_effect(player : Node):
 	color_rect.material.shader = preload( "res://shader/effects/blind.gdshader")
 	
 	var player_pos = self.player.global_position
-	player_pos.x = 960
+	var is_upper = self.player.is_upper
+	var player_pos_x_offset = -600 if is_upper else 600
+	
+	player_pos.x = 960 + player_pos_x_offset
 	player_pos.y += 10
 	
 	color_rect.material.set_shader_parameter("player_position", player_pos)
@@ -41,7 +44,10 @@ func process_effect(delta : float):
 	
 	self.player.camera.position_smoothing_enabled = false;
 	
-	player_pos.x = 960
+	var is_upper = self.player.is_upper
+	var player_pos_x_offset = -600 if is_upper else 600
+	
+	player_pos.x = 960 + player_pos_x_offset
 	player_pos.y += 10
 	color_rect.material.set_shader_parameter("player_position", player_pos)
 	

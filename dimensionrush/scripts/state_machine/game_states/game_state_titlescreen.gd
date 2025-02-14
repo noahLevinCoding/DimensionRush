@@ -25,6 +25,7 @@ func _on_exit_button_pressed() -> void:
 	get_tree().quit()
 
 func _input(event: InputEvent) -> void:
+	visibility_changed
 	if visible:
 		if Input.is_action_just_pressed("accept"):
 			_on_play_button_pressed()
