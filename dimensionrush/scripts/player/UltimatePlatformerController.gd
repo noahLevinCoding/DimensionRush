@@ -307,10 +307,10 @@ func _is_active():
 	
 func _process(_delta):
 	
+	effect_handler.process(_delta)
+	
 	if not _is_active():
 		return
-		
-	effect_handler.process(_delta)
 	
 	if Input.is_action_just_pressed(player_controls_resource.item):
 		inventory.use_item()

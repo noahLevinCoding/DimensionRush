@@ -10,6 +10,8 @@ var color_rect : ColorRect = null
 func init_effect(player : Node):
 	self.player = player
 	
+	print("Start of effect")
+	
 	self.player.camera.position_smoothing_enabled = false;
 	
 	color_rect = ColorRect.new()
@@ -60,6 +62,23 @@ func process_effect(delta : float):
 func end_effect():
 	self.player.camera.position_smoothing_enabled = true;
 	
+	print("End of effect")
+	
 	if color_rect:
+		print("End of effect: Color rect")
+		self.player.effect_container.remove_child(color_rect)
+		color_rect.queue_free()
+		
+	#if GameManager.is_online_multiplayer():
+	#	end_effect_rpc.rpc()
+
+@rpc
+func end_effect_rpc():
+	self.player.camera.position_smoothing_enabled = true;
+	
+	print("End of effect rpc")
+	
+	if color_rect:
+		print("End of effect: Color rect rpc")
 		self.player.effect_container.remove_child(color_rect)
 		color_rect.queue_free()

@@ -12,7 +12,7 @@
 
 [sub_resource type="Resource" id="Resource_y12yt"]
 script = ExtResource("4_4upbp")
-type = 0
+type = 4
 odds = 1
 
 [node name="Room" instance=ExtResource("1_kx21q")]
