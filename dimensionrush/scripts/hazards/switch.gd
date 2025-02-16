@@ -12,6 +12,7 @@ func _ready() -> void:
 
 func _on_player_action(player : Player):
 	if player == player_in_area:
+		player.interaction_audio_stream_player.play()
 		for switchable in switchables:
 			switchable.switch()
 

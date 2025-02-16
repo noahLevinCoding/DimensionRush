@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cn6a6e4m5ahi5"]
+[gd_scene load_steps=18 format=3 uid="uid://cn6a6e4m5ahi5"]
 
 [ext_resource type="Script" path="res://scripts/state_machine/game_states/game_state_pause.gd" id="1_dpgna"]
 [ext_resource type="Script" path="res://scripts/ui/game_seed_container.gd" id="2_qaeg4"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://scripts/ui/button/text_texture_button.gd" id="9_m1ito"]
 [ext_resource type="Script" path="res://scripts/ui/button/custom_label.gd" id="10_a6wty"]
 [ext_resource type="Script" path="res://scripts/ui/button/options_button.gd" id="11_5rmv4"]
+[ext_resource type="AudioStream" uid="uid://bljr8truwtkkw" path="res://assets/audio/game_over.mp3" id="12_j0oro"]
 
 [sub_resource type="Theme" id="Theme_mrtoi"]
 default_font_size = 80
@@ -27,8 +28,9 @@ default_font = ExtResource("4_loxrw")
 [sub_resource type="Theme" id="Theme_6a7ey"]
 default_font_size = 60
 
-[node name="Pause" type="Node2D"]
+[node name="Pause" type="Node2D" node_paths=PackedStringArray("enter_audio_stream_player")]
 script = ExtResource("1_dpgna")
+enter_audio_stream_player = NodePath("EnterAudioStreamPlayer")
 
 [node name="Background" type="Sprite2D" parent="."]
 visible = false
@@ -262,6 +264,10 @@ text = "Quit"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("10_a6wty")
+
+[node name="EnterAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_j0oro")
+bus = &"SFX"
 
 [connection signal="gui_input" from="GameSeedContainer" to="GameSeedContainer" method="_on_gui_input"]
 [connection signal="pressed" from="Continue/Background" to="." method="_on_continue_button_pressed"]

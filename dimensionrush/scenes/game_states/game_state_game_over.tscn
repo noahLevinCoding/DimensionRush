@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bfyty2mamr5uu"]
+[gd_scene load_steps=18 format=3 uid="uid://bfyty2mamr5uu"]
 
 [ext_resource type="Script" path="res://scripts/state_machine/game_states/game_state_game_over.gd" id="1_xwkyw"]
 [ext_resource type="Script" path="res://scripts/ui/game_seed_container.gd" id="2_id0ka"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://scripts/ui/button/text_texture_button.gd" id="9_lw5nc"]
 [ext_resource type="Texture2D" uid="uid://c7vf3cqe17e5c" path="res://assets/kenney_ui-pack-space-expansion/PNG/Extra/Double/bar_shadow_round_large.png" id="10_32x3e"]
 [ext_resource type="Script" path="res://scripts/ui/button/custom_label.gd" id="10_xd761"]
+[ext_resource type="AudioStream" uid="uid://bljr8truwtkkw" path="res://assets/audio/game_over.mp3" id="12_jbn8x"]
 
 [sub_resource type="Theme" id="Theme_kt6m5"]
 default_font = ExtResource("4_ocj0t")
@@ -28,9 +29,10 @@ default_font = ExtResource("4_ocj0t")
 [sub_resource type="Theme" id="Theme_2ia68"]
 default_font_size = 30
 
-[node name="GameOver" type="Node2D" node_paths=PackedStringArray("winner_label")]
+[node name="GameOver" type="Node2D" node_paths=PackedStringArray("winner_label", "enter_audio_stream_player")]
 script = ExtResource("1_xwkyw")
 winner_label = NodePath("Winner/Heading")
+enter_audio_stream_player = NodePath("EnterAudioStreamPlayer")
 
 [node name="Background" type="Sprite2D" parent="."]
 visible = false
@@ -200,6 +202,10 @@ size_flags_vertical = 0
 theme = SubResource("Theme_2ia68")
 text = "
 "
+
+[node name="EnterAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_jbn8x")
+bus = &"SFX"
 
 [connection signal="pressed" from="Restart/Background" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="ChangeGameMode/Background" to="." method="_on_change_game_mode_button_pressed"]

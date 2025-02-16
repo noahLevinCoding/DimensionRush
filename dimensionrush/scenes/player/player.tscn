@@ -1,6 +1,6 @@
-[gd_scene load_steps=53 format=3 uid="uid://bq7510d8vrixw"]
+[gd_scene load_steps=57 format=3 uid="uid://bq7510d8vrixw"]
 
-[ext_resource type="Script" path="res://scripts/player/UltimatePlatformerController.gd" id="1_6y4hb"]
+[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_6y4hb"]
 [ext_resource type="Texture2D" uid="uid://dv5g6tbhpq5yx" path="res://assets/PixelPrototypePlayer/Sprites/Crouch/Crouch01.png" id="2_5ubpm"]
 [ext_resource type="Texture2D" uid="uid://bc2mxp46iyxul" path="res://assets/PixelPrototypePlayer/Sprites/Jump/Jump03.png" id="2_5yved"]
 [ext_resource type="Texture2D" uid="uid://bylpkissbbhfj" path="res://assets/PixelPrototypePlayer/Sprites/PlayerSheet.png" id="2_cn88e"]
@@ -34,6 +34,10 @@
 [ext_resource type="Texture2D" uid="uid://cad4jg7welnds" path="res://assets/PixelPrototypePlayer/Sprites/Crawl/Crawl08.png" id="15_p3ouf"]
 [ext_resource type="AudioStream" uid="uid://dj51ymp6qvp6g" path="res://assets/audio/player/jump.mp3" id="33_p0qse"]
 [ext_resource type="AudioStream" uid="uid://duoxjvaqipwwo" path="res://assets/audio/player/walljump.mp3" id="34_qhoch"]
+[ext_resource type="AudioStream" uid="uid://dkb1wk0fxmlaf" path="res://assets/audio/player/item_1.mp3" id="35_8x16x"]
+[ext_resource type="AudioStream" uid="uid://d0k5i47yaanat" path="res://assets/audio/player/item_2.mp3" id="36_t6cyn"]
+[ext_resource type="AudioStream" uid="uid://b2y8fg352mhj3" path="res://assets/audio/player/interact.mp3" id="37_byfjy"]
+[ext_resource type="AudioStream" uid="uid://dg4ryxn1atu5n" path="res://assets/audio/player/die.mp3" id="38_st3l0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v31ud"]
 atlas = ExtResource("2_cn88e")
@@ -323,8 +327,14 @@ properties/15/replication_mode = 2
 properties/16/path = NodePath("Audio/AddItemAudioStreamPlayer:playing")
 properties/16/spawn = true
 properties/16/replication_mode = 2
+properties/17/path = NodePath("Audio/InteractAudioStreamPlayer:playing")
+properties/17/spawn = true
+properties/17/replication_mode = 2
+properties/18/path = NodePath("Audio/DeathAudioStreamPlayer:playing")
+properties/18/spawn = true
+properties/18/replication_mode = 2
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("PlayerSprite", "PlayerCollider", "camera", "inventory", "effect_handler", "effect_container", "jump_audio_stream_player", "wall_jump_audio_stream_player", "use_item_audio_stream_player", "add_item_audio_stream_player", "leftRaycast", "middleRaycast", "rightRaycast")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("PlayerSprite", "PlayerCollider", "camera", "inventory", "effect_handler", "effect_container", "jump_audio_stream_player", "wall_jump_audio_stream_player", "use_item_audio_stream_player", "add_item_audio_stream_player", "interaction_audio_stream_player", "death_audio_stream_player", "leftRaycast", "middleRaycast", "rightRaycast")]
 position = Vector2(0, 200)
 scale = Vector2(2, 2)
 script = ExtResource("1_6y4hb")
@@ -340,6 +350,8 @@ jump_audio_stream_player = NodePath("Audio/JumpAudioStreamPlayer")
 wall_jump_audio_stream_player = NodePath("Audio/WallJumpAudioStreamPlayer")
 use_item_audio_stream_player = NodePath("Audio/UseItemAudioStreamPlayer")
 add_item_audio_stream_player = NodePath("Audio/AddItemAudioStreamPlayer")
+interaction_audio_stream_player = NodePath("Audio/InteractAudioStreamPlayer")
+death_audio_stream_player = NodePath("Audio/DeathAudioStreamPlayer")
 max_speed = 500.0
 jumpHeight = 10.0
 wallJump = true
@@ -404,6 +416,7 @@ script = ExtResource("4_cj2a5")
 
 [node name="JumpAudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("33_p0qse")
+volume_db = 24.0
 bus = &"SFX"
 
 [node name="WallJumpAudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
@@ -412,5 +425,13 @@ volume_db = -17.396
 bus = &"SFX"
 
 [node name="UseItemAudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("35_8x16x")
 
 [node name="AddItemAudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("36_t6cyn")
+
+[node name="InteractAudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("37_byfjy")
+
+[node name="DeathAudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("38_st3l0")

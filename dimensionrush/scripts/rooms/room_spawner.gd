@@ -61,6 +61,7 @@ func _on_player_died(player: Player):
 	if player.is_upper == self.is_upper:
 		player.global_position = current_room.spawnpoint.global_position
 		player.velocity = Vector2.ZERO
+		player.death_audio_stream_player.play()
 
 func reset() -> void:
 	if last_room != null:

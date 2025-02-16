@@ -2,6 +2,7 @@ class_name GameStateGameOver
 extends State
 
 @export var winner_label : Label
+@export var enter_audio_stream_player : AudioStreamPlayer
 
 var upper_player : Player = null
 var lower_player : Player = null
@@ -35,6 +36,8 @@ func enter():
 		winner_label.text = "Upper player wins!"
 	else:
 		winner_label.text = "Lower player wins!"
+		
+	enter_audio_stream_player.play()
 	
 func exit():
 	visible = false

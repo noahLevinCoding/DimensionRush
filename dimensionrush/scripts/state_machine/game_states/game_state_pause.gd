@@ -1,9 +1,13 @@
 class_name GameStatePause
 extends State
 
+@export var enter_audio_stream_player : AudioStreamPlayer
+
 func enter():
 	visible = true
 	GameManager.game_is_running = false
+	enter_audio_stream_player.play()
+	
 func exit():
 	visible = false
 
