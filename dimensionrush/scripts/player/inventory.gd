@@ -1,6 +1,9 @@
 class_name Inventory
 extends Node
 
+var add_item_audio_stream_player : AudioStreamPlayer
+var use_item_audio_stream_player : AudioStreamPlayer
+
 var item_type : Item.ITEM_TYPE = Item.ITEM_TYPE.SPEED_BOOST
 var has_item : bool = false :
 	set(value):
@@ -17,6 +20,8 @@ func add_item(item_type):
 		
 	self.item_type = item_type
 	has_item = true
+	
+	add_item_audio_stream_player.play()
 
 	return true
 
@@ -26,6 +31,7 @@ func use_item():
 		
 	has_item = false
 	
+	use_item_audio_stream_player.play()
 	
 	match item_type:
 		Item.ITEM_TYPE.SPEED_BOOST:

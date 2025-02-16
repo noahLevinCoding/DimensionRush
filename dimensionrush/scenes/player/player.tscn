@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://bq7510d8vrixw"]
+[gd_scene load_steps=53 format=3 uid="uid://bq7510d8vrixw"]
 
 [ext_resource type="Script" path="res://scripts/player/UltimatePlatformerController.gd" id="1_6y4hb"]
 [ext_resource type="Texture2D" uid="uid://dv5g6tbhpq5yx" path="res://assets/PixelPrototypePlayer/Sprites/Crouch/Crouch01.png" id="2_5ubpm"]
@@ -32,6 +32,8 @@
 [ext_resource type="Texture2D" uid="uid://ya3g45p13n4a" path="res://assets/PixelPrototypePlayer/Sprites/Crawl/Crawl06.png" id="13_ob7n7"]
 [ext_resource type="Texture2D" uid="uid://cbwgeri5nnrrh" path="res://assets/PixelPrototypePlayer/Sprites/Crawl/Crawl07.png" id="14_buepu"]
 [ext_resource type="Texture2D" uid="uid://cad4jg7welnds" path="res://assets/PixelPrototypePlayer/Sprites/Crawl/Crawl08.png" id="15_p3ouf"]
+[ext_resource type="AudioStream" uid="uid://dj51ymp6qvp6g" path="res://assets/audio/player/jump.mp3" id="33_p0qse"]
+[ext_resource type="AudioStream" uid="uid://duoxjvaqipwwo" path="res://assets/audio/player/walljump.mp3" id="34_qhoch"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v31ud"]
 atlas = ExtResource("2_cn88e")
@@ -309,17 +311,35 @@ properties/11/replication_mode = 1
 properties/12/path = NodePath("Camera2D:offset")
 properties/12/spawn = true
 properties/12/replication_mode = 1
+properties/13/path = NodePath("Audio/JumpAudioStreamPlayer:playing")
+properties/13/spawn = true
+properties/13/replication_mode = 2
+properties/14/path = NodePath("Audio/WallJumpAudioStreamPlayer:playing")
+properties/14/spawn = true
+properties/14/replication_mode = 2
+properties/15/path = NodePath("Audio/UseItemAudioStreamPlayer:playing")
+properties/15/spawn = true
+properties/15/replication_mode = 2
+properties/16/path = NodePath("Audio/AddItemAudioStreamPlayer:playing")
+properties/16/spawn = true
+properties/16/replication_mode = 2
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("PlayerSprite", "PlayerCollider", "camera", "inventory", "effect_handler", "effect_container", "leftRaycast", "middleRaycast", "rightRaycast")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("PlayerSprite", "PlayerCollider", "camera", "inventory", "effect_handler", "effect_container", "jump_audio_stream_player", "wall_jump_audio_stream_player", "use_item_audio_stream_player", "add_item_audio_stream_player", "leftRaycast", "middleRaycast", "rightRaycast")]
 position = Vector2(0, 200)
 scale = Vector2(2, 2)
 script = ExtResource("1_6y4hb")
+upper_color = Color(0.333018, 0.537533, 1, 1)
+lower_color = Color(1, 0.425788, 0.357085, 1)
 PlayerSprite = NodePath("AnimatedSprite2D")
 PlayerCollider = NodePath("CollisionShape2D")
 camera = NodePath("Camera2D")
 inventory = NodePath("Inventory")
 effect_handler = NodePath("EffectHandler")
 effect_container = NodePath("EffectContainer")
+jump_audio_stream_player = NodePath("Audio/JumpAudioStreamPlayer")
+wall_jump_audio_stream_player = NodePath("Audio/WallJumpAudioStreamPlayer")
+use_item_audio_stream_player = NodePath("Audio/UseItemAudioStreamPlayer")
+add_item_audio_stream_player = NodePath("Audio/AddItemAudioStreamPlayer")
 max_speed = 500.0
 jumpHeight = 10.0
 wallJump = true
@@ -354,7 +374,7 @@ position = Vector2(6, 0)
 target_position = Vector2(0, -15)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-modulate = Color(0.717359, 0.0645472, 0, 1)
+modulate = Color(0.686275, 0.196078, 0.345098, 1)
 sprite_frames = SubResource("SpriteFrames_tr1tu")
 animation = &"idle"
 autoplay = "idle"
@@ -379,3 +399,18 @@ position_smoothing_speed = 15.0
 script = ExtResource("4_cj2a5")
 
 [node name="EffectContainer" type="Node2D" parent="."]
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="JumpAudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("33_p0qse")
+bus = &"SFX"
+
+[node name="WallJumpAudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("34_qhoch")
+volume_db = -17.396
+bus = &"SFX"
+
+[node name="UseItemAudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
+
+[node name="AddItemAudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]

@@ -2,6 +2,9 @@ class_name Player
 extends CharacterBody2D
 
 @export var is_upper : bool
+@export_category("Color")
+@export var upper_color : Color
+@export var lower_color : Color
 
 @export_category("Player Controls")
 @export var player_controls_resource : PlayerControlsResource = null
@@ -21,6 +24,10 @@ var player_movement_resource : PlayerMovementResource = null :
 @export var inventory : Inventory
 @export var effect_handler : EffectHandler
 @export var effect_container : Node2D
+@export var jump_audio_stream_player : AudioStreamPlayer
+@export var wall_jump_audio_stream_player : AudioStreamPlayer
+@export var use_item_audio_stream_player : AudioStreamPlayer
+@export var add_item_audio_stream_player : AudioStreamPlayer
 
 #INFO HORIZONTAL MOVEMENT 
 @export_category("L/R Movement")
@@ -229,6 +236,11 @@ func _ready():
 	_updateData()
 	
 	SignalManager.on_player_ready.emit(self)
+	
+	PlayerSprite.modulate = upper_color if is_upper else lower_color
+	
+	inventory.use_item_audio_stream_player = use_item_audio_stream_player
+	inventory.add_item_audio_stream_player = add_item_audio_stream_player
 	
 func _updateData():
 	maxSpeed = max_speed * max_speed_multiplier
@@ -692,6 +704,7 @@ func _jump():
 		velocity.y = -jumpMagnitude
 		jumpCount += -1
 		jumpWasPressed = false
+		jump_audio_stream_player.play()
 		
 func _wallJump():
 	var horizontalWallKick = abs(jumpMagnitude * cos(wallKickAngle * (PI / 180)))
@@ -704,6 +717,7 @@ func _wallJump():
 		velocity.x = -horizontalWallKick  * dir
 	else:
 		velocity.x = horizontalWallKick * dir
+	wall_jump_audio_stream_player.play()
 	if inputPauseAfterWallJump != 0:
 		movementInputMonitoring = Vector2(false, false)
 		_inputPauseReset(inputPauseAfterWallJump)
