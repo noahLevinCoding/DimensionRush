@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="RegionResource" load_steps=8 format=3 uid="uid://h8pq5v7ij0q8"]
+
+[ext_resource type="PackedScene" uid="uid://n2hl8rlr5mo0" path="res://scenes/Rooms/end_region.tscn" id="1_lktr4"]
+[ext_resource type="Resource" uid="uid://c3hlaa3qkks5d" path="res://resources/player/movement/player_movement_test3.tres" id="2_3irdw"]
+[ext_resource type="PackedScene" uid="uid://djfba18vr4n0f" path="res://scenes/Rooms/default_rooms/fantasy/1.tscn" id="3_xgpgr"]
+[ext_resource type="PackedScene" uid="uid://3j3kshn8ntpc" path="res://scenes/Rooms/default_rooms/fantasy/2.tscn" id="4_dcfyv"]
+[ext_resource type="PackedScene" uid="uid://b0uvvx1fsmy3g" path="res://scenes/Rooms/default_rooms/fantasy/3.tscn" id="5_e03qy"]
+[ext_resource type="Script" path="res://scripts/rooms/region_resource.gd" id="6_hjepp"]
+[ext_resource type="PackedScene" uid="uid://1bf58xo1hidi" path="res://scenes/Rooms/start_region.tscn" id="7_1356e"]
+
+[resource]
+script = ExtResource("6_hjepp")
+name = "Fantasy"
+start_room = ExtResource("7_1356e")
+end_room = ExtResource("1_lktr4")
+rooms = Array[PackedScene]([ExtResource("3_xgpgr"), ExtResource("4_dcfyv"), ExtResource("5_e03qy")])
+player_movement_resource = ExtResource("2_3irdw")

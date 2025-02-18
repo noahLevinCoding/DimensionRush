@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="RegionResource" load_steps=8 format=3 uid="uid://t5d02owxb0oo"]
+
+[ext_resource type="PackedScene" uid="uid://n2hl8rlr5mo0" path="res://scenes/Rooms/end_region.tscn" id="1_vx1pp"]
+[ext_resource type="Resource" uid="uid://c3hlaa3qkks5d" path="res://resources/player/movement/player_movement_test3.tres" id="2_7vq3p"]
+[ext_resource type="PackedScene" uid="uid://bgv5m76mc1ogh" path="res://scenes/Rooms/default_rooms/ice/1.tscn" id="2_lu1pb"]
+[ext_resource type="PackedScene" uid="uid://bsjk0ps348fnm" path="res://scenes/Rooms/default_rooms/ice/2.tscn" id="3_8htcd"]
+[ext_resource type="PackedScene" uid="uid://drgahpt3ay6sr" path="res://scenes/Rooms/default_rooms/ice/3.tscn" id="4_85imc"]
+[ext_resource type="Script" path="res://scripts/rooms/region_resource.gd" id="5_5fylt"]
+[ext_resource type="PackedScene" uid="uid://1bf58xo1hidi" path="res://scenes/Rooms/start_region.tscn" id="7_jodlr"]
+
+[resource]
+script = ExtResource("5_5fylt")
+name = "Ice"
+start_room = ExtResource("7_jodlr")
+end_room = ExtResource("1_vx1pp")
+rooms = Array[PackedScene]([ExtResource("2_lu1pb"), ExtResource("3_8htcd"), ExtResource("4_85imc")])
+player_movement_resource = ExtResource("2_7vq3p")

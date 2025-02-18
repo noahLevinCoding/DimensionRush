@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="RegionResource" load_steps=6 format=3 uid="uid://bs8ypc40jqsi8"]
+
+[ext_resource type="PackedScene" uid="uid://n2hl8rlr5mo0" path="res://scenes/Rooms/end_region.tscn" id="1_trwbj"]
+[ext_resource type="Resource" uid="uid://c3hlaa3qkks5d" path="res://resources/player/movement/player_movement_test3.tres" id="2_wqxpi"]
+[ext_resource type="PackedScene" uid="uid://qkkwpv4j7vtf" path="res://scenes/Rooms/default_rooms/rain/1.tscn" id="3_bqgjx"]
+[ext_resource type="Script" path="res://scripts/rooms/region_resource.gd" id="4_4l2wb"]
+[ext_resource type="PackedScene" uid="uid://1bf58xo1hidi" path="res://scenes/Rooms/start_region.tscn" id="5_bqikd"]
+
+[resource]
+script = ExtResource("4_4l2wb")
+name = "Rain"
+start_room = ExtResource("5_bqikd")
+end_room = ExtResource("1_trwbj")
+rooms = Array[PackedScene]([ExtResource("3_bqgjx")])
+player_movement_resource = ExtResource("2_wqxpi")

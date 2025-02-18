@@ -18,6 +18,7 @@ func _on_spawn_trigger_body_entered(body: Node2D) -> void:
 	if body is Player:
 		call_deferred("close_door")
 		
+		
 		spawn_trigger_entered.emit(body)
 	
 func close_door():

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="RegionResource" load_steps=8 format=3 uid="uid://dhohbvaqtsgeo"]
+
+[ext_resource type="PackedScene" uid="uid://n2hl8rlr5mo0" path="res://scenes/Rooms/end_region.tscn" id="1_hdd1w"]
+[ext_resource type="Resource" uid="uid://bn2fgmgalgbn8" path="res://resources/player/movement/player_movement_test2.tres" id="2_42y3c"]
+[ext_resource type="PackedScene" uid="uid://cix8jcc00aknm" path="res://scenes/Rooms/default_rooms/lava/1.tscn" id="3_4f8uh"]
+[ext_resource type="PackedScene" uid="uid://cd8vsvao3oar8" path="res://scenes/Rooms/default_rooms/lava/2.tscn" id="4_tm4kd"]
+[ext_resource type="PackedScene" uid="uid://d3yi7jajmstd2" path="res://scenes/Rooms/default_rooms/lava/3.tscn" id="5_octt3"]
+[ext_resource type="Script" path="res://scripts/rooms/region_resource.gd" id="6_00t14"]
+[ext_resource type="PackedScene" uid="uid://1bf58xo1hidi" path="res://scenes/Rooms/start_region.tscn" id="7_paawe"]
+
+[resource]
+script = ExtResource("6_00t14")
+name = "Lava"
+start_room = ExtResource("7_paawe")
+end_room = ExtResource("1_hdd1w")
+rooms = Array[PackedScene]([ExtResource("3_4f8uh"), ExtResource("4_tm4kd"), ExtResource("5_octt3")])
+player_movement_resource = ExtResource("2_42y3c")

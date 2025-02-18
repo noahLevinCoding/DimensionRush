@@ -25,10 +25,15 @@ SoundManager="*res://scripts/manager/sound_manager.gd"
 
 window/size/viewport_width=960
 window/size/viewport_height=540
+window/size/mode=3
 window/stretch/mode="viewport"
 window/stretch/scale=0.5
 mouse_cursor/custom_image="res://assets/kenney_crosshairPack/PNG/Outline/crosshair037.png"
 mouse_cursor/custom_image_hotspot=Vector2(36, 36)
+
+[editor]
+
+run/main_run_args="debug"
 
 [file_customization]
 

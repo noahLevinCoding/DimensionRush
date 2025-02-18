@@ -16,8 +16,8 @@ var already_spawned_rooms : Array[PackedScene] = []
 var regions_per_game : int = 0
 var region_per_game : int = 0
 
-var rooms_per_region_max : int = 2
-var rooms_per_region_min : int = 6
+var rooms_per_region_max : int = 6
+var rooms_per_region_min : int = 2
 var rooms_per_region : int = 0
 var room_per_region : int = 0
 

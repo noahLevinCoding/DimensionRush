@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="RegionResource" load_steps=6 format=3 uid="uid://cse0oimo3rldo"]
+
+[ext_resource type="PackedScene" uid="uid://n2hl8rlr5mo0" path="res://scenes/Rooms/end_region.tscn" id="1_exilv"]
+[ext_resource type="Resource" uid="uid://c3hlaa3qkks5d" path="res://resources/player/movement/player_movement_test3.tres" id="2_rkj15"]
+[ext_resource type="PackedScene" uid="uid://d332kw730d1ck" path="res://scenes/Rooms/default_rooms/wind/1.tscn" id="3_kt78q"]
+[ext_resource type="Script" path="res://scripts/rooms/region_resource.gd" id="4_beg15"]
+[ext_resource type="PackedScene" uid="uid://1bf58xo1hidi" path="res://scenes/Rooms/start_region.tscn" id="5_ydr4b"]
+
+[resource]
+script = ExtResource("4_beg15")
+name = "Wind"
+start_room = ExtResource("5_ydr4b")
+end_room = ExtResource("1_exilv")
+rooms = Array[PackedScene]([ExtResource("3_kt78q")])
+player_movement_resource = ExtResource("2_rkj15")

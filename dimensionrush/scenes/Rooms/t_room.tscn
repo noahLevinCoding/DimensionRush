@@ -41,7 +41,7 @@ scale = Vector2(1, 540)
 texture = SubResource("GradientTexture1D_5edrh")
 
 [node name="SpawnTrigger" type="Area2D" parent="."]
-position = Vector2(150, 270)
+position = Vector2(100, 270)
 
 [node name="SpawnCollisionShape2D" type="CollisionShape2D" parent="SpawnTrigger"]
 shape = SubResource("RectangleShape2D_havgt")

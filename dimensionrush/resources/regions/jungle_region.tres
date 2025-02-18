@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="RegionResource" load_steps=8 format=3 uid="uid://dyr3l1ym7hgko"]
+
+[ext_resource type="PackedScene" uid="uid://n2hl8rlr5mo0" path="res://scenes/Rooms/end_region.tscn" id="1_bs4q8"]
+[ext_resource type="Resource" uid="uid://crdoirqli7hai" path="res://resources/player/movement/player_movement_test1.tres" id="2_kahgu"]
+[ext_resource type="PackedScene" uid="uid://c5paf4ije1jxj" path="res://scenes/Rooms/default_rooms/jungle/1.tscn" id="3_aa42x"]
+[ext_resource type="PackedScene" uid="uid://kdgs4b83sks4" path="res://scenes/Rooms/default_rooms/jungle/2.tscn" id="4_4hxtg"]
+[ext_resource type="PackedScene" uid="uid://clro7fe4utdo0" path="res://scenes/Rooms/default_rooms/jungle/3.tscn" id="5_a82yc"]
+[ext_resource type="Script" path="res://scripts/rooms/region_resource.gd" id="6_j5u53"]
+[ext_resource type="PackedScene" uid="uid://1bf58xo1hidi" path="res://scenes/Rooms/start_region.tscn" id="7_twrd1"]
+
+[resource]
+script = ExtResource("6_j5u53")
+name = "Jungle"
+start_room = ExtResource("7_twrd1")
+end_room = ExtResource("1_bs4q8")
+rooms = Array[PackedScene]([ExtResource("3_aa42x"), ExtResource("4_4hxtg"), ExtResource("5_a82yc")])
+player_movement_resource = ExtResource("2_kahgu")

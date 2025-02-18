@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=4 uid="uid://bddejeg61epfh"]
 
-[ext_resource type="PackedScene" uid="uid://bty1jksbcxbxj" path="res://scenes/rooms/t_room.tscn" id="1_ya22a"]
+[ext_resource type="PackedScene" uid="uid://bty1jksbcxbxj" path="res://scenes/Rooms/t_room.tscn" id="1_ya22a"]
 [ext_resource type="TileSet" uid="uid://dpnc6clokd8i5" path="res://resources/tilesets/tileset_2.tres" id="2_jm0o7"]
 
 [node name="Room" instance=ExtResource("1_ya22a")]

@@ -1,16 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://bdd2a752ovak"]
+[gd_scene load_steps=6 format=3 uid="uid://bdd2a752ovak"]
 
 [ext_resource type="Script" path="res://scripts/rooms/room_spawner.gd" id="1_l1l3x"]
-[ext_resource type="PackedScene" uid="uid://cybckaxs5lam6" path="res://scenes/rooms/start_room.tscn" id="2_3y6xt"]
-[ext_resource type="PackedScene" uid="uid://b50khxxs3mvy8" path="res://scenes/rooms/end_room.tscn" id="3_floos"]
+[ext_resource type="PackedScene" uid="uid://cybckaxs5lam6" path="res://scenes/Rooms/start_room.tscn" id="2_3y6xt"]
+[ext_resource type="PackedScene" uid="uid://b50khxxs3mvy8" path="res://scenes/Rooms/end_room.tscn" id="3_floos"]
 [ext_resource type="Script" path="res://scripts/rooms/region_resource.gd" id="4_8hvx8"]
-[ext_resource type="Resource" uid="uid://dyr3l1ym7hgko" path="res://resources/regions/region_1.tres" id="5_jxgwa"]
-[ext_resource type="Resource" uid="uid://dnbpiun8u0pji" path="res://resources/regions/region_2.tres" id="6_kw6el"]
-[ext_resource type="Resource" uid="uid://cv7du2q70pf4k" path="res://resources/regions/region_3.tres" id="7_1ss3q"]
+[ext_resource type="Resource" uid="uid://dyr3l1ym7hgko" path="res://resources/regions/jungle_region.tres" id="5_jxgwa"]
 
 [node name="RoomSpawner" type="Node2D"]
 script = ExtResource("1_l1l3x")
 is_upper = true
 start_room = ExtResource("2_3y6xt")
 end_room = ExtResource("3_floos")
-regions = Array[ExtResource("4_8hvx8")]([ExtResource("5_jxgwa"), ExtResource("6_kw6el"), ExtResource("7_1ss3q")])
+regions = Array[ExtResource("4_8hvx8")]([ExtResource("5_jxgwa")])
