@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_rqwdk")
-master_volume = 0.0
+master_volume = 0.16
 sfx_volume = 1.0
-music_volume = 0.034
+music_volume = 0.337
 ui_volume = 0.665
