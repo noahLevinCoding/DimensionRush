@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://vcky2ghi0qo3"]
+[gd_scene load_steps=14 format=3 uid="uid://vcky2ghi0qo3"]
 
 [ext_resource type="Texture2D" uid="uid://cacanwgyf2pne" path="res://assets/titlescreen/3_2.png" id="1_btnx7"]
 [ext_resource type="FontFile" uid="uid://u3ide4v6ikg2" path="res://assets/kenney_ui-pack-space-expansion/Font/Kenney Future.ttf" id="2_c6ycm"]
@@ -21,6 +21,10 @@ default_font = ExtResource("2_c6ycm")
 [sub_resource type="Theme" id="Theme_g8s2b"]
 default_font = ExtResource("2_c6ycm")
 default_font_size = 40
+
+[sub_resource type="Theme" id="Theme_tnyac"]
+default_font = ExtResource("2_c6ycm")
+default_font_size = 50
 
 [node name="SettingsAudio" type="Node2D"]
 
@@ -316,13 +320,55 @@ offset_top = 401.0
 offset_right = 1712.0
 offset_bottom = 875.0
 
-[node name="Label2" type="Label" parent="Wrapper"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Wrapper"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -129.0
+offset_bottom = 129.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_tnyac")
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Wrapper/VBoxContainer"]
 layout_mode = 2
-offset_top = 43.0
-offset_right = 1149.0
-offset_bottom = 139.0
 theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("2_c6ycm")
 theme_override_font_sizes/font_size = 70
 text = "Credits"
 horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Wrapper/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 50
+text = "Programming"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Wrapper/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 30
+text = "Noah Levin eli, audric worre"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="Wrapper/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 50
+text = "Music, ART, SFX"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="Wrapper/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 30
+text = "SUNO.AI, Dall-e"
+horizontal_alignment = 1
+vertical_alignment = 1
