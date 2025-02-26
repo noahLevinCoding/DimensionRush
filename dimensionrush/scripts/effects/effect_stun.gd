@@ -4,7 +4,6 @@ extends Effect
 var effect_time = 5
 var remaining_effect_time = effect_time
 
-
 func init_effect(player : Node):
 	self.player = player
 	player.is_stunned = true

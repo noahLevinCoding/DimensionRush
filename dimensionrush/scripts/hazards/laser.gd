@@ -29,7 +29,8 @@ func _ready() -> void:
 	
 	if has_timer:
 		get_tree().create_timer(on_time).timeout.connect(_on_timer_timeout)
-	
+
+# Create the collision polygon based on the start and end nodes
 func create_collision_polygon():
 	var start_position = start_node.global_position
 	var end_position   = end_node.global_position
@@ -47,10 +48,12 @@ func create_collision_polygon():
 	var local_points = points.map(func(p): return collision_polygon.to_local(p))
 	collision_polygon.polygon = local_points
 
+# Handle when a body enters the laser area
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player and (not GameManager.is_online_multiplayer() or body.is_multiplayer_authority()):
 		SignalManager.player_died.emit(body)
 
+# Toggle the laser state after the timer times out
 func _on_timer_timeout():
 	is_on = not is_on
 
@@ -59,6 +62,7 @@ func _on_timer_timeout():
 	else:
 		get_tree().create_timer(off_time).timeout.connect(_on_timer_timeout)
 
+# Move the start and end path nodes, and update the collision polygon
 func _physics_process(delta: float) -> void:
 	if has_start_path:
 		start_node.progress += start_path_velocity * delta

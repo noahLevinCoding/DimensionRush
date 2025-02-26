@@ -27,7 +27,7 @@ var last_room : Room = null
 var current_room : Room = null
 var next_room : Room = null
 
-var rng 		= RandomNumberGenerator.new()
+var rng	= RandomNumberGenerator.new()
 
 #For predicting game distance
 var already_spawned_regions_size_predict = already_spawned_regions_size
@@ -57,12 +57,14 @@ var game_distance : float = 0
 func _enter_tree() -> void:
 	SignalManager.player_died.connect(_on_player_died)
 
+# Handle player death and respawn
 func _on_player_died(player: Player):
 	if player.is_upper == self.is_upper:
 		player.global_position = current_room.spawnpoint.global_position
 		player.velocity = Vector2.ZERO
 		player.death_audio_stream_player.play()
 
+# Reset room and region states
 func reset() -> void:
 	if last_room != null:
 		last_room.queue_free()
@@ -113,11 +115,9 @@ func init_predict() -> void:
 	if already_spawned_regions_size_predict >= regions.size():
 		already_spawned_regions_size_predict = regions.size() - 1
 	
-	
 	instantiate_rooms_predict()
 
-
-
+# Instantiate the rooms, including start room and next room
 func instantiate_rooms() -> void:
 	
 	#add start room as current room
@@ -133,7 +133,6 @@ func instantiate_rooms() -> void:
 	if already_spawned_regions.size() > already_spawned_regions_size:
 		already_spawned_regions.pop_front()
 	
-	#TODO
 	already_spawned_rooms_size = regions[region_index].rooms.size() / 2 
 	already_spawned_rooms = []
 	
@@ -148,7 +147,6 @@ func instantiate_rooms() -> void:
 	next_room.spawn_trigger_entered.connect(_on_spawn_trigger_entered)
 	
 func instantiate_rooms_predict() -> void:
-	
 	#add start room as current room
 	current_room_predict = start_room.instantiate()
 	current_room_predict.calc_width()
@@ -162,7 +160,6 @@ func instantiate_rooms_predict() -> void:
 	if already_spawned_regions_predict.size() > already_spawned_regions_size_predict:
 		already_spawned_regions_predict.pop_front()
 	
-	#TODO
 	already_spawned_rooms_size_predict = regions[region_index_predict].rooms.size() / 2 
 	already_spawned_rooms_predict = []
 	
@@ -175,12 +172,9 @@ func instantiate_rooms_predict() -> void:
 	next_room_predict.calc_width()
 	next_room_predict.position.x = current_room_predict.width + current_room_predict.position.x
 	
-	
-	
 	game_distance = next_room_predict.position.x + next_room_predict.width
 	spawn_room_predict()
 	
-
 #instanciate room, add child, connect sinals
 func _on_spawn_trigger_entered(player: Player) -> void:
 	despawn_room(last_room)
@@ -229,7 +223,7 @@ func spawn_room_in_region_predict():
 	game_distance = next_room_predict.position.x + next_room_predict.width
 	spawn_room_predict()
 
-
+# spawn final room
 func spawn_end_room_in_region():
 	var next_room_scene = regions[region_index].end_room
 	
@@ -258,7 +252,6 @@ func spawn_start_room_in_new_region():
 	if already_spawned_regions.size() > already_spawned_regions_size:
 		already_spawned_regions.pop_front()
 		
-	#TODO
 	already_spawned_rooms_size = regions[region_index].rooms.size() / 2  
 	already_spawned_rooms = []
 			
@@ -287,7 +280,6 @@ func spawn_start_room_in_new_region_predict():
 	if already_spawned_regions_predict.size() > already_spawned_regions_size_predict:
 		already_spawned_regions_predict.pop_front()
 		
-	#TODO
 	already_spawned_rooms_size_predict = regions[region_index_predict].rooms.size() / 2  
 	already_spawned_rooms_predict = []
 			
@@ -297,7 +289,6 @@ func spawn_start_room_in_new_region_predict():
 	if region_per_game_predict > regions_per_game_predict:
 		spawn_end_room_predict()
 		return
-	
 	
 	room_per_region_predict = 1
 	var next_room_scene_predict = regions[region_index_predict].start_room

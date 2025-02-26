@@ -48,7 +48,6 @@ func game_over_on_restart_button_up(game_seed):
 	state_transition.emit(self, "InitGame")
 
 
-
 @rpc("any_peer")
 func game_over_on_titlescreen_button_up():
 	state_transition.emit(self, "Titlescreen")

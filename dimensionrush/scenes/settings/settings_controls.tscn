@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dbya5c45d0vr"]
+[gd_scene load_steps=31 format=3 uid="uid://dbya5c45d0vr"]
 
 [ext_resource type="Texture2D" uid="uid://cacanwgyf2pne" path="res://assets/titlescreen/3_2.png" id="1_brkl0"]
 [ext_resource type="FontFile" uid="uid://u3ide4v6ikg2" path="res://assets/kenney_ui-pack-space-expansion/Font/Kenney Future.ttf" id="2_io6o8"]
@@ -12,7 +12,20 @@
 [ext_resource type="Texture2D" uid="uid://biddx168ucg1e" path="res://assets/kenney_input-prompts/Keyboard & Mouse/Vector/keyboard_a_outline.svg" id="10_2hfyi"]
 [ext_resource type="Texture2D" uid="uid://dvh5afxj1o6i3" path="res://assets/kenney_input-prompts/Keyboard & Mouse/Vector/keyboard_w_outline.svg" id="11_dteyj"]
 [ext_resource type="Texture2D" uid="uid://bvg13mjp22foe" path="res://assets/kenney_input-prompts/Keyboard & Mouse/Vector/keyboard_s_outline.svg" id="12_174id"]
-[ext_resource type="Texture2D" uid="uid://du2eao6n8utfq" path="res://assets/kenney_input-prompts/Xbox Series/Vector/controller_xboxone.svg" id="13_b8ba4"]
+[ext_resource type="Texture2D" uid="uid://b88wdghgj38cc" path="res://assets/kenney_input-prompts/Keyboard & Mouse/Vector/keyboard_space_icon_outline.svg" id="13_2e3v4"]
+[ext_resource type="Texture2D" uid="uid://dlf01t2sndc0q" path="res://assets/kenney_input-prompts/Keyboard & Mouse/Vector/keyboard_q_outline.svg" id="14_ksba5"]
+[ext_resource type="Texture2D" uid="uid://bnpxo22qymxe0" path="res://assets/kenney_input-prompts/Keyboard & Mouse/Vector/keyboard_e_outline.svg" id="15_in6yd"]
+[ext_resource type="Texture2D" uid="uid://du0b83wsk05bm" path="res://assets/kenney_input-prompts/Keyboard & Mouse/Vector/keyboard_l_outline.svg" id="16_1wbgn"]
+[ext_resource type="Texture2D" uid="uid://fqrx514v0dar" path="res://assets/kenney_input-prompts/Keyboard & Mouse/Vector/keyboard_j_outline.svg" id="17_p6ia6"]
+[ext_resource type="Texture2D" uid="uid://iuwlcdqugb5w" path="res://assets/kenney_input-prompts/Keyboard & Mouse/Vector/keyboard_i_outline.svg" id="18_40lyx"]
+[ext_resource type="Texture2D" uid="uid://cpkn432sqbbsc" path="res://assets/kenney_input-prompts/Keyboard & Mouse/Vector/keyboard_k_outline.svg" id="19_1fl5g"]
+[ext_resource type="Texture2D" uid="uid://c6dom8lemuvlo" path="res://assets/kenney_input-prompts/Keyboard & Mouse/Vector/keyboard_y_outline.svg" id="20_qqc2j"]
+[ext_resource type="Texture2D" uid="uid://b77xcfdf6jo1j" path="res://assets/kenney_input-prompts/Keyboard & Mouse/Vector/keyboard_u_outline.svg" id="21_08mri"]
+[ext_resource type="Texture2D" uid="uid://cs4y14cnqlhp6" path="res://assets/kenney_input-prompts/Keyboard & Mouse/Vector/keyboard_o_outline.svg" id="22_4dygo"]
+[ext_resource type="Texture2D" uid="uid://c7ksxl6kvy1bl" path="res://assets/kenney_input-prompts/Xbox Series/Double/xbox_ls_outline.png" id="23_2pmig"]
+[ext_resource type="Texture2D" uid="uid://bbplcmk8rvty1" path="res://assets/kenney_input-prompts/Xbox Series/Vector/xbox_button_color_a_outline.svg" id="24_m0ri3"]
+[ext_resource type="Texture2D" uid="uid://bp7n3o38ksbfx" path="res://assets/kenney_input-prompts/Xbox Series/Vector/xbox_button_color_b_outline.svg" id="25_8238b"]
+[ext_resource type="Texture2D" uid="uid://bftctyrqq7scn" path="res://assets/kenney_input-prompts/Xbox Series/Vector/xbox_button_color_x_outline.svg" id="26_ousmx"]
 
 [sub_resource type="Theme" id="Theme_c0kin"]
 default_font = ExtResource("2_io6o8")
@@ -316,47 +329,199 @@ color = Color(0.239216, 0.239216, 0.239216, 0.470588)
 [node name="Wrapper" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 563.0
-offset_top = 401.0
-offset_right = 1712.0
-offset_bottom = 875.0
+offset_left = 494.0
+offset_top = 399.0
+offset_right = 1773.0
+offset_bottom = 873.0
 
-[node name="Label2" type="Label" parent="Wrapper"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Wrapper"]
+offset_right = 1279.0
+offset_bottom = 474.0
+
+[node name="Label2" type="Label" parent="Wrapper/VBoxContainer"]
 layout_mode = 2
-offset_top = 43.0
-offset_right = 1149.0
-offset_bottom = 139.0
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("2_io6o8")
 theme_override_font_sizes/font_size = 70
 text = "Controls"
 horizontal_alignment = 1
 
+[node name="HBoxContainer" type="HBoxContainer" parent="Wrapper/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 215
+alignment = 1
+
+[node name="Label2" type="Label" parent="Wrapper/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_io6o8")
+theme_override_font_sizes/font_size = 35
+text = "Player 1"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Wrapper/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_io6o8")
+theme_override_font_sizes/font_size = 35
+text = "Player 2"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="Wrapper/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_io6o8")
+theme_override_font_sizes/font_size = 35
+text = "Controller"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Wrapper"]
+layout_mode = 2
+offset_left = 111.0
+offset_top = 139.0
+offset_right = 200.0
+offset_bottom = 168.0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_io6o8")
+theme_override_font_sizes/font_size = 25
+text = "Move"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="Wrapper"]
+offset_left = 548.695
+offset_top = 139.0
+offset_right = 637.695
+offset_bottom = 168.0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_io6o8")
+theme_override_font_sizes/font_size = 25
+text = "Move"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="Wrapper"]
+offset_left = 1003.81
+offset_top = 139.0
+offset_right = 1092.81
+offset_bottom = 168.0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_io6o8")
+theme_override_font_sizes/font_size = 25
+text = "Move"
+horizontal_alignment = 1
+
 [node name="KeyboardIcon" type="Node2D" parent="Wrapper"]
-position = Vector2(347, -243)
-scale = Vector2(2, 2)
+position = Vector2(160, 253)
 
 [node name="KeyboardArrows2" type="Sprite2D" parent="Wrapper/KeyboardIcon"]
-position = Vector2(38, 300)
+position = Vector2(50, 0)
 texture = ExtResource("9_r0y3k")
 
 [node name="KeyboardArrows3" type="Sprite2D" parent="Wrapper/KeyboardIcon"]
-position = Vector2(-62, 300)
+position = Vector2(-50, 0)
 texture = ExtResource("10_2hfyi")
 
 [node name="KeyboardArrows4" type="Sprite2D" parent="Wrapper/KeyboardIcon"]
-position = Vector2(-12, 250)
+position = Vector2(0, -50)
 texture = ExtResource("11_dteyj")
 
 [node name="KeyboardArrows5" type="Sprite2D" parent="Wrapper/KeyboardIcon"]
-position = Vector2(-12, 300)
 texture = ExtResource("12_174id")
 
+[node name="KeyboardArrows6" type="Sprite2D" parent="Wrapper/KeyboardIcon"]
+position = Vector2(-50, 130)
+texture = ExtResource("13_2e3v4")
+
+[node name="KeyboardArrows7" type="Sprite2D" parent="Wrapper/KeyboardIcon"]
+position = Vector2(0, 130)
+texture = ExtResource("14_ksba5")
+
+[node name="KeyboardArrows8" type="Sprite2D" parent="Wrapper/KeyboardIcon"]
+position = Vector2(50, 130)
+texture = ExtResource("15_in6yd")
+
+[node name="KeyboardIcon2" type="Node2D" parent="Wrapper"]
+position = Vector2(593.605, 253)
+
+[node name="KeyboardArrows2" type="Sprite2D" parent="Wrapper/KeyboardIcon2"]
+position = Vector2(50, 0)
+texture = ExtResource("16_1wbgn")
+
+[node name="KeyboardArrows3" type="Sprite2D" parent="Wrapper/KeyboardIcon2"]
+position = Vector2(-50, 0)
+texture = ExtResource("17_p6ia6")
+
+[node name="KeyboardArrows4" type="Sprite2D" parent="Wrapper/KeyboardIcon2"]
+position = Vector2(0, -50)
+texture = ExtResource("18_40lyx")
+
+[node name="KeyboardArrows5" type="Sprite2D" parent="Wrapper/KeyboardIcon2"]
+texture = ExtResource("19_1fl5g")
+
+[node name="KeyboardArrows7" type="Sprite2D" parent="Wrapper/KeyboardIcon2"]
+position = Vector2(-50, 130)
+texture = ExtResource("20_qqc2j")
+
+[node name="KeyboardArrows8" type="Sprite2D" parent="Wrapper/KeyboardIcon2"]
+position = Vector2(0, 130)
+texture = ExtResource("21_08mri")
+
+[node name="KeyboardArrows6" type="Sprite2D" parent="Wrapper/KeyboardIcon2"]
+position = Vector2(50, 130)
+texture = ExtResource("22_4dygo")
+
 [node name="ControllerIcon" type="Node2D" parent="Wrapper"]
-position = Vector2(826, -243)
+position = Vector2(1051, 223)
 scale = Vector2(2, 2)
 
 [node name="ControllerXboxone" type="Sprite2D" parent="Wrapper/ControllerIcon"]
-position = Vector2(-11, 273)
-scale = Vector2(2.5, 2.5)
-texture = ExtResource("13_b8ba4")
+scale = Vector2(0.355, 0.355)
+texture = ExtResource("23_2pmig")
+
+[node name="ControllerXboxone2" type="Sprite2D" parent="Wrapper/ControllerIcon"]
+position = Vector2(-50, 80)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("24_m0ri3")
+
+[node name="ControllerXboxone3" type="Sprite2D" parent="Wrapper/ControllerIcon"]
+position = Vector2(0, 80)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("25_8238b")
+
+[node name="ControllerXboxone4" type="Sprite2D" parent="Wrapper/ControllerIcon"]
+position = Vector2(50, 80)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("26_ousmx")
+
+[node name="Label6" type="Label" parent="Wrapper"]
+offset_left = 28.93
+offset_top = 300.0
+offset_right = 377.93
+offset_bottom = 329.0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_io6o8")
+theme_override_font_sizes/font_size = 25
+text = "Jump, item, interact"
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="Wrapper"]
+offset_left = 435.095
+offset_top = 300.0
+offset_right = 784.095
+offset_bottom = 329.0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_io6o8")
+theme_override_font_sizes/font_size = 25
+text = "Jump, item, interact"
+horizontal_alignment = 1
+
+[node name="Label8" type="Label" parent="Wrapper"]
+offset_left = 895.92
+offset_top = 300.0
+offset_right = 1244.92
+offset_bottom = 329.0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_io6o8")
+theme_override_font_sizes/font_size = 25
+text = "Jump, item, interact"
+horizontal_alignment = 1

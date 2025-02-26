@@ -8,7 +8,7 @@ var last_state_name : StringName = ""
 @export var initial_state : State 
 
 func _ready():
-	#Append states
+	# Append states and connect signals
 	for child in get_children():
 		if child is State:
 			states[child.name.to_lower()] = child
@@ -23,7 +23,7 @@ func _ready():
 		initial_state.enter()
 		
 	
-
+# Change to a new state
 func change_state(source_state : State, new_state_name : StringName):
 	
 	if source_state != current_state:
@@ -43,7 +43,8 @@ func change_state(source_state : State, new_state_name : StringName):
 	new_state.enter()
 	
 	SignalManager.changed_game_state.emit()
-	
+
+# Return to the previous state
 func change_state_back(source_state : State):
 	if source_state != current_state:
 		return
@@ -62,6 +63,7 @@ func change_state_back(source_state : State):
 	
 	SignalManager.changed_game_state.emit()
 
+# Force transition to a new state
 func force_change_state(new_state_name : StringName):
 	var new_state = states.get(new_state_name.to_lower())
 	

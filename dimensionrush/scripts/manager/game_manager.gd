@@ -43,6 +43,7 @@ var remaining_level_time : float = 0.0
 
 var debug_mode = false
 
+# Reset game state to initial values
 func reset():
 	SignalManager.close_connection.emit()
 	

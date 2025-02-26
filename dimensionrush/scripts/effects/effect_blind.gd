@@ -6,7 +6,7 @@ var remaining_effect_time = effect_time
 
 var color_rect : ColorRect = null
  
-
+# Initialize the effect
 func init_effect(player : Node):
 	self.player = player
 	
@@ -14,13 +14,14 @@ func init_effect(player : Node):
 	
 	self.player.camera.position_smoothing_enabled = false;
 	
+	# Create and configure the color overlay
 	color_rect = ColorRect.new()
 	color_rect.size = Vector2i(1920, 540)
 	color_rect.color = Color(0, 0, 0, 0.5)
 	self.player.effect_container.add_child(color_rect)
 	color_rect.position = Vector2(-960, -220)
 	
-	
+	# Set shader material and parameters
 	color_rect.material = ShaderMaterial.new()
 	color_rect.material.shader = preload( "res://shader/effects/blind.gdshader")
 	
@@ -33,15 +34,8 @@ func init_effect(player : Node):
 	
 	color_rect.material.set_shader_parameter("player_position", player_pos)
 	
-	
+# Process the effect over time	
 func process_effect(delta : float):
-	
-	#var center_pos_x = (color_rect.get_global_rect().position.x - self.player.position.x) / 2
-	#var center_pos_y = self.player.position.y + 10
-	#
-	#color_rect.material.set_shader_parameter("player_position", Vector2(center_pos_x, center_pos_y))
-	#
-	#
 	var player_pos = self.player.global_position
 	
 	self.player.camera.position_smoothing_enabled = false;
@@ -53,25 +47,26 @@ func process_effect(delta : float):
 	player_pos.y += 10
 	color_rect.material.set_shader_parameter("player_position", player_pos)
 	
+	# Track remaining effect time
 	remaining_effect_time -= delta
 	if remaining_effect_time <= 0:
 		return true
 		
 	return false
-	
+
+# End the effect
 func end_effect():
 	self.player.camera.position_smoothing_enabled = true;
 	
 	print("End of effect")
 	
+	# Remove and free the color overlay
 	if color_rect:
 		print("End of effect: Color rect")
 		self.player.effect_container.remove_child(color_rect)
 		color_rect.queue_free()
-		
-	#if GameManager.is_online_multiplayer():
-	#	end_effect_rpc.rpc()
 
+# RPC version to end the effect
 @rpc
 func end_effect_rpc():
 	self.player.camera.position_smoothing_enabled = true;

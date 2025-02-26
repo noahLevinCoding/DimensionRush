@@ -6,13 +6,8 @@ var item : ItemBoxResource
 
 func _ready() -> void:
 	randomize_item()
-
-#func _process(delta: float) -> void:
-#	if Input.is_action_just_pressed("ui_accept"):
-#		randomize_item()
 	
 func randomize_item():
-	
 	var cumulative_odds = []
 	var odds = 0
 	
@@ -27,8 +22,6 @@ func randomize_item():
 			self.item = items[i]
 			return
 	
-
-
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		

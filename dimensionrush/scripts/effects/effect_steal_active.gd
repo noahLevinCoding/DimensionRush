@@ -7,7 +7,8 @@ func init_effect(player : Node):
 	self.player = player
 	SignalManager.ping_other_player_response.connect(ping_other_player_response)
 	SignalManager.ping_other_player.emit(player)
-	
+
+# Handle the response from the other player
 func ping_other_player_response(other_player: Player):
 	
 	if self.player != null:

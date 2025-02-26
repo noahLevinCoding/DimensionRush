@@ -14,6 +14,7 @@ var has_item : bool = false :
 		SignalManager.inventory_changed.emit(self.owner.is_upper, has_item, item_type)
 var has_item_no_sync : bool = false 
 
+# Add an item to the inventory
 func add_item(item_type):
 	if has_item:
 		return false
@@ -25,6 +26,7 @@ func add_item(item_type):
 
 	return true
 
+# Use the item from the inventory
 func use_item():
 	if not has_item:
 		return
@@ -33,6 +35,7 @@ func use_item():
 	
 	use_item_audio_stream_player.play()
 	
+	# Apply effect based on the item type
 	match item_type:
 		Item.ITEM_TYPE.SPEED_BOOST:
 			SignalManager.add_effect.emit(self.owner.is_upper, self.owner.is_upper, Item.ITEM_TYPE.SPEED_BOOST, false)
@@ -47,9 +50,6 @@ func use_item():
 			SignalManager.add_effect.emit(self.owner.is_upper, not self.owner.is_upper, Item.ITEM_TYPE.STEAL_PASSIVE, false)
 
 			
-			
-	
-
 func _enter_tree() -> void:
 	reset()
 
