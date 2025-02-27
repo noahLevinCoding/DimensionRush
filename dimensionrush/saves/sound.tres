@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SoundResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/sound/sound_resource.gd" id="1_cqmnp"]
+
+[resource]
+script = ExtResource("1_cqmnp")
+master_volume = 0.5
+sfx_volume = 0.5
+music_volume = 0.5
+ui_volume = 0.5

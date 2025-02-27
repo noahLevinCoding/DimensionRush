@@ -6,13 +6,13 @@
 script = ExtResource("1_bgbhs")
 type = 1
 id = 1
-item = "fill"
-action = "fill"
+item = "controller_1_item"
+action = "controller_1_action"
 left = "controller_1_left"
 right = "controller_1_right"
 up = "controller_1_up"
 down = "controller_1_down"
-jump = "fill"
+jump = "controller_1_jump"
 run = "fill"
 latch = "fill"
 dash = "fill"
