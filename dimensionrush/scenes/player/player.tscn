@@ -416,7 +416,7 @@ script = ExtResource("4_cj2a5")
 
 [node name="JumpAudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("33_p0qse")
-volume_db = 24.0
+volume_db = -10.0
 bus = &"SFX"
 
 [node name="WallJumpAudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
@@ -435,3 +435,4 @@ stream = ExtResource("37_byfjy")
 
 [node name="DeathAudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("38_st3l0")
+volume_db = -10.0
